@@ -8,6 +8,7 @@ gem "rails", "~> 5.2.1"
 gem "mysql2", ">= 0.4.4", "< 0.6.0"
 
 gem "bootsnap", ">= 1.1.0", require: false
+gem 'bootstrap'
 gem "devise"
 gem "devise-i18n"
 gem "haml-rails"
@@ -16,6 +17,7 @@ gem "puma", "~> 3.11"
 gem "sass-rails", "~> 5.0"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
+gem 'jquery-rails'
 
 # Background Jobs Adapter
 gem "sidekiq"
@@ -26,6 +28,7 @@ gem "sidekiq"
 gem "minitest-rails", group: [:development, :test]
 
 group :development, :test do
+  gem 'annotate'
   gem "awesome_print"
   gem "pry"
   gem "rubocop-rails_config"
@@ -42,13 +45,12 @@ group :development do
 end
 
 group :test do
-    gem "capybara", ">= 2.15", "< 4.0"
-    gem "capybara-selenium"
-    gem "chromedriver-helper"
-    gem "selenium-webdriver"
-    gem "simplecov", require: false
-    gem "webmock"
-  end
+  gem 'capybara'
+  gem 'minitest'
+  gem 'mocha'
+  gem 'poltergeist', '~> 1.10.0'
+  gem 'webmock'
+end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]

@@ -21,6 +21,12 @@ Edit/Remove the following sections as you wish.
 
     yarn install
 
+## MySQL
+
+    If you're having a problem with MySQL run: brew install mysql
+    Then: brew link mysql
+    Then: gem install mysql2 --platform=ruby
+
 ### System
 
 ## Database Management
