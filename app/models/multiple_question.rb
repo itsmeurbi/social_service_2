@@ -12,4 +12,6 @@
 #
 
 class MultipleQuestion < ApplicationRecord
+  has_many :multiple_question_options, inverse_of: :multiple_question
+  accepts_nested_attributes_for :multiple_question_options, reject_if: :all_blank, allow_destroy: true
 end
