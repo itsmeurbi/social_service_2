@@ -36,10 +36,8 @@ ActiveRecord::Schema.define(version: 2019_03_07_042739) do
     t.string "content"
     t.string "instructions"
     t.integer "value"
-    t.bigint "questions_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["questions_id"], name: "index_lectures_on_questions_id"
   end
 
   create_table "multiple_question_options", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -54,12 +52,10 @@ ActiveRecord::Schema.define(version: 2019_03_07_042739) do
   create_table "multiple_questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
     t.integer "value"
-    t.bigint "question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "correct_answ_id"
     t.index ["correct_answ_id"], name: "index_multiple_questions_on_correct_answ_id"
-    t.index ["question_id"], name: "index_multiple_questions_on_question_id"
   end
 
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -90,9 +86,7 @@ ActiveRecord::Schema.define(version: 2019_03_07_042739) do
   add_foreign_key "comprehension_options", "comprehension_questions"
   add_foreign_key "comprehension_questions", "comprehension_options", column: "correct_answ_id"
   add_foreign_key "comprehension_questions", "lectures"
-  add_foreign_key "lectures", "questions", column: "questions_id"
   add_foreign_key "multiple_question_options", "multiple_questions"
   add_foreign_key "multiple_questions", "multiple_question_options", column: "correct_answ_id"
-  add_foreign_key "multiple_questions", "questions"
   add_foreign_key "questions", "users", column: "author_id"
 end

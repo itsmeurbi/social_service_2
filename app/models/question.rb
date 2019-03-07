@@ -12,4 +12,10 @@
 #
 
 class Question < ApplicationRecord
+  enum type: {
+    multiple_question: 0,
+    comprehension_question: 1
+  }
+
+  belongs_to :multiple_question
 end

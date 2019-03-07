@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     authenticated :user do
       root 'dashboard#index', as: :authenticated_root
+      resources :multiple_questions
     end
 
     unauthenticated do

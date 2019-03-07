@@ -4,7 +4,7 @@ class CreateLectures < ActiveRecord::Migration[5.2]
       t.string :content
       t.string :instructions
       t.integer :value
-      t.references :questions, foreign_key: true
+      # t.references :questions, foreign_key: true
 
       t.timestamps
     end
