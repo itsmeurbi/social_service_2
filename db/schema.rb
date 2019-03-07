@@ -10,7 +10,61 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_26_070412) do
+ActiveRecord::Schema.define(version: 2019_03_07_042739) do
+
+  create_table "comprehension_options", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "content"
+    t.integer "type"
+    t.bigint "comprehension_question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comprehension_question_id"], name: "index_comprehension_options_on_comprehension_question_id"
+  end
+
+  create_table "comprehension_questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "content"
+    t.integer "value"
+    t.bigint "lecture_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "correct_answ_id"
+    t.index ["correct_answ_id"], name: "index_comprehension_questions_on_correct_answ_id"
+    t.index ["lecture_id"], name: "index_comprehension_questions_on_lecture_id"
+  end
+
+  create_table "lectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "content"
+    t.string "instructions"
+    t.integer "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "multiple_question_options", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "content"
+    t.integer "type"
+    t.bigint "multiple_question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["multiple_question_id"], name: "index_multiple_question_options_on_multiple_question_id"
+  end
+
+  create_table "multiple_questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "content"
+    t.integer "value"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "correct_answ_id"
+    t.index ["correct_answ_id"], name: "index_multiple_questions_on_correct_answ_id"
+    t.index ["user_id"], name: "index_multiple_questions_on_user_id"
+  end
+
+  create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -29,4 +83,10 @@ ActiveRecord::Schema.define(version: 2019_02_26_070412) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comprehension_options", "comprehension_questions"
+  add_foreign_key "comprehension_questions", "comprehension_options", column: "correct_answ_id"
+  add_foreign_key "comprehension_questions", "lectures"
+  add_foreign_key "multiple_question_options", "multiple_questions"
+  add_foreign_key "multiple_questions", "multiple_question_options", column: "correct_answ_id"
+  add_foreign_key "multiple_questions", "users"
 end

@@ -1,0 +1,16 @@
+<%= simple_form_for @question, url: {action: "create"}, html: {class: "form"} do |f| %>
+  <%= f.input :content, as: :text, class: 'class_1 class_2 etc', label: "#{I18n.t('form.write_your_question')}: " %>
+  <%= f.input :value, input_html: {value: '1'}, label: "#{I18n.t('form.question_value')}: " %>
+
+  <h3><%= I18n.t('form.question_options') %></h3>
+  <div id="options">
+    <%= f.fields_for :multiple_question_options do |option| %>
+      <%= render 'shared/option_fields', f: option %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'Añadir opción', f, :multiple_question_options, partial: 'shared/option_fields' %>
+    </div>
+  </div>
+
+  <%= f.submit "Create" %>
+<% end %>
