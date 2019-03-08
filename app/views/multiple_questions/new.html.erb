@@ -1,16 +1,23 @@
-<%= simple_form_for @question, url: {action: "create"}, html: {class: "form"} do |f| %>
-  <%= f.input :content, as: :text, class: 'class_1 class_2 etc', label: "#{I18n.t('form.write_your_question')}: " %>
-  <%= f.input :value, input_html: {value: '1'}, label: "#{I18n.t('form.question_value')}: " %>
+<div class = "d-flex align-items-center">
+  <%= simple_form_for @question, url: {action: "create"}, html: {class: "form"} do |f| %>
+    <%= f.input :content, as: :text, class: 'class_1 class_2 etc', label: "#{I18n.t('form.write_your_question')}: " %>
+    <br>
+    <%= f.input :value, input_html: {value: '1'}, label: "#{I18n.t('form.question_value')}: "%>
+    <br>
 
-  <h3><%= I18n.t('form.question_options') %></h3>
-  <div id="options">
-    <%= f.fields_for :multiple_question_options do |option| %>
-      <%= render 'shared/option_fields', f: option %>
-    <% end %>
-    <div class="links">
-      <%= link_to_add_association 'Añadir opción', f, :multiple_question_options, partial: 'shared/option_fields' %>
+    <div class = "d-flex align-items-center">
+      <h3><%= I18n.t('form.question_options') %></h3>
+        <div id="options">
+          <%= f.fields_for :multiple_question_options do |option| %>
+            <%= render 'shared/option_fields', f: option %>
+          <% end %>
+          <br>
+          <div class="links">
+            <%= link_to_add_association 'Añadir opción', f, :multiple_question_options, partial: 'shared/option_fields' %>
+          </div>
+        </div>
+        <br>
+      <%= f.submit "Create", class:"btn btn-light" %>
     </div>
-  </div>
-
-  <%= f.submit "Create" %>
-<% end %>
+  <% end %>
+</div>

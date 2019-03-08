@@ -1,3 +1,6 @@
-<%= link_to 'Salir ejejje', destroy_user_session_path, method: 'delete' %>
-
-<%= link_to 'Crear pregunta opción múltiple', new_multiple_question_path, class: 'd-block' %>
+<div class = "d-flex align-items-center">
+    <br>
+    <%= link_to 'Crear pregunta opción múltiple', new_multiple_question_path, class: "btn btn-outline-warning mt-auto p-2" %>
+    <br>
+    <%= link_to 'Salir ejejje', destroy_user_session_path, method: 'delete', class:"btn btn-outline-danger mt-auto p-2" %>
+</div>
