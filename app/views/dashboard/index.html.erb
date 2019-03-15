@@ -1,3 +1,27 @@
-<%= link_to 'Salir ejejje', destroy_user_session_path, method: 'delete' %>
+<div class='custom-container'>
+  <%= link_to '#', class: 'square' do %>
+    <div>
+      <%= image_tag 'period.png', class: 'icon'%>
+      <%= image_tag 'book.png', class: 'icon'%>
+    </div>
+    <h3>Configurar periodo y editorial</h3>
+  <%end%>
+  <%= link_to '#', class: 'square' do %>
+    <%= image_tag 'level.png', class: 'icon'%>
+    <h3>Añadir niveles y unidades</h3>
+  <%end%>
+  <%= link_to new_multiple_question_path, class: 'square' do %>
+    <%= image_tag 'question.png', class: 'icon'%>
+    <h3>Añadir preguntas opción múltiple</h3>
+  <%end%>
+  <%= link_to '#', class: 'square' do %>
+    <%= image_tag 'question.png', class: 'icon'%>
+    <h3>Añadir preguntas comprensión lectora</h3>
+  <%end%>
+  <%= link_to '#', class: 'square' do %>
+  <%end%>
+  <%= link_to '#', class: 'square' do %>
+  <%end%>
+</div>
 
-<%= link_to 'Crear pregunta opción múltiple', new_multiple_question_path, class: 'd-block' %>
+<%= link_to 'Salir ejejje', destroy_user_session_path, method: 'delete' %>

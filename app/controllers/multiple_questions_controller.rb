@@ -7,7 +7,7 @@ class MultipleQuestionsController < ApplicationController
   def create
     @question = current_user.multiple_questions.create(question_params)
     if @question.persisted?
-      binding.pry
+      # binding.pry
       redirect_to authenticated_root_path
     end
   end
