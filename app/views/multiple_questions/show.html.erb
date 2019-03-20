@@ -1,0 +1,6 @@
+<h1>No sé qué poner aquí</h1>
+<p><%= @question.content %></p>
+
+<% @question.options.each do |option| %>
+  <p class="option <%= 'correct' if option.correct %>"><%= option.content %></p>
+<% end %>
