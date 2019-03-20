@@ -27,8 +27,6 @@ ActiveRecord::Schema.define(version: 2019_03_07_042739) do
     t.bigint "lecture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "correct_answ_id"
-    t.index ["correct_answ_id"], name: "index_comprehension_questions_on_correct_answ_id"
     t.index ["lecture_id"], name: "index_comprehension_questions_on_lecture_id"
   end
 
@@ -43,6 +41,7 @@ ActiveRecord::Schema.define(version: 2019_03_07_042739) do
   create_table "multiple_question_options", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
     t.integer "type"
+    t.boolean "correct", default: false
     t.bigint "multiple_question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -55,8 +54,6 @@ ActiveRecord::Schema.define(version: 2019_03_07_042739) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "correct_answ_id"
-    t.index ["correct_answ_id"], name: "index_multiple_questions_on_correct_answ_id"
     t.index ["user_id"], name: "index_multiple_questions_on_user_id"
   end
 
@@ -84,9 +81,7 @@ ActiveRecord::Schema.define(version: 2019_03_07_042739) do
   end
 
   add_foreign_key "comprehension_options", "comprehension_questions"
-  add_foreign_key "comprehension_questions", "comprehension_options", column: "correct_answ_id"
   add_foreign_key "comprehension_questions", "lectures"
-  add_foreign_key "multiple_question_options", "multiple_questions"
-  add_foreign_key "multiple_questions", "multiple_question_options", column: "correct_answ_id"
+  add_foreign_key "multiple_question_options", "multiple_questions", on_delete: :cascade
   add_foreign_key "multiple_questions", "users"
 end
