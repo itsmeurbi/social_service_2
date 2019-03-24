@@ -1,0 +1,7 @@
+<%= simple_form_for @level, url: {action: "create"}, html: {class: "form"} do |f| %>
+  <%= f.input :editorial_id, collection: @editorials, prompt: "Selecciona editorial" %>
+  <%= f.input :number %>
+
+  <%= f.submit "Create" %>
+<% end %>
+

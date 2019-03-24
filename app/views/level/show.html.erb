@@ -1,0 +1,5 @@
+<p>Editorial <%= @level.editorial.name %></p>
+<% @level.units.each do |unit| %>
+  <p>Unidad: <%= unit.number %> | <%= unit.name %></p>
+<% end %>
+<%= link_to 'Agregar unidad', new_unit_path(level: @level) %>

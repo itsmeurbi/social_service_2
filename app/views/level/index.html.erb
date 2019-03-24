@@ -1,0 +1,8 @@
+<% @editorials.each do |editorial| %>
+  <%= editorial.name %>
+  <% editorial.levels.each do |level| %>
+    <%= link_to "Nivel: #{level.number}", level_path(level) %>
+  <% end %>
+<% end %>
+
+<%= link_to 'Agregar nivel', new_level_path %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_20_063617) do
+ActiveRecord::Schema.define(version: 2019_03_24_051053) do
 
   create_table "comprehension_options", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -43,6 +43,14 @@ ActiveRecord::Schema.define(version: 2019_03_20_063617) do
     t.integer "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "levels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "number"
+    t.bigint "editorial_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["editorial_id"], name: "index_levels_on_editorial_id"
   end
 
   create_table "multiple_question_options", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -79,6 +87,15 @@ ActiveRecord::Schema.define(version: 2019_03_20_063617) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "units", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "number"
+    t.string "name"
+    t.bigint "level_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["level_id"], name: "index_units_on_level_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.integer "user_type", default: 0, null: false
@@ -98,7 +115,9 @@ ActiveRecord::Schema.define(version: 2019_03_20_063617) do
 
   add_foreign_key "comprehension_options", "comprehension_questions"
   add_foreign_key "comprehension_questions", "lectures"
+  add_foreign_key "levels", "editorials"
   add_foreign_key "multiple_question_options", "multiple_questions", on_delete: :cascade
   add_foreign_key "multiple_questions", "users"
   add_foreign_key "periods", "editorials"
+  add_foreign_key "units", "levels"
 end
