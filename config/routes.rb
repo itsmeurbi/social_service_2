@@ -9,6 +9,8 @@ Rails.application.routes.draw do
       resources :multiple_questions
       resources :period
       resources :editorial
+      resources :level
+      resources :unit
     end
 
     unauthenticated do

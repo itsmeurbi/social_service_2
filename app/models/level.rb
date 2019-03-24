@@ -2,17 +2,16 @@
 
 # == Schema Information
 #
-# Table name: editorials
+# Table name: levels
 #
 #  id           :bigint(8)        not null, primary key
-#  id_editorial :string(255)
-#  name         :string(255)
+#  number       :integer
+#  editorial_id :bigint(8)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
 
-
-class Editorial < ApplicationRecord
-  has_many :levels
-  has_many :periods
+class Level < ApplicationRecord
+  belongs_to :editorial
+  has_many :units
 end
