@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_07_042739) do
+ActiveRecord::Schema.define(version: 2019_03_20_063617) do
 
   create_table "comprehension_options", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(version: 2019_03_07_042739) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["lecture_id"], name: "index_comprehension_questions_on_lecture_id"
+  end
+
+  create_table "editorials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "id_editorial"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "lectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -57,6 +64,15 @@ ActiveRecord::Schema.define(version: 2019_03_07_042739) do
     t.index ["user_id"], name: "index_multiple_questions_on_user_id"
   end
 
+  create_table "periods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "starts_at"
+    t.date "ends_at"
+    t.bigint "editorial_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["editorial_id"], name: "index_periods_on_editorial_id"
+  end
+
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "type"
     t.datetime "created_at", null: false
@@ -84,4 +100,5 @@ ActiveRecord::Schema.define(version: 2019_03_07_042739) do
   add_foreign_key "comprehension_questions", "lectures"
   add_foreign_key "multiple_question_options", "multiple_questions", on_delete: :cascade
   add_foreign_key "multiple_questions", "users"
+  add_foreign_key "periods", "editorials"
 end
