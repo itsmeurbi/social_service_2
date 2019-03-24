@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       resources :editorial
       resources :level
       resources :unit
+      get '/editorial_levels' => 'editorial_levels#show'
+      get '/level_units' => 'level_units#show'
     end
 
     unauthenticated do

@@ -14,4 +14,8 @@
 class Level < ApplicationRecord
   belongs_to :editorial
   has_many :units
+
+  scope :available_levels_by_editorial, lambda { |editorial_id|
+    where(editorial_id: editorial_id)
+  }
 end

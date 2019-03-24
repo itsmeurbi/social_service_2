@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_24_051053) do
+ActiveRecord::Schema.define(version: 2019_03_24_225921) do
 
   create_table "comprehension_options", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -69,6 +69,8 @@ ActiveRecord::Schema.define(version: 2019_03_24_051053) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "unit_id"
+    t.index ["unit_id"], name: "index_multiple_questions_on_unit_id"
     t.index ["user_id"], name: "index_multiple_questions_on_user_id"
   end
 
@@ -117,6 +119,7 @@ ActiveRecord::Schema.define(version: 2019_03_24_051053) do
   add_foreign_key "comprehension_questions", "lectures"
   add_foreign_key "levels", "editorials"
   add_foreign_key "multiple_question_options", "multiple_questions", on_delete: :cascade
+  add_foreign_key "multiple_questions", "units"
   add_foreign_key "multiple_questions", "users"
   add_foreign_key "periods", "editorials"
   add_foreign_key "units", "levels"

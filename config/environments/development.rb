@@ -1,16 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.configure do
-  # Settings for Bullet gem
-  config.after_initialize do
-    Bullet.enable        = true
-    Bullet.alert         = true
-    Bullet.bullet_logger = true
-    Bullet.console       = true
-    Bullet.rails_logger  = true
-    Bullet.add_footer    = true
-  end
-
   # Settings for Letter Opener
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true

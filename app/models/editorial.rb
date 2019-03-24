@@ -15,4 +15,5 @@
 class Editorial < ApplicationRecord
   has_many :levels
   has_many :periods
+
 end

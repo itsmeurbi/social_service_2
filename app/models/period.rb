@@ -16,7 +16,7 @@
 class Period < ApplicationRecord
   include PeriodPresenter
 
-  has_one :editorial
+  belongs_to :editorial
 
   scope :actual_period, -> {
     where("current_time >= starts_at AND :current_time <= ends_at", current_time: Time.current)

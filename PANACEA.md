@@ -17,12 +17,6 @@ Default locale was set to: **Spanish - es** in *config/application.rb*
 #### awesome_print
 The gem was included in Gemfile.
 
-#### Bullet
-* The gem was included in Gemfile.
-* `config/environments/development.rb` was modified.
-
-
-
 ### General Purpose
 
 #### devise

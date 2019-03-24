@@ -2,6 +2,7 @@
 
 class MultipleQuestionsController < ApplicationController
   def new
+    @unit = params[:unit][:unit_id]
     @question = current_user.multiple_questions.build
     3.times { @question.multiple_question_options.new }
   end
@@ -15,7 +16,10 @@ class MultipleQuestionsController < ApplicationController
   end
 
   def index
+    @question = MultipleQuestion.new
     @questions = MultipleQuestion.all
+    @editorials = Editorial.all
+    @actual_editorial = Period.actual_period[0].editorial
   end
 
   def create
@@ -41,7 +45,7 @@ class MultipleQuestionsController < ApplicationController
   private
 
     def question_params
-      params.require(:multiple_question).permit(:content, :value, multiple_question_options_attributes: [:id, :content, :correct, :_destroy])
+      params.require(:multiple_question).permit(:content, :value, :unit_id, multiple_question_options_attributes: [:id, :content, :correct, :_destroy])
     end
 
     def question
