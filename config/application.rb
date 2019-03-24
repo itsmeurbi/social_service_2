@@ -18,7 +18,7 @@ module SocialService
     config.i18n.default_locale = :es
 
     # Default timezone
-    config.time_zone = "Central Time (US & Canada)"
+    config.time_zone = "Guadalajara"
 
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2

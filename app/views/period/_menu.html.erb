@@ -1,0 +1,8 @@
+<%= link_to 'Editoriales registradas', editorial_index_path %>
+<%= link_to 'Nueva editorial', new_editorial_path %>
+
+<% if @actual_period.present? %>
+  <%= link_to 'Edita el periodo', edit_period_path(@actual_period[0]) %>
+<% else %>
+  <%= link_to 'Determina el periodo', new_period_path %>
+<% end %>

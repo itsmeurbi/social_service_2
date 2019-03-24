@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     authenticated :user do
       root 'dashboard#index', as: :authenticated_root
       resources :multiple_questions
+      resources :period
+      resources :editorial
     end
 
     unauthenticated do
