@@ -5,3 +5,16 @@
     color: black;
     font-size: 1.3em;
 }
+
+
+.logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+p#navbar{
+    font-size: 20px;
+    color: $bluetec;
+    margin: 0;
+}
