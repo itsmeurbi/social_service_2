@@ -3,6 +3,7 @@
 class PeriodController < ApplicationController
   def new
     @period = Period.new
+    @editorials = Editorial.all
   end
 
   def index
@@ -10,15 +11,16 @@ class PeriodController < ApplicationController
   end
 
   def create
-    if Period.create(period_params).persisted?
+    period = Period.create(period_params)
+    if period.persisted?
       redirect_to period_index_path, notice: "Se actualizó correctamente"
     else
-      redirect_back fallback_location: { action: "new", alert: question.errors.full_messages.join(" ") }
+      redirect_back fallback_location: { action: "new", alert: period.errors.full_messages.join(" ") }
     end
   end
 
   private
     def period_params
-      params.require(:period).permit(:starts_at, :ends_at)
+      params.require(:period).permit(:starts_at, :ends_at, :editorial_id)
     end
 end
