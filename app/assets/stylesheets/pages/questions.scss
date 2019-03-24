@@ -1,0 +1,35 @@
+// Place all the styles related to the questions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.title{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.container-q{
+    height: 100%;
+    margin: 20px 30px;
+}
+
+.opciones{
+      flex-direction: row;
+      justify-content: space-around;
+}
+
+.row{
+    align-items: baseline;
+}
+
+h2 {
+    width: 40vw;
+    margin: 30px 0;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.question{
+    font-size: 20px;
+}
