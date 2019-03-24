@@ -1,8 +1,14 @@
 <% @editorials.each do |editorial| %>
-  <%= editorial.name %>
-  <% editorial.levels.each do |level| %>
-    <%= link_to "Nivel: #{level.number}", level_path(level) %>
-  <% end %>
+  <div>
+    <%= editorial.name %>
+    <% editorial.levels.each do |level| %>
+      <div>
+        <%= link_to "Nivel: #{level.number}", level_path(level) %>
+      </div>
+    <% end %>
+  </div>
 <% end %>
+<div class='my-5'>
+  <%= link_to 'Agregar nivel', new_level_path %>
+</div>
 
-<%= link_to 'Agregar nivel', new_level_path %>

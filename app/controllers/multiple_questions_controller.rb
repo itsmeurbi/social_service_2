@@ -16,6 +16,8 @@ class MultipleQuestionsController < ApplicationController
 
   def index
     @questions = MultipleQuestion.all
+    @editorials = Editorial.all
+    @actual_editorial = Period.actual_period[0].editorial
   end
 
   def create
