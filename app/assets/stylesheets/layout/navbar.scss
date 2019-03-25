@@ -1,20 +1,15 @@
 .link-navbar{
+    display: flex;
     flex-direction: row;
     align-content: center;
+    align-items: center;
     justify-content: flex-start;
     color: black;
     font-size: 1.3em;
 }
-
-
-.logo{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
 p#navbar{
     font-size: 20px;
     color: $bluetec;
     margin: 0;
 }
+

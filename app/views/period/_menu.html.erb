@@ -1,8 +1,22 @@
-<%= link_to 'Editoriales registradas', editorial_index_path %>
-<%= link_to 'Nueva editorial', new_editorial_path %>
+<div class='custom-container editorial'>
+  <%= link_to editorial_index_path, class:'square' do%>
+    <p class="b-square">Editoriales registradas</p>
+  <%end%>
+  <%= link_to new_editorial_path, class:'square' do%>
+    <p class="b-square">Nueva Editorial</p>
+  <%end%>
 
-<% if @actual_period.present? %>
-  <%= link_to 'Edita el periodo', edit_period_path(@actual_period[0]) %>
-<% else %>
-  <%= link_to 'Determina el periodo', new_period_path %>
-<% end %>
+  <% if @actual_period.present? %>
+    <%= link_to edit_period_path(@actual_period[0]), class:'square' do%>
+      <p class="b-square">Editar Periodo</p>
+    <%end%>
+  <% else %>
+    <%= link_to new_period_path, class:'square' do %>
+      <p class="b-square">Determinar Periodo</p>
+    <%end%>
+  <% end %>
+  
+</div>
+<div class="button ">
+  <%= link_to 'Regresar', authenticated_root_path, class: 'btn btn-outline-primary b'%>
+</div>

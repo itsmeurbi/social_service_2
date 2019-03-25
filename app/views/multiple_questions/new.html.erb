@@ -1,5 +1,5 @@
-<%= simple_form_for @question, url: {action: "create"}, html: {class: "form"} do |f| %>
+<%= simple_form_for @question, url: {action: "create"}, html: {class: "form new-form"} do |f| %>
   <%= render partial: 'form', locals: { f: f } %>
 
-  <%= f.submit "Create", class: 'btn btn-light'%>
+  <%= f.submit "Create", class: 'btn btn-outline-primary b'%>
 <% end %>

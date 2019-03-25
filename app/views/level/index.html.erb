@@ -1,14 +1,19 @@
 <% @editorials.each do |editorial| %>
   <div>
-    <%= editorial.name %>
-    <% editorial.levels.each do |level| %>
-      <div>
-        <%= link_to "Nivel: #{level.number}", level_path(level) %>
-      </div>
-    <% end %>
+    <div class="title-level">
+      <h2>Editorial en uso:</h2>
+      <h2><%= editorial.name %></h2>
+    </div>
+    <div class='custom-container'>
+      <% editorial.levels.each do |level| %>
+          <%= link_to level_path(level), class:'square' do %>
+            <p class="b-square"> <%="Nivel: #{level.number}"%></p> 
+          <% end %>
+     <% end %>
+     </div>
   </div>
 <% end %>
 <div class='my-5'>
-  <%= link_to 'Agregar nivel', new_level_path %>
+  <%= link_to 'Agregar nivel', new_level_path, class:'btn btn-outline-primary b'%>
 </div>
 
