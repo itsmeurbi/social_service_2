@@ -1,4 +1,10 @@
-<%= f.input :name %>
-<%= f.input :number %>
-<%= f.input :level_id, as: :hidden, input_html: { value: @level } %>
+<div class="title-unit">
+    <h2>Registrar Unidad</h2>
+    <h2>Nivel: </h2>
+</div>
+<div class= "unit-form">
+    <%= f.input :name %>
+    <%= f.input :number %>
+    <%= f.input :level_id, as: :hidden, input_html: { value: @level }%>
+<div>
 
