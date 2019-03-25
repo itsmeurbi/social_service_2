@@ -12,7 +12,7 @@ class LevelController < ApplicationController
 
   def index
     @editorials = Editorial.all
-    @actual_editorial = Period.actual_period[0].editorial_id
+    @actual_editorial = Period.actual_period[0]&.editorial_id
   end
 
   def create
