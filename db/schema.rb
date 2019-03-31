@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_24_225921) do
+ActiveRecord::Schema.define(version: 2019_03_31_150757) do
 
   create_table "comprehension_options", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
     t.integer "type"
+    t.boolean "correct", default: false
     t.bigint "comprehension_question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -25,9 +26,13 @@ ActiveRecord::Schema.define(version: 2019_03_24_225921) do
     t.string "content"
     t.integer "value"
     t.bigint "lecture_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "unit_id"
     t.index ["lecture_id"], name: "index_comprehension_questions_on_lecture_id"
+    t.index ["unit_id"], name: "index_comprehension_questions_on_unit_id"
+    t.index ["user_id"], name: "index_comprehension_questions_on_user_id"
   end
 
   create_table "editorials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -115,8 +120,10 @@ ActiveRecord::Schema.define(version: 2019_03_24_225921) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "comprehension_options", "comprehension_questions"
+  add_foreign_key "comprehension_options", "comprehension_questions", on_delete: :cascade
   add_foreign_key "comprehension_questions", "lectures"
+  add_foreign_key "comprehension_questions", "units"
+  add_foreign_key "comprehension_questions", "users"
   add_foreign_key "levels", "editorials"
   add_foreign_key "multiple_question_options", "multiple_questions", on_delete: :cascade
   add_foreign_key "multiple_questions", "units"

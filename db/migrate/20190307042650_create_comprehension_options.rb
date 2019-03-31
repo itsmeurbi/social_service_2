@@ -3,7 +3,8 @@ class CreateComprehensionOptions < ActiveRecord::Migration[5.2]
     create_table :comprehension_options do |t|
       t.string :content
       t.integer :type
-      t.references :comprehension_question, foreign_key: true
+      t.boolean :correct, default: false
+      t.references :comprehension_question, foreign_key: {on_delete: :cascade}
 
       t.timestamps
     end
