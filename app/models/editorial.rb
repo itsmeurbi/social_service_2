@@ -16,4 +16,6 @@ class Editorial < ApplicationRecord
   has_many :levels
   has_many :periods
 
+  has_many :multiple_questions, through: :levels
+
 end

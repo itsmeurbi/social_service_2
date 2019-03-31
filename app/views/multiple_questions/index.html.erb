@@ -8,13 +8,15 @@
       </div>
       <%= simple_form_for @question, url: new_multiple_question_path, method: :get, html: {class: "form container-filter"} do |f| %>
         <div class="level-units-dropdown-container">
-          <%= f.input :unit, collection: @actual_editorial.levels.first.units, prompt: "Selecciona unidad" %>
+          <%= f.input :unit, collection: @actual_editorial.levels.first.units, include_blank: false %>
         </div>
         <%= f.submit "Agregar pregunta", class: 'btn btn-outline-primary add-question' %>
       <% end %>
     </div>
 
   </div>
-  <%= render partial: 'questions', locals: { questions: @questions } %>
+  <div class='questions-container'>
+    <%= render partial: 'questions', locals: { questions: @questions } %>
+  </div>
 
 </div>

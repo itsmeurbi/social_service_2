@@ -16,4 +16,17 @@ $(document).on('turbolinks:load', function() {
       data: { level_id: level_id }
     });
   });
+
+  $('body').on(
+    'change',
+    'div.level-units-dropdown-container select',
+    function() {
+      var unit_id = $(this).val();
+      $.ajax({
+        url: '/unit_questions',
+        method: 'GET',
+        data: { unit_id: unit_id }
+      });
+    }
+  );
 });

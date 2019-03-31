@@ -18,4 +18,11 @@ class MultipleQuestion < ApplicationRecord
   accepts_nested_attributes_for :multiple_question_options, reject_if: :all_blank, allow_destroy: true
 
   belongs_to :unit
+
+  # def editorial_questions(levels)
+  #   questions = []
+  #   levels.each do |level|
+  #     questions << unit.multiple_questions
+  #   end
+  # end
 end

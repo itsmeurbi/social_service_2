@@ -2,37 +2,37 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.container{
-    height: 100%;
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .input {
     display: flex;
+    flex-direction: row;
+    font-size: 1.5vw;
+    width: 40vw;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    .input {
-      display: flex;
-      flex-direction: row;
-      font-size: 1.5vw;
-      width: 40vw;
-      align-items: center;
-      border-color: black;
+    border-color: black;
   }
-  h3{
+  h3 {
     margin-top: 3vw;
   }
 }
 
-.new-form{
+.new-form {
   height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 h2 {
-    width: 40vw;
-    margin-top: 5vw;
-    flex-wrap: wrap;
-    text-align: center;
+  width: 40vw;
+  margin-top: 5vw;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
 .col-3 {
@@ -48,20 +48,20 @@ h2 {
   align-items: center;
 }
 h1 {
-    margin-top: 5vw;
-    text-align: center;
+  margin-top: 5vw;
+  text-align: center;
 }
 h3 {
-    margin-top: 5vw;
-    text-align: center;
+  margin-top: 5vw;
+  text-align: center;
 }
-p#show{
-    text-align: center;
-    font-size: 3vw;
-    margin-bottom: 5vw;
+p#show {
+  text-align: center;
+  font-size: 3vw;
+  margin-bottom: 5vw;
 }
 
-#options { 
+#options {
   flex-wrap: wrap;
   width: 35vw;
   margin-bottom: 2vw;
@@ -85,43 +85,42 @@ p#show{
   }
 }
 
-.option{
-    align-self: center;
-    justify-content: flex-start;
-    width: auto;
-    padding: .5vw;
-    
+.option {
+  align-self: center;
+  justify-content: flex-start;
+  width: auto;
+  padding: 0.5vw;
 }
-.correct{
-    border:green;
-    border-style:solid;
-    border-width: 1px;
-    border-radius: 5%;
-}
-
-.content-show{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.correct {
+  border: green;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5%;
 }
 
-p{
-    font-size: 20px;
+.content-show {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.links-op{
-    margin-top: 5vw;
-    font-size: 25px;
-    font-weight: 400;
-    width: 30vw;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+p {
+  font-size: 20px;
 }
 
-.filters{
+.links-op {
+  margin-top: 5vw;
+  font-size: 25px;
+  font-weight: 400;
+  width: 30vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.filters {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -130,18 +129,20 @@ p{
   justify-content: space-around;
 }
 
-.container-filter{
+.container-filter {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
 }
 
-#multiple_question_unit, #editorial_editorial_id,
-#level_level_id, .add-question{
+#unit_unit_id,
+#editorial_editorial_id,
+#level_level_id,
+.add-question {
   font-size: 1.5vw;
 }
 
-.add-question{
+.add-question {
   margin-left: 5vw;
 }

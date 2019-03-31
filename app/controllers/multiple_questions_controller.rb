@@ -2,7 +2,7 @@
 
 class MultipleQuestionsController < ApplicationController
   def new
-    @unit = params[:unit][:unit_id]
+    @unit = determine_unit
     @question = current_user.multiple_questions.build
     3.times { @question.multiple_question_options.new }
   end
@@ -19,7 +19,7 @@ class MultipleQuestionsController < ApplicationController
     @question = MultipleQuestion.new
     @questions = MultipleQuestion.all
     @editorials = Editorial.all
-    @actual_editorial = Period.actual_period[0].editorial
+    @actual_editorial = Period.actual_period[0]&.editorial || Editorial.last
   end
 
   def create
@@ -50,5 +50,13 @@ class MultipleQuestionsController < ApplicationController
 
     def question
       @question ||= current_user.multiple_questions.find(params[:id])
+    end
+
+    def determine_unit
+      if params[:unit]
+        params[:unit][:unit_id]
+      elsif params[:multiple_question]
+        params[:multiple_question][:unit]
+      end
     end
 end
