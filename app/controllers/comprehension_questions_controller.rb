@@ -7,6 +7,10 @@ class ComprehensionQuestionsController < ApplicationController
     3.times { @question.comprehension_options.new }
   end
 
+  def show
+    question
+  end
+
   def index
     @question = ComprehensionQuestion.new
     @questions = ComprehensionQuestion.all
@@ -21,9 +25,26 @@ class ComprehensionQuestionsController < ApplicationController
     end
   end
 
+  def edit
+    question
+  end
+
+  def update
+    if QuestionManager.update_comprehension_question(question, question_params, params[:correct_answ])
+      redirect_to comprehension_questions_path, notice: "Se actualizó correctamente"
+    else
+      redirect_back fallback_location: { action: "new", alert: question.errors.full_messages.join(" ") }
+    end
+  end
+
+  def destroy
+    question.destroy
+    redirect_to multiple_questions_path, notice: "Se eliminó la pregunta con éxito"
+  end
+
   private
     def question_params
-      params.require(:comprehension_question).permit(:content, :value, :unit_id, comprehension_options_attributes: [:id, :content, :correct, :_destroy])
+      params.require(:comprehension_question).permit(:content, :value, :unit_id, :lecture, comprehension_options_attributes: [:id, :content, :correct, :_destroy])
     end
 
     def question

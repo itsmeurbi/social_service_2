@@ -1,2 +1,19 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+$(document).on('turbolinks:load', function() {
+  $('div.lecture-section > div').hide();
+  $('div.choose-type-of-file > div.file').on('click', function() {
+    $('div.choose-type-of-file > div.text').hide();
+    $('div.file-section').show();
+    $('div.lecture-section > div.back').show();
+  });
+
+  $('div.choose-type-of-file > div.text').on('click', function() {
+    $('div.choose-type-of-file > div.file').hide();
+    $('div.texteditor-section').show();
+    $('div.lecture-section > div.back').show();
+  });
+
+  $('div.lecture-section > div.back').on('click', function() {
+    $('div.lecture-section > div').hide();
+    $('div.choose-type-of-file > div').show();
+  });
+});

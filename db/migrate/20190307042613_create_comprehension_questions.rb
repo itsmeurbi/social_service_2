@@ -3,7 +3,7 @@ class CreateComprehensionQuestions < ActiveRecord::Migration[5.2]
     create_table :comprehension_questions do |t|
       t.string :content
       t.integer :value
-      t.references :lecture, foreign_key: true
+      t.string :lecture
       t.references :user, foreign_key: true
 
       t.timestamps

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_31_150757) do
+ActiveRecord::Schema.define(version: 2019_04_01_023815) do
 
   create_table "comprehension_options", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -25,12 +25,11 @@ ActiveRecord::Schema.define(version: 2019_03_31_150757) do
   create_table "comprehension_questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
     t.integer "value"
-    t.bigint "lecture_id"
+    t.string "lecture"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "unit_id"
-    t.index ["lecture_id"], name: "index_comprehension_questions_on_lecture_id"
     t.index ["unit_id"], name: "index_comprehension_questions_on_unit_id"
     t.index ["user_id"], name: "index_comprehension_questions_on_user_id"
   end
@@ -42,12 +41,13 @@ ActiveRecord::Schema.define(version: 2019_03_31_150757) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "lectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "content"
-    t.string "instructions"
-    t.integer "value"
+  create_table "exams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "result"
+    t.datetime "date"
+    t.bigint "period_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["period_id"], name: "index_exams_on_period_id"
   end
 
   create_table "levels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -121,9 +121,9 @@ ActiveRecord::Schema.define(version: 2019_03_31_150757) do
   end
 
   add_foreign_key "comprehension_options", "comprehension_questions", on_delete: :cascade
-  add_foreign_key "comprehension_questions", "lectures"
   add_foreign_key "comprehension_questions", "units"
   add_foreign_key "comprehension_questions", "users"
+  add_foreign_key "exams", "periods"
   add_foreign_key "levels", "editorials"
   add_foreign_key "multiple_question_options", "multiple_questions", on_delete: :cascade
   add_foreign_key "multiple_questions", "units"

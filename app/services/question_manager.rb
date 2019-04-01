@@ -35,4 +35,10 @@ class QuestionManager
     assign_correct_answ(question, question_params, correct_answ)
     question
   end
+
+  def self.update_comprehension_question(question, question_params, correct_answ)
+    question.update(question_params)
+    assign_correct_answ(question, question_params, correct_answ)
+    question
+  end
 end
