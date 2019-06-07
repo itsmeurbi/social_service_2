@@ -8,7 +8,6 @@
 #  type       :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  author_id  :bigint(8)
 #
 
 require "test_helper"

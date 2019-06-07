@@ -1,0 +1,84 @@
+.b-square{
+  color:$redtec;
+}
+a.square{
+  background-color: $softyellow;
+}
+a.square:hover{
+  text-decoration: none;
+  p{
+    color:$bluetec;
+  }
+}
+
+@media(max-width:700px){
+  .custom-container {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    a.square {
+      align-items: center;
+      display: flex;
+      justify-content: space-around;
+      height: 55vw;
+      margin: 10vw;
+      text-align: center;
+      flex-wrap: wrap;
+      padding: 10px;
+      width: 55vw;
+      font-size: 10vw;
+
+      img.icon {
+        height: 10vw;
+      }
+    }
+  }
+}
+
+@media (min-width: 700px) {
+  .custom-container {
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    a.square {
+      align-items: center;
+      display: flex;
+      justify-content: space-around;
+      height: 20vw;
+      margin: 3vw;
+      margin-bottom: 0;
+      text-align: center;
+      flex-wrap: wrap;
+      padding: 10px;
+      width: 20vw;
+      
+      .b-square{
+        font-size: 2vw;
+      }
+
+      img.icon {
+        height: 5vw;
+      }
+      .icons{
+        width: 12vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+.button {
+  margin-top: 3vw;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+}

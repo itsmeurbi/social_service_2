@@ -7,6 +7,13 @@ Rails.application.routes.draw do
     authenticated :user do
       root 'dashboard#index', as: :authenticated_root
       resources :multiple_questions
+      resources :period
+      resources :editorial
+      resources :level
+      resources :unit
+      get '/editorial_levels' => 'editorial_levels#show'
+      get '/level_units' => 'level_units#show'
+      get '/unit_questions' => 'unit_questions#show'
     end
 
     unauthenticated do

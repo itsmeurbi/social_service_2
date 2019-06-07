@@ -8,6 +8,7 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+
 module SocialService
   class Application < Rails::Application
     # Default adapter queue
@@ -17,11 +18,12 @@ module SocialService
     config.i18n.default_locale = :es
 
     # Default timezone
-    config.time_zone = "Central Time (US & Canada)"
+    config.time_zone = "Guadalajara"
 
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
+    # Spring.watch "app/services/**"
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

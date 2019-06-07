@@ -15,11 +15,12 @@ gem "devise-i18n"
 gem "haml-rails"
 gem "interactor-rails"
 gem "puma", "~> 3.11"
+gem "pry-rails"
 gem "sass-rails", "~> 5.0"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 gem "jquery-rails"
-gem 'simple_form'
+gem "simple_form"
 
 # Background Jobs Adapter
 gem "sidekiq"
@@ -38,7 +39,6 @@ end
 
 group :development do
   gem "brakeman"
-  gem "bullet"
   gem "web-console", ">= 3.3.0"
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "spring"

@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: periods
+#
+#  id           :bigint(8)        not null, primary key
+#  starts_at    :date
+#  ends_at      :date
+#  editorial_id :bigint(8)
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  starts_at: 2019-03-20
+  ends_at: 2019-03-20
+
+two:
+  starts_at: 2019-03-20
+  ends_at: 2019-03-20

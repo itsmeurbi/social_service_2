@@ -1,3 +1,32 @@
+<div class='custom-container'>
+  <%= link_to period_index_path, class: 'square' do %>
+    <div class="icons">
+      <%= image_tag 'period.png', class: 'icon '%>
+      <%= image_tag 'book.png', class: 'icon'%>
+    </div>
+    <p class="b-square">Configurar periodo y editorial</p>
+  <%end%>
+
+  <%= link_to level_index_path, class: 'square' do %>
+    <%= image_tag 'level.png', class: 'icon'%>
+    <p class="b-square">Añadir niveles y unidades</p>
+  <%end%>
+
+  <%= link_to multiple_questions_path, class: 'square' do %>
+    <%= image_tag 'question.png', class: 'icon'%>
+    <p class="b-square">Preguntas opción múltiple</p>
+  <%end%>
+
+  <%= link_to '#', class: 'square' do %>
+    <%= image_tag 'question.png', class: 'icon'%>
+    <p class="b-square">Preguntas comprensión lectora</p>
+  <%end%>
+
+  <%= link_to '#', class: 'square' do %>
+  <%end%>
+  <%= link_to '#', class: 'square' do %>
+  <%end%>
+</div>
 <div class = "d-flex align-items-center">
     <br>
     <%= link_to 'Crear pregunta opción múltiple', new_multiple_question_path, class: "btn btn-outline-warning mt-auto p-2" %>
