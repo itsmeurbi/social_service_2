@@ -23,11 +23,14 @@
     <p class="b-square">Preguntas comprensión lectora</p>
   <%end%>
 
+  <%= link_to exams_path, class: 'square' do %>
+    <%= image_tag 'question.png', class: 'icon'%>
+    <p class="b-square">Exámenes</p>
+  <%end%>
+
   <%= link_to '#', class: 'square' do %>
     <%= image_tag 'question.png', class: 'icon'%>
-    <p class="b-square">Generar examen</p>
-  <%end%>
-  <%= link_to '#', class: 'square' do %>
+    <p class="b-square">Resultados</p>
   <%end%>
 </div>
 <div class="button ">

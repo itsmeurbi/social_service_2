@@ -63,9 +63,24 @@ ActiveRecord::Schema.define(version: 2019_06_13_072606) do
   end
 
   create_table "exams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "result"
-    t.datetime "date"
+    t.date "date"
+    t.float "grade"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "level_id"
     t.bigint "period_id"
+    t.bigint "student_id"
+    t.bigint "user_id"
+    t.index ["level_id"], name: "index_exams_on_level_id"
+    t.index ["period_id"], name: "index_exams_on_period_id"
+    t.index ["student_id"], name: "index_exams_on_student_id"
+    t.index ["user_id"], name: "index_exams_on_user_id"
+  end
+
+  create_table "lectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "content"
+    t.string "instructions"
+    t.integer "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["period_id"], name: "index_exams_on_period_id"
@@ -115,6 +130,14 @@ ActiveRecord::Schema.define(version: 2019_06_13_072606) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "no_control"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "units", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "number"
     t.string "name"
@@ -145,7 +168,10 @@ ActiveRecord::Schema.define(version: 2019_06_13_072606) do
   add_foreign_key "comprehension_options", "comprehension_questions", on_delete: :cascade
   add_foreign_key "comprehension_questions", "units"
   add_foreign_key "comprehension_questions", "users"
+  add_foreign_key "exams", "levels"
   add_foreign_key "exams", "periods"
+  add_foreign_key "exams", "students"
+  add_foreign_key "exams", "users"
   add_foreign_key "levels", "editorials"
   add_foreign_key "multiple_question_options", "multiple_questions", on_delete: :cascade
   add_foreign_key "multiple_questions", "units"

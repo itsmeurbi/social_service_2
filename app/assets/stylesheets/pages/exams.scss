@@ -1,0 +1,53 @@
+.exam-data {
+  margin: 5vw 0;
+  text-align: center;
+  align-items: center;
+
+  @media (min-width: 700px) {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.form-exam {
+  display: flex;
+  justify-content: center;
+  margin: 5vw;
+  font-size: 20px;
+
+  @media (min-width: 700px) {
+    margin: 3vw 10vw;
+    font-size: 22px;
+  }
+}
+
+.generate-exam {
+  width: 100%;
+
+  .input{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 700px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+}
+
+.student-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.student-form{
+  margin: 5vw 0;
+  width: 60vw;
+}
+
+h5 {
+  font-size: 23px;
+  margin: 0;
+}
