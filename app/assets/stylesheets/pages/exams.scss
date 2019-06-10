@@ -24,7 +24,7 @@
 .generate-exam {
   width: 100%;
 
-  .input{
+  .input {
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -36,13 +36,32 @@
   }
 }
 
+.question-options {
+  display: flex;
+
+  p{
+    font-size: 18px;
+    margin: 0 10px 10px 0;
+  }
+}
+
+.show-exam {
+  margin: 5vw 7vw;
+  text-align: center;
+  align-items: center;
+
+  @media (min-width: 700px) {
+    margin: 5vw 10vw;
+  }
+}
+
 .student-data {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.student-form{
+.student-form {
   margin: 5vw 0;
   width: 60vw;
 }
@@ -50,4 +69,19 @@
 h5 {
   font-size: 23px;
   margin: 0;
+}
+
+li {
+  text-align: left;
+  padding-left: 10px;
+}
+
+ul {
+  font-size: 20px;
+  list-style: decimal;
+}
+
+ul.option{
+  list-style: lower-alpha;
+  padding-left: 20px
 }
