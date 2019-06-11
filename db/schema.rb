@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_06_13_072606) do
+=======
+ActiveRecord::Schema.define(version: 2019_06_11_202007) do
+>>>>>>> Creates exam and multiple_question relation
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -60,6 +64,17 @@ ActiveRecord::Schema.define(version: 2019_06_13_072606) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "exam_quests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "status"
+    t.integer "chosed_answ"
+    t.bigint "exam_id"
+    t.bigint "multiple_question_id"
+    t.index ["exam_id"], name: "index_exam_quests_on_exam_id"
+    t.index ["multiple_question_id"], name: "index_exam_quests_on_multiple_question_id"
   end
 
   create_table "exams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -168,6 +183,8 @@ ActiveRecord::Schema.define(version: 2019_06_13_072606) do
   add_foreign_key "comprehension_options", "comprehension_questions", on_delete: :cascade
   add_foreign_key "comprehension_questions", "units"
   add_foreign_key "comprehension_questions", "users"
+  add_foreign_key "exam_quests", "exams"
+  add_foreign_key "exam_quests", "multiple_questions"
   add_foreign_key "exams", "levels"
   add_foreign_key "exams", "periods"
   add_foreign_key "exams", "students"

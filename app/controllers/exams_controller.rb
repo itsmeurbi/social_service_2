@@ -1,6 +1,7 @@
 class ExamsController < ApplicationController
   def index
     @exam = Exam.new
+    @exams = Exam.all
     @student = Student.new
     @actual_period = Period.actual_period
     @actual_editorial = Period.actual_period[0]&.editorial || Editorial.last
@@ -17,6 +18,7 @@ class ExamsController < ApplicationController
       unit_questions = MultipleQuestion.where(unit_id: unit)
       unit_questions.each do |q|
         @questions.push(q)
+        @exam.exam_quests.new
       end
     end
   end
@@ -28,14 +30,28 @@ class ExamsController < ApplicationController
     end
   end
 
+  def show
+    @exam = Exam.find(params[:id])
+    @level = Level.find(@exam.level_id).number
+    @student = Student.find(@exam.student_id)
+    @questions = MultipleQuestion.joins(:exam_quests).where("exam_quests.exam_id = ? ", @exam.id )
+  end
+
+  def destroy 
+    @exam = Exam.find(params[:id])
+    @exam.destroy
+    flash[:success] = "Se eliminó correctamente el examen"
+    redirect_to exams_path
+  end
+
   private
 
-  def exam_params
-    params.require(:exam).permit(:date, :grade, :level_id, :user_id, :period_id, :student_id)
-  end
+    def exam_params
+      params.require(:exam).permit(:date, :grade, :level_id, :user_id, :period_id, :student_id, exam_quests_attributes: [ :multiple_question_id, :exam_id])
+    end
 
-  def student_params
-    params.require(:student).permit(:no_control, :name, :email)
-  end
+    def student_params
+      params.require(:student).permit(:no_control, :name, :email)
+    end
   
 end

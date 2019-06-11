@@ -9,18 +9,23 @@
     <p> Nombre: <%= @student.name %> </p>
     <p> E-mail: <%= @student.email %> </p>
     <ul>
-    <% @questions.each do |question| %>
+      <%count = 0%>
+      <%= f.fields_for :exam_quests do |quest| %>
+        <%= quest.input :multiple_question_id, as: :hidden, input_html: { value: @questions[count].id} %>
+        <%count+=1%>
+      <% end %>
+      <% @questions.each do |question| %>
       <li>
-        <%= question.content %>
-        <div class= "question-options">
-        <ul class= "option">
-          <% MultipleQuestionOption.where(multiple_question_id: question.id).each do |option| %>
-            <li> <%= option.content %> </li>
-          <% end %>
-        </ul>
-        </div>
-      </li>
-    <% end %>
+          <%= question.content %>
+          <div class= "question-options">
+          <ul class= "option">
+            <% MultipleQuestionOption.where(multiple_question_id: question.id).each do |option| %>
+              <li> <%= option.content %> </li>
+            <% end %>
+          </ul>
+          </div>
+        </li>
+      <% end %>
     </ul>
     <%= f.submit "Guardar", class: "btn btn-outline-primary"%>
   <% end %>
