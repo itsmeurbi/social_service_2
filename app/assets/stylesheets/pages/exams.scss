@@ -1,5 +1,5 @@
 .exam-data {
-  margin: 5vw 0;
+  margin: 3vw 0;
   text-align: center;
   align-items: center;
 
@@ -36,18 +36,33 @@
   }
 }
 
-.question-options {
-  display: flex;
+.new-exam-form{
+  display: flex; 
+  flex-direction: column; 
+  align-items: center;
+}
 
-  p{
+.question-content {
+  display: flex;
+  width: 80vw;
+}
+
+.question-options {
+
+  p {
     font-size: 18px;
     margin: 0 10px 10px 0;
+  }
+
+  @media (min-width: 700px) {
+    display: flex;
   }
 }
 
 .show-exam {
   margin: 5vw 7vw;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 
   @media (min-width: 700px) {
@@ -66,6 +81,17 @@
   width: 60vw;
 }
 
+.two-buttos-div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 85vw;
+
+  @media (min-width: 700px) {
+    width: 40vw;
+  }
+}
+
 h5 {
   font-size: 23px;
   margin: 0;
@@ -81,7 +107,7 @@ ul {
   list-style: decimal;
 }
 
-ul.option{
+ul.option {
   list-style: lower-alpha;
-  padding-left: 20px
+  padding-left: 20px;
 }

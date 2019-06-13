@@ -28,11 +28,11 @@
     <p class="b-square">Exámenes</p>
   <%end%>
 
-  <%= link_to '#', class: 'square' do %>
+  <%= link_to certificates_path, class: 'square' do %>
     <%= image_tag 'question.png', class: 'icon'%>
-    <p class="b-square">Resultados</p>
+    <p class="b-square">Constancias</p>
   <%end%>
 </div>
 <div class="button ">
-<%= link_to 'Salir ejejje', destroy_user_session_path, method: 'delete', class: 'btn btn-outline-primary'%>
+<%= link_to 'Salir', destroy_user_session_path, method: 'delete', class: 'btn btn-outline-primary'%>
 </div>

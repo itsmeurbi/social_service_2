@@ -14,6 +14,9 @@ Rails.application.routes.draw do
       resources :unit
       resources :comprehension_questions
       resources :exams
+      resources :students
+      resources :certificates
+      resources :certificate_templates
       get '/editorial_levels' => 'editorial_levels#show'
       get '/level_units' => 'level_units#show'
       get '/unit_questions' => 'unit_questions#show'

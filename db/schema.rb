@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_06_13_072606) do
-=======
-ActiveRecord::Schema.define(version: 2019_06_11_202007) do
->>>>>>> Creates exam and multiple_question relation
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -35,6 +31,25 @@ ActiveRecord::Schema.define(version: 2019_06_11_202007) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "certificate_parts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "header"
+    t.text "body"
+    t.string "footer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+  end
+
+  create_table "certificates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "date"
+    t.bigint "exam_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "certificate_parts_id"
+    t.index ["certificate_parts_id"], name: "index_certificates_on_certificate_parts_id"
+    t.index ["exam_id"], name: "index_certificates_on_exam_id"
   end
 
   create_table "comprehension_options", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -183,6 +198,8 @@ ActiveRecord::Schema.define(version: 2019_06_11_202007) do
   add_foreign_key "comprehension_options", "comprehension_questions", on_delete: :cascade
   add_foreign_key "comprehension_questions", "units"
   add_foreign_key "comprehension_questions", "users"
+  add_foreign_key "certificates", "certificate_parts", column: "certificate_parts_id"
+  add_foreign_key "certificates", "exams"
   add_foreign_key "exam_quests", "exams"
   add_foreign_key "exam_quests", "multiple_questions"
   add_foreign_key "exams", "levels"

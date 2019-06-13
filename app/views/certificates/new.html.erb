@@ -1,0 +1,9 @@
+<h1> Certificates#new </h1>
+<%= simple_form_for @certificate, url: {action: "create"} do |f| %>
+  <%= f.input :certificate_parts_id, collection: @templates, prompt: "Selecciona una plantilla", label: "Plantillas: "%>
+  <%= f.input :exam_id, collection: @students.collect { |s| [s.name, s.id] }, label: "Examenes: "%>
+
+  <%= f.input :date %>
+  <%= f.submit "Guardar" %>
+<% end %>
+

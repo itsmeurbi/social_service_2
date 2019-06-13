@@ -1,0 +1,2 @@
+class CertificatePart < ApplicationRecord
+end

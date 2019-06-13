@@ -1,0 +1,26 @@
+<h1> Welcome <%= @student.name %> </h1>
+<div class="student-instructions">
+  <h5> This is your evaluation for level <%= @level %> </h5>
+  <br>
+  <h5> Instructions: Read the following questions and choose an asnwer for each. When you finish, click Send button </h5>
+</div>
+<div class="student-exam">
+  <ul>
+    <% @questions.each do |question| %>
+    <li>
+      <%= question.content %>
+      <div class= "question-options">
+        <% MultipleQuestionOption.where(multiple_question_id: question.id).each do |option| %>
+          <ul class= "option">
+            <%= radio_button_tag 'correct_answ', option.id %>
+            <%= option.content %>
+          </ul>
+        <% end %>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+  <div class="send-student-button-div">
+    <%= link_to 'Send', "#", class: "btn btn-outline-primary" %>
+  </div>
+</div>

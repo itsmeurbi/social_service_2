@@ -2,12 +2,14 @@
 <div class="">
   <% @exams.each do |exam| %>
     <div class='row container-q border-bottom'>
-    <div class='col-9 question'>Estudiante: <%= exam.student.no_control %> Estado: </div>
-    <div class='col-3 opciones'>
-      <%= link_to 'Ver', exam_path(exam)%>
-      <%= link_to 'Eliminar', exam_path(exam), method: :delete%>
+      <div class='col-9 question'>
+        Estudiante: <%= exam.student.no_control %> Estado: 
+      </div>
+      <div class='col-3 opciones'>
+        <%= link_to 'Ver', exam_path(exam)%>
+        <%= link_to 'Eliminar', exam_path(exam), method: :delete%>
+      </div>
     </div>
-  </div>
   <% end %>
 </div>
 <h1> Generar examen </h1>
@@ -26,7 +28,10 @@
           <%= student_attributes.input :email, label: "E-mail", required: false  %>
         <% end %>
       </div>
-      <%= f.submit "Generar examen", class: 'btn btn-outline-primary' %>
+      <div class="two-buttos-div">
+        <%= link_to 'Regresar', authenticated_root_path, class: 'btn btn-outline-primary'%>
+        <%= f.submit "Generar examen", class: 'btn btn-outline-primary' %>
+      </div>
     </div>
   <% end %>
 </div>

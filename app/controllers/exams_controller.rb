@@ -26,6 +26,7 @@ class ExamsController < ApplicationController
   def create
     @exam = current_user.exams.create(exam_params)
     if @exam.persisted?
+      flash[:success] = "Examen creado con éxito"
       redirect_to exams_path
     end
   end
