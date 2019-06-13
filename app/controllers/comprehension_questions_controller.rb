@@ -44,7 +44,7 @@ class ComprehensionQuestionsController < ApplicationController
 
   private
     def question_params
-      params.require(:comprehension_question).permit(:content, :value, :unit_id, :lecture, comprehension_options_attributes: [:id, :content, :correct, :_destroy])
+      params.require(:comprehension_question).permit(:content, :value, :file, :unit_id, :lecture, comprehension_options_attributes: [:id, :content, :correct, :_destroy])
     end
 
     def question

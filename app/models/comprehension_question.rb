@@ -19,5 +19,7 @@ class ComprehensionQuestion < ApplicationRecord
   alias_attribute :options, :comprehension_options
   accepts_nested_attributes_for :comprehension_options, reject_if: :all_blank, allow_destroy: true
 
+  has_one_attached :file
+
   belongs_to :unit
 end

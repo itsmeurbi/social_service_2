@@ -4,6 +4,7 @@
 </div>
 
 <div class="content-show">
+  <%= image_tag url_for(@question.file) if @question.file.attached? %>
   <p>Lectura: <%= @question.lecture %></p>
   <p>Pregunta: <%= @question.content %></p>
 
