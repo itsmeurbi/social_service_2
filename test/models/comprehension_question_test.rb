@@ -8,8 +8,10 @@
 #  content    :string(255)
 #  value      :integer
 #  lecture_id :bigint(8)
+#  user_id    :bigint(8)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  unit_id    :bigint(8)
 #
 
 require "test_helper"
