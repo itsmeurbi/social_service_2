@@ -6,8 +6,16 @@
       <% if @certificates.empty? %> 
         <p>NO HAY JEJE<p>
       <%else%>
-        <% @cerficates.each do |certificate| %>
-        <%= certificate.exam.id %>
+        <% @certificates.each do |certificate| %>
+          <div class='row container-q border-bottom'>
+            <div class='col-9 question'>
+              Certificado: <%= certificate.exam_id %>
+            </div>
+            <div class='col-3 opciones'>
+              <%= link_to 'Ver', certificate_path(certificate)%>
+              <%= link_to 'Eliminar', certificate_path(certificate), method: :delete%>
+            </div>
+          </div>
         <%end%>
       <%end%>
     <div>

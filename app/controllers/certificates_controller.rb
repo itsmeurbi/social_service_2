@@ -7,7 +7,7 @@ class CertificatesController < ApplicationController
   def new
     @templates = CertificatePart.all
     @certificate = Certificate.new
-    @students = Student.select("*").joins(:exam)
+    @exams = Exam.select("*").joins(:student).as_json
   end
 
   def create
@@ -17,9 +17,22 @@ class CertificatesController < ApplicationController
     end
   end
   
-
   def edit
 
+  end
+
+  def show 
+    @certificate = Certificate.find(params[:id])
+    @template = CertificatePart.find(@certificate.certificate_parts_id)
+    @exam = Exam.find(@certificate.exam_id)
+    @student = Student.find(@exam.student_id)
+  end
+
+  def destroy 
+    @certificate = Certificate.find(params[:id])
+    @certificate.destroy
+    flash[:success] = "Certificado eliminado con éxito"
+    redirect_to certificates_path
   end
 
   private 

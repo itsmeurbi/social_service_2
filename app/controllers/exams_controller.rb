@@ -21,6 +21,10 @@ class ExamsController < ApplicationController
         @exam.exam_quests.new
       end
     end
+    if @questions.empty?
+      flash[:warning] = "No hay preguntas registradas para el nivel #{@level}"
+      redirect_to exams_path
+    end
   end
 
   def create

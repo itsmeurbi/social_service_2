@@ -86,15 +86,15 @@ ActiveRecord::Schema.define(version: 2019_06_13_072606) do
     t.datetime "updated_at", null: false
     t.integer "status"
     t.integer "chosed_answ"
-    t.bigint "exam_id"
     t.bigint "multiple_question_id"
+    t.bigint "exam_id"
     t.index ["exam_id"], name: "index_exam_quests_on_exam_id"
     t.index ["multiple_question_id"], name: "index_exam_quests_on_multiple_question_id"
   end
 
   create_table "exams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.date "date"
-    t.float "grade"
+    t.integer "result"
+    t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "level_id"
@@ -105,15 +105,6 @@ ActiveRecord::Schema.define(version: 2019_06_13_072606) do
     t.index ["period_id"], name: "index_exams_on_period_id"
     t.index ["student_id"], name: "index_exams_on_student_id"
     t.index ["user_id"], name: "index_exams_on_user_id"
-  end
-
-  create_table "lectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "content"
-    t.string "instructions"
-    t.integer "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["period_id"], name: "index_exams_on_period_id"
   end
 
   create_table "levels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -195,11 +186,11 @@ ActiveRecord::Schema.define(version: 2019_06_13_072606) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "certificates", "certificate_parts", column: "certificate_parts_id"
+  add_foreign_key "certificates", "exams"
   add_foreign_key "comprehension_options", "comprehension_questions", on_delete: :cascade
   add_foreign_key "comprehension_questions", "units"
   add_foreign_key "comprehension_questions", "users"
-  add_foreign_key "certificates", "certificate_parts", column: "certificate_parts_id"
-  add_foreign_key "certificates", "exams"
   add_foreign_key "exam_quests", "exams"
   add_foreign_key "exam_quests", "multiple_questions"
   add_foreign_key "exams", "levels"
