@@ -19,16 +19,16 @@
     flex-direction: column;
     margin-top: 6vw;
     align-items: center;
-}
 
-.input{
-    display: flex;
-    height: 100%;
-    width: 40vw;
-    margin-bottom:1vw;
-    font-size: 2vw;
-    justify-content: space-around;
-    flex-direction: row;
+    .input{
+        display: flex;
+        height: 100%;
+        width: 40vw;
+        margin-bottom:1vw;
+        font-size: 2vw;
+        justify-content: space-around;
+        flex-direction: row;
+    }
 }
 
 .title-ed{
