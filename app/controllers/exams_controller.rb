@@ -11,7 +11,7 @@ class ExamsController < ApplicationController
     @exam = current_user.exams.build
     @level = params[:exam][:level_id]
     @actual_period = Period.actual_period.last.id
-    @student = Student.create(name: params[:exam][:student][:name], no_control: params[:exam][:student][:no_control], email: params[:exam][:student][:email]) #No le puse strong params porque no supe como ponerlos en requiere si viene dentro de exam :(
+    @student = Student.create(student_params)
     @units = Unit.where(level_id: @level)
     @questions = Array.new
     @units.each do |unit|
@@ -42,11 +42,15 @@ class ExamsController < ApplicationController
     @questions = MultipleQuestion.joins(:exam_quests).where("exam_quests.exam_id = ? ", @exam.id )
   end
 
-  def destroy 
+  def destroy
     @exam = Exam.find(params[:id])
     @exam.destroy
     flash[:success] = "Se eliminó correctamente el examen"
     redirect_to exams_path
+  end
+
+  def send_to_student
+
   end
 
   private
@@ -56,7 +60,7 @@ class ExamsController < ApplicationController
     end
 
     def student_params
-      params.require(:student).permit(:no_control, :name, :email)
+      params.require(:exam).require(:student).permit(:no_control, :name, :email)
     end
-  
+
 end

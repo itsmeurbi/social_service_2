@@ -1,6 +1,6 @@
 <h1> Examen Nivel <%= @level %> </h1>
 <div class="show-exam">
-  <p> Fecha de creación: <%= @exam.created_at.strftime("%d - %m - %Y") %> </p> 
+  <p> Fecha de creación: <%= @exam.created_at.strftime("%d - %m - %Y") %> </p>
   <p> Número de control: <%= @student.no_control %> </p>
   <p> Nombre: <%= @student.name %> </p>
   <p> E-mail: <%= @student.email %> </p>
@@ -21,6 +21,6 @@
   </ul>
   <div class="two-buttos-div">
     <%= link_to 'Regresar', exams_path, class: "btn btn-outline-primary" %>
-    <%= link_to 'Enviar a estudiante', edit_student_path(@student.id), class: "btn btn-outline-primary" %>
+    <%= link_to 'Enviar a estudiante', student_path(@student.id), class: "btn btn-outline-primary" %>
   </div>
 </div>
