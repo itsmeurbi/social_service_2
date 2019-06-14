@@ -4,7 +4,7 @@
   <%= render 'certificate' %>
   <div class="pdf-send-btn-div">
     <%= link_to 'Regresar', certificates_path, class: 'btn btn-outline-primary'%>
-    <%= link_to 'Editar', edit_certificate_path, class: 'btn btn-outline-primary'%>
-    <%= link_to 'Enviar certificado PDF', certificate_path(@certificate, format: :pdf), class: 'btn btn-outline-primary' %>
+    <%# <%= link_to 'Editar', edit_certificate_path, class: 'btn btn-outline-primary'%>
+    <%= link_to 'Enviar certificado PDF', certificate_path(@certificate, format: :pdf), class: 'btn btn-outline-primary', target: :blank %>
   </div>
 </div>
