@@ -1,5 +1,10 @@
 <%= simple_form_for @question, url: {action: "update"}, html: {class: "form"} do |f| %>
   <%= render partial: 'form', locals: { f: f } %>
 
-  <%= f.submit "Actualizar" %>
+  <%= f.submit "Actualizar", class: "btn btn-outline-primary"%>
 <% end %>
+<div class="btn-return-div">
+  <br>
+  <%= link_to 'Regresar', multiple_questions_path, class: "btn btn-outline-primary" %>
+</div>
+<br>

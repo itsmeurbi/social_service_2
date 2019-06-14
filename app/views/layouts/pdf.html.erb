@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> English certificate </title>
+    <%= wicked_pdf_stylesheet_link_tag "main" %>
+</head>
+<body>
+  <nav class="pdf-nav">
+    <%= wicked_pdf_image_tag 'itcolima2.png', style: "width: 60px; height: 60px; margin: 10px;" %>
+  <nav>
+  <div class="pdf-body">
+    <%= yield %>
+  </div>
+  <footer class="pdf-footer">
+  </footer>
+</body>
+</html>

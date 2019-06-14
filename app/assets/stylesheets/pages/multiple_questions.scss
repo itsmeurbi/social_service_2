@@ -154,7 +154,8 @@ p {
   margin-left: 5vw;
 }
 
-#multiple_question_unit {
+#multiple_question_unit,
+#comprehension_question_unit_id {
   font-size: 1.5rem;
 }
 
@@ -162,4 +163,8 @@ p {
   width: 15vw;
   align-items: center;
   display: flex;
+}
+
+.btn-return-div {
+  text-align: center;
 }

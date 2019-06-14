@@ -8,7 +8,7 @@
       </div>
       <%= simple_form_for @question, url: new_comprehension_question_path, method: :get, html: {class: "form container-filter"} do |f| %>
         <div class="level-units-dropdown-container">
-          <%= f.input :unit_id, collection: @actual_editorial.levels.first.units, include_blank: false %>
+          <%= f.input :unit_id, collection: @actual_editorial.levels.first.units, include_blank: false, prompt: "Unidad", label: false %>
         </div>
         <%= f.submit "Agregar pregunta", class: 'btn btn-outline-primary add-question' %>
       <% end %>
@@ -18,5 +18,8 @@
   <div class='questions-container'>
     <%= render partial: 'questions', locals: { questions: @questions } %>
   </div>
-
+<div class="btn-return-div">
+  <br>
+  <%= link_to 'Regresar', authenticated_root_path, class: "btn btn-outline-primary" %>
+</div>
 </div>
