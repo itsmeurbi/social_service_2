@@ -33,6 +33,25 @@ ActiveRecord::Schema.define(version: 2019_06_13_072606) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "certificate_parts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "header"
+    t.text "body"
+    t.string "footer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+  end
+
+  create_table "certificates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "date"
+    t.bigint "exam_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "certificate_parts_id"
+    t.index ["certificate_parts_id"], name: "index_certificates_on_certificate_parts_id"
+    t.index ["exam_id"], name: "index_certificates_on_exam_id"
+  end
+
   create_table "comprehension_options", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
     t.integer "type"
@@ -62,13 +81,30 @@ ActiveRecord::Schema.define(version: 2019_06_13_072606) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "exam_quests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "status"
+    t.integer "chosed_answ"
+    t.bigint "multiple_question_id"
+    t.bigint "exam_id"
+    t.index ["exam_id"], name: "index_exam_quests_on_exam_id"
+    t.index ["multiple_question_id"], name: "index_exam_quests_on_multiple_question_id"
+  end
+
   create_table "exams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "result"
     t.datetime "date"
-    t.bigint "period_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "level_id"
+    t.bigint "period_id"
+    t.bigint "student_id"
+    t.bigint "user_id"
+    t.index ["level_id"], name: "index_exams_on_level_id"
     t.index ["period_id"], name: "index_exams_on_period_id"
+    t.index ["student_id"], name: "index_exams_on_student_id"
+    t.index ["user_id"], name: "index_exams_on_user_id"
   end
 
   create_table "levels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -115,6 +151,14 @@ ActiveRecord::Schema.define(version: 2019_06_13_072606) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "no_control"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "units", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "number"
     t.string "name"
@@ -142,10 +186,17 @@ ActiveRecord::Schema.define(version: 2019_06_13_072606) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "certificates", "certificate_parts", column: "certificate_parts_id"
+  add_foreign_key "certificates", "exams"
   add_foreign_key "comprehension_options", "comprehension_questions", on_delete: :cascade
   add_foreign_key "comprehension_questions", "units"
   add_foreign_key "comprehension_questions", "users"
+  add_foreign_key "exam_quests", "exams"
+  add_foreign_key "exam_quests", "multiple_questions"
+  add_foreign_key "exams", "levels"
   add_foreign_key "exams", "periods"
+  add_foreign_key "exams", "students"
+  add_foreign_key "exams", "users"
   add_foreign_key "levels", "editorials"
   add_foreign_key "multiple_question_options", "multiple_questions", on_delete: :cascade
   add_foreign_key "multiple_questions", "units"

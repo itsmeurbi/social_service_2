@@ -27,4 +27,5 @@ class User < ApplicationRecord
 
   has_many :multiple_questions
   has_many :comprehension_questions
+  has_many :exams
 end

@@ -1,84 +1,81 @@
-.b-square{
-  color:$redtec;
-}
-a.square{
-  background-color: $softyellow;
-}
-a.square:hover{
-  text-decoration: none;
-  p{
-    color:$bluetec;
-  }
+.b-square {
+  color: $redtec;
+  font-size: 22px;
 }
 
-@media(max-width:700px){
-  .custom-container {
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.custom-container {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
 
-    a.square {
-      align-items: center;
-      display: flex;
-      justify-content: space-around;
-      height: 55vw;
-      margin: 10vw;
-      text-align: center;
-      flex-wrap: wrap;
-      padding: 10px;
-      width: 55vw;
-      font-size: 10vw;
-
-      img.icon {
-        height: 10vw;
-      }
-    }
-  }
-}
-
-@media (min-width: 700px) {
-  .custom-container {
-    display: flex;
-    height: 100%;
+  @media (min-width: 700px) {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+  }
 
-    a.square {
-      align-items: center;
-      display: flex;
-      justify-content: space-around;
-      height: 20vw;
+  a.square {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    font-size: 10vw;
+    height: 60vw;
+    justify-content: space-around;
+    margin: 10vw;
+    padding: 10px;
+    text-align: center;
+    width: 60vw;
+
+    @media (min-width: 700px) {
+      height: 22vw;
       margin: 3vw;
       margin-bottom: 0;
-      text-align: center;
-      flex-wrap: wrap;
       padding: 10px;
-      width: 20vw;
-      
-      .b-square{
-        font-size: 2vw;
-      }
+      width: 22vw;
+    }
 
-      img.icon {
-        height: 5vw;
-      }
-      .icons{
-        width: 12vw;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+    @media (min-width: 1200px) {
+      height: 280px;
+      width: 280px;
+    }
+
+    img.icon {
+      height: 11vw;
+
+      @media (min-width: 700px) {
+        height: 4vw;
       }
     }
   }
 }
 
 .button {
-  margin-top: 3vw;
-  flex-direction: row;
   display: flex;
+  flex-direction: row;
   justify-content: center;
+  margin: 3vw;
+}
+
+.icons {
+  justify-content: space-between;
+  width: 25vw;
+
+  @media (min-width: 700px){
+    display: flex;
+    width: 10vw;
+  }
+}
+
+a.square {
+  background-color: $softyellow;
+}
+
+a.square:hover {
+  text-decoration: none;
+
+  p {
+    color: $bluetec;
+  }
 }

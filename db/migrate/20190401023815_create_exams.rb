@@ -3,7 +3,7 @@ class CreateExams < ActiveRecord::Migration[5.2]
     create_table :exams do |t|
       t.integer :result
       t.datetime :date
-      t.references :period, foreign_key: true
+      #t.references :period, foreign_key: true
 
       t.timestamps
     end

@@ -13,4 +13,6 @@
 #
 
 class Lecture < ApplicationRecord
+  has_one_attached :file
+  has_many :comprehension_questions
 end

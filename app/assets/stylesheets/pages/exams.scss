@@ -1,0 +1,114 @@
+.exam-data {
+  margin: 3vw 0;
+  text-align: center;
+  align-items: center;
+
+  @media (min-width: 700px) {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.form-exam {
+  display: flex;
+  justify-content: center;
+  margin: 5vw;
+  font-size: 20px;
+
+  @media (min-width: 700px) {
+    margin: 3vw 10vw;
+    font-size: 22px;
+  }
+}
+
+.generate-exam {
+  width: 100%;
+
+  .input {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 700px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+}
+
+.new-exam-form{
+  display: flex; 
+  flex-direction: column; 
+  align-items: center;
+}
+
+.question-content {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+}
+
+.question-options {
+
+  p {
+    font-size: 18px;
+    margin: 0 10px 10px 0;
+  }
+
+  @media (min-width: 700px) {
+    display: flex;
+  }
+}
+
+.show-exam {
+  margin: 5vw 7vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: 700px) {
+    margin: 5vw 10vw;
+  }
+}
+
+.student-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.student-form {
+  margin: 5vw 0;
+  width: 60vw;
+}
+
+.two-buttos-div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 85vw;
+
+  @media (min-width: 700px) {
+    width: 40vw;
+  }
+}
+
+h5 {
+  font-size: 23px;
+  margin: 0;
+}
+
+li {
+  text-align: left;
+  padding-left: 10px;
+}
+
+ul {
+  font-size: 20px;
+  list-style: decimal;
+}
+
+ul.option {
+  list-style: lower-alpha;
+  padding-left: 20px;
+}
