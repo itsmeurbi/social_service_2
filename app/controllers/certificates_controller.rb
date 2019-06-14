@@ -7,7 +7,7 @@ class CertificatesController < ApplicationController
   def new
     @templates = CertificatePart.all
     @certificate = Certificate.new
-    @exams = Exam.select("*").joins(:student).as_json
+    @exams = Exam.select("exams.id, students.name").joins(:student).as_json
   end
 
   def create
@@ -26,6 +26,21 @@ class CertificatesController < ApplicationController
     @template = CertificatePart.find(@certificate.certificate_parts_id)
     @exam = Exam.find(@certificate.exam_id)
     @student = Student.find(@exam.student_id)
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "English certificate: #{@student.name}",
+        page_size: 'A4',
+        template: "certificates/_certificate.html.erb",
+        layout: "pdf.html.erb",
+        encoding:"UTF-8",
+        orientation: "Landscape",
+        lowquality: true,
+        zoom: 1,
+        dpi: 75
+      end
+    end
   end
 
   def destroy 

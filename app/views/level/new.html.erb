@@ -5,9 +5,13 @@
 
   <%= simple_form_for @level, url: {action: "create"}, html: {class: "form add-level"} do |f| %>
     <%= f.input :editorial_id, collection: @editorials, prompt: "Selecciona Editorial" %>
-    <%= f.input :number, prompt: "Selecciona Nivel" %>
+    <%= f.input :number, collection: 1..10, prompt: "Selecciona Nivel", label: "Número"%>
 
     <%= f.submit "Crear", class:'btn btn-outline-primary create-level'%>
   <% end %>
+</div>
+<div class="btn-return-div">
+  <br>
+  <%= link_to 'Regresar', level_index_path, class: "btn btn-outline-primary" %>
 </div>
 

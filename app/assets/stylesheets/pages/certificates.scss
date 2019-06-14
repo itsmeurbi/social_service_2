@@ -1,3 +1,56 @@
-// Place all the styles related to the certificates controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.index-certificates-div {
+
+  .center-btn-div {
+    text-align: center;
+    margin-bottom: 3vw;
+  }
+
+  h5 {
+    text-align: center;
+    margin: 1vw;
+  }
+}
+
+.pdf-certificate-div {
+  text-align: center;
+
+  p {
+    font-size: 30px;
+  }
+
+  h5 {
+    font-size: 40px;
+  }
+}
+
+.pdf-body {
+  height: 650px;
+}
+
+.pdf-footer {
+  height: 80px;
+  background-color: $softblue;
+  bottom: 0;
+}
+
+.pdf-nav {
+  height: 80px;
+  background-color: $softblue;
+}
+
+.pdf-send-btn-div {
+  display: flex;
+  justify-content: space-around;
+  margin: 3vw;
+  width: 50vw;
+}
+
+.show-certificate-div {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    width: 50vw;
+  }
+}

@@ -44,6 +44,12 @@
     }
 }
 
+.show-level-div{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
 @media(max-width:700px){
     .title-level{
         display: flex;
@@ -97,6 +103,7 @@
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
+      margin-bottom: 2vw;
   
     .square {
         display: flex;

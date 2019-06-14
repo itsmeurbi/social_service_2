@@ -1,13 +1,10 @@
-<h1>CERTIFICADO<h1>
-<div>
-  <p> A <%= @certificate.date %> </p>
-  <p> <%= @template.header %> </p>
-  <h5> <%= @student.name %> </h5>
-  <p> <%= @template.body %> </p>
-  <p> <%= @template.footer %> </p>
+<div class="show-certificate-div">
+  <h1> CONSTANCIA </h1>
+  <h2> Vista previa de los datos de la constancia </h2>
+  <%= render 'certificate' %>
+  <div class="pdf-send-btn-div">
+    <%= link_to 'Regresar', certificates_path, class: 'btn btn-outline-primary'%>
+    <%= link_to 'Editar', edit_certificate_path, class: 'btn btn-outline-primary'%>
+    <%= link_to 'Enviar certificado PDF', certificate_path(@certificate, format: :pdf), class: 'btn btn-outline-primary' %>
+  </div>
 </div>
-<div class="two-buttos-div">
-  <%= link_to 'Regresar', certificates_path, class: 'btn btn-outline-primary'%>
-  <%= link_to 'Editar', edit_certificate_path, class: 'btn btn-outline-primary'%>
-</div>
-

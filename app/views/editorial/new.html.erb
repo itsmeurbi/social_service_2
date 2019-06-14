@@ -1,13 +1,13 @@
 <div class="container-new-edit">
   <h1 class="title-ed">Guardar una nueva editorial</h1>
   <%= simple_form_for @editorial, url: {action: "create"}, html: {class: "form"} do |f| %>
-    <%= f.input :id_editorial, class:'input'%>
-    <%= f.input :name, class: 'input'%>
+    <%= f.input :id_editorial, class: 'form-control'%>
+    <%= f.input :name, class: 'form-control'%>
     <br>
-    <div class="two-buttos-div">
-      <%= link_to 'Regresar', authenticated_root_path, class: 'btn btn-outline-primary'%>
-      <%= f.submit "Crear", class:'btn btn-outline-primary button-font'%>
-    </div>
+    <%= f.submit "Crear", class:'btn btn-outline-primary b'%>
+    <br>
   <% end %>
+  <%= link_to 'Regresar', period_index_path, class: 'btn btn-outline-primary'%>
+  <br>
 </div>
 

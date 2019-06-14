@@ -18,5 +18,7 @@
   <div class='questions-container'>
     <%= render partial: 'questions', locals: { questions: @questions } %>
   </div>
-
+  <div class="btn-return-div">
+    <%= link_to 'Regresar', authenticated_root_path, class: "btn btn-outline-primary" %>
+  </div>
 </div>

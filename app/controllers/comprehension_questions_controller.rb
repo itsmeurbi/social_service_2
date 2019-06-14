@@ -38,8 +38,14 @@ class ComprehensionQuestionsController < ApplicationController
   end
 
   def destroy
-    question.destroy
-    redirect_to multiple_questions_path, notice: "Se eliminó la pregunta con éxito"
+    begin 
+      question.destroy
+      flash[:success] = "Se eliminó la pregunta con éxito"
+      redirect_to comprehension_questions_path
+    rescue StandardError => e
+      flash[:warning] = e
+      redirect_back fallback_location: { action: "new", notice: question.errors.full_messages.join(" ") }
+    end
   end
 
   private

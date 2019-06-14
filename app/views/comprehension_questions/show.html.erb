@@ -2,9 +2,8 @@
   <h1>Pregunta #</h1>
   <p id="show">Nivel X Unidad X</p>
 </div>
-
 <div class="content-show">
-  <%= image_tag url_for(@question.file) if @question.file.attached? %>
+  <%= image_tag (url_for(@question.file) if (@question.file.attached?)), style: "width: 40vw; " %>
   <p>Lectura: <%= @question.lecture %></p>
   <p>Pregunta: <%= @question.content %></p>
 
@@ -13,9 +12,11 @@
       <p class="option<%= ' correct' if option.correct %>">Opción: <%= option.content %></p>
     <% end %>
   </div>
-  <div class ="links-op">
-    <a href=#> Editar </a>
-    <a href=#> Regresar </a>
+  <br>
+  <div class="two-buttos-div">
+    <%= link_to 'Regresar', comprehension_questions_path, class: 'btn btn-outline-primary'%>
+    <%= link_to 'Editar', edit_comprehension_question_path, class: 'btn btn-outline-primary'%>
   </div>
+  <br>
 </div>
 
