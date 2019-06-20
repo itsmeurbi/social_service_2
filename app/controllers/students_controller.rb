@@ -23,7 +23,7 @@ class StudentsController < ApplicationController
       total += params[:"#{q}-value"].to_i if correct
     end
     @e = Exam.find(params[:"exam"])
-    @e.result = total
+    @e.result = (total*100)/questions_qty
     @e.save
   end
 end

@@ -3,7 +3,7 @@
   <% @exams.each do |exam| %>
     <div class='row container-q border-bottom'>
       <div class='col-9 question'>
-        Estudiante: <%= exam.student.no_control %> Estado:
+        Estudiante: <%= exam.student.no_control %> Estado: <%= "CONTESTADO" if exam.result != nil %>
       </div>
       <div class='col-3 opciones'>
         <%= link_to 'Ver', exam_path(exam)%>

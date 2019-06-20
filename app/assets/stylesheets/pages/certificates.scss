@@ -11,6 +11,23 @@
   }
 }
 
+.new-certificate-div{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 2vw 15vw;
+
+  .new-buttons {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    .btn{
+      margin-top: 1vw;
+    }
+  }
+}
+
 .pdf-certificate-div {
   text-align: center;
 
