@@ -16,16 +16,29 @@
 <div class="form-exam">
   <%= simple_form_for @exam, url: new_exam_path, method: :get, html: {class: "generate-exam"} do |f| %>
     <div class="exam-data">
-      <h5> Periodo actual: <%= @actual_period.last.period_name %> </h5>
-      <%= f.select :level_id, @actual_editorial.levels.collect { |l| [l.number, l.id] }, prompt: "Selecciona un nivel" %>
+      <div class="exam-period-level">
+        <h5> Periodo actual: <%= @actual_period.last.period_name %> </h5>
+        <%= f.select :level_id, @actual_editorial.levels.collect { |l| [l.number, l.id] }, prompt: "Selecciona un nivel" %>
+      </div>
+      <div class="select-questions-unit">
+        <h5> Número de preguntas por unidad: </h5>
+        <select name="questions-unit">
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+        </select>
+      </div>
     </div>
     <div class="student-data">
       <h5> Datos del alumno: </h5>
       <div class="student-form">
-        <%= f.fields_for :student do |student_attributes| %>
+        <%= f.fields_for @student do |student_attributes| %>
           <%= student_attributes.input :no_control, label: "Número de control", required: false %>
           <%= student_attributes.input :name, label: "Nombre", required: false  %>
-          <%= student_attributes.input :email, label: "E-mail", required: false  %>
+          <%= student_attributes.input :email, as: :email, label: "E-mail", required: false  %>
         <% end %>
       </div>
       <div class="two-buttos-div">

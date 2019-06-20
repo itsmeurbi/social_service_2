@@ -1,4 +1,5 @@
 class ExamsController < ApplicationController
+  before_action :validate_user_data, only: :new
   def index
     @exam = Exam.new
     @exams = Exam.all
@@ -11,28 +12,33 @@ class ExamsController < ApplicationController
     @exam = current_user.exams.build
     @level = params[:exam][:level_id]
     @actual_period = Period.actual_period.last.id
-    @student = Student.create(student_params)
+    @exam.build_student(student_params)
     @units = Unit.where(level_id: @level)
     @questions = Array.new
     @units.each do |unit|
-      unit_questions = MultipleQuestion.where(unit_id: unit)
+      unit_questions = MultipleQuestion.includes(:multiple_question_options).order("RAND()").where(unit_id: unit).limit(params["questions-unit"].to_i)
       unit_questions.each do |q|
         @questions.push(q)
-        @exam.exam_quests.new
       end
     end
-    if @questions.empty?
+    @questions.each do |question|
+      @exam.exam_quests.build(multiple_question_id: question.id)
+    end
+    if @exam.exam_quests.empty?
       flash[:warning] = "No hay preguntas registradas para el nivel #{@level}"
       redirect_to exams_path
     end
   end
 
   def create
-    @exam = current_user.exams.create(exam_params)
-    if @exam.persisted?
+    @exam = current_user.exams.new(exam_params)
+    if @exam.save
       flash[:success] = "Examen creado con éxito"
       redirect_to exams_path
+    else
+      render :new, danger: @exam.errors.full_messages
     end
+
   end
 
   def show
@@ -49,14 +55,25 @@ class ExamsController < ApplicationController
     redirect_to exams_path
   end
 
-  def send_to_student
-
-  end
-
   private
 
+  def validate_user_data
+    if student_params[:no_control].empty? || student_params[:name].empty? || student_params[:email].empty?
+      flash[:danger] = "Debes de ingresar todos los datos del estudiante"
+      return redirect_to exams_path
+    end
+  end
+
     def exam_params
-      params.require(:exam).permit(:date, :grade, :level_id, :user_id, :period_id, :student_id, exam_quests_attributes: [ :multiple_question_id, :exam_id])
+      params.require(:exam).permit(
+        :date, 
+        :grade,
+         :level_id, 
+         :user_id, 
+         :period_id, 
+         :student_id,
+         student_attributes: [:id, :name, :no_control, :email],
+          exam_quests_attributes: [ :multiple_question_id, :exam_id])
     end
 
     def student_params

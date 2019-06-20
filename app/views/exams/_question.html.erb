@@ -1,0 +1,11 @@
+<li>
+  <%= question.content %>
+  <div class= "question-options">
+    <% question.multiple_question_options.each do |option| %>
+      <ul class= "option">
+        <%= radio_button_tag 'correct_answ', option.id, false %>
+        <%= option.content %>
+      </ul>
+    <% end %>
+  </div>
+</li>

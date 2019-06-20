@@ -6,5 +6,5 @@ class Exam < ApplicationRecord
 
   has_many :exam_quests, dependent: :destroy
   has_many :multiple_question, through: :exam_quests
-  accepts_nested_attributes_for :exam_quests
+  accepts_nested_attributes_for :exam_quests, :student
 end

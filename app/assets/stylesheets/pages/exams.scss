@@ -5,7 +5,17 @@
 
   @media (min-width: 700px) {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+  }
+}
+
+.exam-period-level {
+  margin-bottom: 3vw;
+
+  @media (min-width: 700px) {
+    display: flex;
+    justify-content: space-between;
+    width: 50vw;
   }
 }
 
@@ -16,7 +26,7 @@
   font-size: 20px;
 
   @media (min-width: 700px) {
-    margin: 3vw 10vw;
+    margin: 1vw 10vw 2vw;
     font-size: 22px;
   }
 }
@@ -57,6 +67,16 @@
 
   @media (min-width: 700px) {
     display: flex;
+  }
+}
+
+.select-questions-unit {
+  margin-bottom: 1vw;
+
+  @media (min-width: 700px) {
+    display: flex;
+    justify-content: space-between;
+    width: 50vw;
   }
 }
 

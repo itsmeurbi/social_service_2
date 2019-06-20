@@ -4,29 +4,20 @@
   <%= simple_form_for @exam, html: {class: "new-exam-form"}, url: {action: "create"} do |f| %>
     <%= f.input :level_id, as: :hidden, input_html: { value: @level } %>
     <%= f.input :period_id, as: :hidden, input_html: { value: @actual_period } %>
-    <%= f.input :student_id, as: :hidden, input_html: { value: @student.id } %>
-    <p> Número de control: <%= @student.no_control %> </p>
-    <p> Nombre: <%= @student.name %> </p>
-    <p> E-mail: <%= @student.email %> </p>
+    <%= f.input :student_id, as: :hidden %>
+    <%= f.fields_for :student do |student|%>
+      <%= student.input :no_control, as: :hidden %>
+      <%= student.input :email, as: :hidden %>
+      <%= student.input :name, as: :hidden %>
+    <% end%>
+    <p> Número de control: <%= @exam.student.no_control %> </p>
+    <p> Nombre: <%= @exam.student.name %> </p>
+    <p> E-mail: <%= @exam.student.email %> </p>
     <ul class="question-content" >
-      <%count = 0%>
       <%= f.fields_for :exam_quests do |quest| %>
-        <%= quest.input :multiple_question_id, as: :hidden, input_html: { value: @questions[count].id} %>
-        <%count+=1%>
+        <%= quest.input :multiple_question_id, as: :hidden %>
       <% end %>
-      <% @questions.each do |question| %>
-      <li>
-        <%= question.content %>
-        <div class= "question-options">
-            <% MultipleQuestionOption.where(multiple_question_id: question.id).each do |option| %>
-              <ul class= "option">
-                <%= radio_button_tag 'correct_answ', option.id, false %>
-                <%= option.content %>
-              </ul>
-            <% end %>
-        </div>
-      </li>
-      <% end %>
+      <%= render partial: 'question', collection: @questions %>
     </ul>
     <div class="two-buttos-div">
       <%= link_to 'Regresar', exams_path, class: 'btn btn-outline-primary'%>
