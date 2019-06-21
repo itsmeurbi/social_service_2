@@ -19,7 +19,7 @@ class Period < ApplicationRecord
   belongs_to :editorial
 
   scope :actual_period, -> {
-    where("current_time >= starts_at AND :current_time <= ends_at", current_time: Time.current)
+    where("current_time >= starts_at AND :current_time <= ends_at", current_time: Time.current).last
   }
 
   def same_year

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-class PeriodController < ApplicationController
+class PeriodsController < ApplicationController
+  before_action :actual_period, only: [:index, :edit]
   def new
     @period = Period.new
     @editorials = Editorial.all
@@ -13,7 +14,7 @@ class PeriodController < ApplicationController
   def create
     period = Period.create(period_params)
     if period.persisted?
-      redirect_to period_index_path, notice: "Se actualizó correctamente"
+      redirect_to periods_path, notice: "Se actualizó correctamente"
     else
       redirect_back fallback_location: { action: "new", alert: period.errors.full_messages.join(" ") }
     end
@@ -22,5 +23,9 @@ class PeriodController < ApplicationController
   private
     def period_params
       params.require(:period).permit(:starts_at, :ends_at, :editorial_id)
+    end
+
+    def actual_period
+      @period ||= Period.actual_period
     end
 end
