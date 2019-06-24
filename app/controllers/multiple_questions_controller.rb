@@ -18,9 +18,10 @@ class MultipleQuestionsController < ApplicationController
 
   def index
     @question = MultipleQuestion.new
-    @questions = MultipleQuestion.all
+    @questions = MultipleQuestion.all_non_comprehension
     @editorials = Editorial.all
     @actual_editorial = Period.actual_period[0]&.editorial || Editorial.last
+    @path = new_multiple_question_path
   end
 
   def create
@@ -53,7 +54,6 @@ class MultipleQuestionsController < ApplicationController
   private
 
     def question_params
-      binding.pry
       params.require(:multiple_question).permit(:content, :value, :unit_id, :comprehension_question_id, multiple_question_options_attributes: [:id, :content, :correct, :_destroy])
     end
 

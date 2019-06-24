@@ -4,7 +4,13 @@ form.simple_form {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
+
+    &.multiple_question_unit,
+    &.comprehension_question_unit {
+      margin: 0;
+    }
   }
+
   &.edit_period {
     .input {
       flex-direction: row;

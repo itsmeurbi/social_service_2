@@ -1,2 +1,4 @@
-$('.level-units-dropdown-container').html('<%= j render partial: 'editorial_levels/unit_dropdown', locals: { units: @units } %>')
+<% if @units %>
+  $('.level-units-dropdown-container').html('<%= j render partial: 'editorial_levels/unit_dropdown', locals: { units: @units, disabled: false } %>')
+<% end %>
 $('.questions-container').html('<%= j render partial: 'multiple_questions/questions', locals: { questions: @questions } %>')

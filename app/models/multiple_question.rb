@@ -20,6 +20,10 @@ class MultipleQuestion < ApplicationRecord
 
   belongs_to :unit, optional: true
   belongs_to :comprehension_questions, optional: true
+  has_one :editorial, through: :unit
+  has_one :level, through: :unit
+
+  scope :all_non_comprehension, -> { where(comprehension_question_id: nil) }
 
   # has_many :exam_quests
   # has_many :exams, through: :exam_quests

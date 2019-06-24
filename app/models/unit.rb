@@ -14,5 +14,7 @@
 
 class Unit < ApplicationRecord
   belongs_to :level
+  has_one :editorial, through: :level
   has_many :multiple_questions
+  has_many :comprehension_questions
 end

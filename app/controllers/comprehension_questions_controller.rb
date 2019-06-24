@@ -17,6 +17,7 @@ class ComprehensionQuestionsController < ApplicationController
     @questions = ComprehensionQuestion.all
     @editorials = Editorial.all
     @actual_editorial = Period.actual_period[0]&.editorial || Editorial.last
+    @path = new_comprehension_question_path
   end
 
   def create

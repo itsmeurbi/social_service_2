@@ -1,0 +1,13 @@
+<p class="red hint">Selecciona unidad y/o nivel y las preguntas se filtrarán</p>
+<div class='row justify-content-center align-items-center'>
+  <%= collection_select(:editorial, :editorial_id, @editorials, :id, :name, {include_blank: 'Todas las editoriales'} ) %>
+  <div class="editorial-levels-dropdown-container mx-5">
+    <%= collection_select(:level, :level_id, @actual_editorial.levels, :id, :number, {prompt: "Nivel"}) %>
+  </div>
+  <%= simple_form_for @question, url: @path, method: :get, html: {class: "form d-flex align-items-center"} do |f| %>
+    <div class="level-units-dropdown-container">
+      <%= f.input :unit, as: :select,  collection: @actual_editorial.levels.first.units, label: false, prompt: "Unidad"%>
+    </div>
+    <%= f.submit "Agregar pregunta", class: 'btn btn-primary ml-3' %>
+  <% end %>
+</div>

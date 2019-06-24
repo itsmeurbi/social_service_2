@@ -8,7 +8,6 @@
   <h3 class='reg'><%= I18n.t('form.question_options')%></h3>
   <div id="options">
     <%= f.fields_for question.options do |option| %>
-    <%= binding.pry %>
       <%= render 'shared/option_fields', f: option %>
     <% end %>
     <div class="links">

@@ -6,7 +6,7 @@
   <div class="content-show col-7">
     <h3 class='mb-4'>Lectura</h3>
     <% if @question.file.attached? %>
-      <%= image_tag url_for(@question.file), style: "width: 40vw; " %>
+      <%= image_tag url_for(@question.file), style: "width: 100%; " %>
     <% else %>
       <p><%== @question.lecture %></p>
     <% end %>
