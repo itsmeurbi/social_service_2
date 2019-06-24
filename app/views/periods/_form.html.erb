@@ -1,10 +1,10 @@
 <%= simple_form_for @period, class: "form" do |f| %>
   <%= f.input :starts_at, as: :date, start_year: Date.today.year - 5,
                               end_year: Date.today.year + 5,
-                              order: [:day, :month, :year]%>
+                              order: [:day, :month, :year], label: 'Fecha de inicio'%>
   <%= f.input :ends_at, as: :date, start_year: Date.today.year - 5,
                               end_year: Date.today.year + 5,
-                              order: [:day, :month, :year]%>
+                              order: [:day, :month, :year], label: 'Fecha de fin'%>
   <%= f.input :editorial_id, collection: @editorials, prompt: "Selecciona editorial" %>
-  <%= f.submit "Crear", class: "btn btn-outline-primary b"%>
+  <%= f.submit "Guardar", class: "btn btn-primary mt-5"%>
 <% end %>

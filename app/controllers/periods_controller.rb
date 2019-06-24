@@ -7,6 +7,10 @@ class PeriodsController < ApplicationController
     @editorials = Editorial.all
   end
 
+  def edit
+    @editorials = Editorial.all
+  end
+
   def index
     @actual_period = Period.actual_period
   end

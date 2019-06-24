@@ -27,12 +27,12 @@ class ComprehensionQuestionsController < ApplicationController
   end
 
   def edit
+    @unit = question.unit.number
     question
   end
 
   def update
-    question = QuestionManager.update_comprehension_question(question, question_params, params[:correct_answ])
-    if question
+    if QuestionManager.update_comprehension_question(question, question_params)
       redirect_to comprehension_question_path(question), notice: "Se actualizó correctamente"
     else
       redirect_back fallback_location: { action: "new", alert: question.errors.full_messages.join(" ") }

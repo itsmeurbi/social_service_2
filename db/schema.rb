@@ -132,10 +132,8 @@ ActiveRecord::Schema.define(version: 2019_06_21_071914) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "unit_id"
-    t.bigint "comprehension_question_id_id"
     t.bigint "comprehension_question_id"
     t.index ["comprehension_question_id"], name: "index_multiple_questions_on_comprehension_question_id"
-    t.index ["comprehension_question_id_id"], name: "index_multiple_questions_on_comprehension_question_id_id"
     t.index ["unit_id"], name: "index_multiple_questions_on_unit_id"
     t.index ["user_id"], name: "index_multiple_questions_on_user_id"
   end
@@ -203,7 +201,7 @@ ActiveRecord::Schema.define(version: 2019_06_21_071914) do
   add_foreign_key "exams", "users"
   add_foreign_key "levels", "editorials"
   add_foreign_key "multiple_question_options", "multiple_questions", on_delete: :cascade
-  add_foreign_key "multiple_questions", "comprehension_questions"
+  add_foreign_key "multiple_questions", "comprehension_questions", on_delete: :cascade
   add_foreign_key "multiple_questions", "units"
   add_foreign_key "multiple_questions", "users"
   add_foreign_key "periods", "editorials"
