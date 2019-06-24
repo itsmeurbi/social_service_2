@@ -1,16 +1,16 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: multiple_questions
 #
-#  id         :bigint(8)        not null, primary key
-#  content    :string(255)
-#  value      :integer
-#  user_id    :bigint(8)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  unit_id    :bigint(8)
+#  id                           :bigint(8)        not null, primary key
+#  content                      :string(255)
+#  value                        :integer
+#  user_id                      :bigint(8)
+#  created_at                   :datetime         not null
+#  updated_at                   :datetime         not null
+#  unit_id                      :bigint(8)
+#  comprehension_question_id    :bigint(8)
 #
 
 class MultipleQuestion < ApplicationRecord
@@ -18,11 +18,12 @@ class MultipleQuestion < ApplicationRecord
   alias_attribute :options, :multiple_question_options
   accepts_nested_attributes_for :multiple_question_options, reject_if: :all_blank, allow_destroy: true
 
-  belongs_to :unit
+  belongs_to :unit, optional: true
+  belongs_to :comprehension_questions, optional: true
 
-  has_many :exam_quests
-  has_many :exams, through: :exam_quests
-  
+  # has_many :exam_quests
+  # has_many :exams, through: :exam_quests
+
   # def editorial_questions(levels)
   #   questions = []
   #   levels.each do |level|

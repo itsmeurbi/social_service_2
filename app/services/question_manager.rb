@@ -7,11 +7,8 @@ class QuestionManager
     question
   end
 
-  def self.create_comprehension_question(user, question_params, correct_answ)
-    question = user.comprehension_questions.create(question_params)
-    assign_correct_answ(question, question_params, correct_answ)
-    question.file.attach(question_params[:file])
-    question
+  def self.create_comprehension_question(user, question_params)
+    user.comprehension_questions.create(question_params)
   end
 
   def self.assign_correct_answ(question, question_params, correct_answ)

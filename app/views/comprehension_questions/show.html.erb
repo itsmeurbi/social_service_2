@@ -3,15 +3,14 @@
   <p id="show">Nivel X Unidad X</p>
 </div>
 <div class="content-show">
-  <%= image_tag (url_for(@question.file) if (@question.file.attached?)), style: "width: 40vw; " %>
-  <p>Lectura: <%= @question.lecture %></p>
-  <p>Pregunta: <%= @question.content %></p>
+  <% if @question.file.attached? %>
+    <%= image_tag url_for(@question.file), style: "width: 40vw; " %>
+  <% else %>
+    <p>Lectura: <%== @question.lecture %></p>
+  <% end %>
 
-  <div class="cont-op">
-    <% @question.options.each do |option| %>
-      <p class="option<%= ' correct' if option.correct %>">Opción: <%= option.content %></p>
-    <% end %>
-  </div>
+  <%= link_to 'Agregar pregunta', new_multiple_question_path(comprehension_question: @question) %>
+
   <br>
   <div class="two-buttos-div">
     <%= link_to 'Regresar', comprehension_questions_path, class: 'btn btn-outline-primary'%>

@@ -5,6 +5,7 @@ class MultipleQuestionsController < ApplicationController
     @unit = determine_unit
     @question = current_user.multiple_questions.build
     3.times { @question.multiple_question_options.new }
+    @comprehension_question = params[:comprehension_question]
   end
 
   def edit
@@ -39,7 +40,7 @@ class MultipleQuestionsController < ApplicationController
   end
 
   def destroy
-    begin 
+    begin
       question.destroy
       flash[:success] = "Se eliminó la pregunta con éxito"
       redirect_to multiple_questions_path
@@ -52,7 +53,8 @@ class MultipleQuestionsController < ApplicationController
   private
 
     def question_params
-      params.require(:multiple_question).permit(:content, :value, :unit_id, multiple_question_options_attributes: [:id, :content, :correct, :_destroy])
+      binding.pry
+      params.require(:multiple_question).permit(:content, :value, :unit_id, :comprehension_question_id, multiple_question_options_attributes: [:id, :content, :correct, :_destroy])
     end
 
     def question

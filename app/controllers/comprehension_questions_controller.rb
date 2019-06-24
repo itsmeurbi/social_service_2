@@ -4,7 +4,8 @@ class ComprehensionQuestionsController < ApplicationController
   def new
     @unit = determine_unit
     @question = current_user.comprehension_questions.build
-    3.times { @question.comprehension_options.new }
+    question = @question.multiple_questions.new
+    3.times { question.multiple_question_options.new }
   end
 
   def show
@@ -19,9 +20,9 @@ class ComprehensionQuestionsController < ApplicationController
   end
 
   def create
-    @question = QuestionManager.create_comprehension_question(current_user, question_params, params[:correct_answ])
-    if @question.persisted?
-      redirect_to comprehension_questions_path
+    question = QuestionManager.create_comprehension_question(current_user, lecture_params)
+    if question.persisted?
+      redirect_to comprehension_question_path(question), notice: "Se guardó correctamente"
     end
   end
 
@@ -30,15 +31,16 @@ class ComprehensionQuestionsController < ApplicationController
   end
 
   def update
-    if QuestionManager.update_comprehension_question(question, question_params, params[:correct_answ])
-      redirect_to comprehension_questions_path, notice: "Se actualizó correctamente"
+    question = QuestionManager.update_comprehension_question(question, question_params, params[:correct_answ])
+    if question
+      redirect_to comprehension_question_path(question), notice: "Se actualizó correctamente"
     else
       redirect_back fallback_location: { action: "new", alert: question.errors.full_messages.join(" ") }
     end
   end
 
   def destroy
-    begin 
+    begin
       question.destroy
       flash[:success] = "Se eliminó la pregunta con éxito"
       redirect_to comprehension_questions_path
@@ -49,6 +51,10 @@ class ComprehensionQuestionsController < ApplicationController
   end
 
   private
+    def lecture_params
+      params.require(:comprehension_question).permit(:content, :value, :file, :unit_id, :lecture, comprehension_options_attributes: [:id, :content, :correct, :_destroy])
+    end
+
     def question_params
       params.require(:comprehension_question).permit(:content, :value, :file, :unit_id, :lecture, comprehension_options_attributes: [:id, :content, :correct, :_destroy])
     end

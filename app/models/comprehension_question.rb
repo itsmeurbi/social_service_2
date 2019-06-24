@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: comprehension_questions
@@ -7,7 +6,7 @@
 #  id         :bigint(8)        not null, primary key
 #  content    :string(255)
 #  value      :integer
-#  lecture_id :bigint(8)
+#  lecture    :text(4294967295)
 #  user_id    :bigint(8)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -15,9 +14,8 @@
 #
 
 class ComprehensionQuestion < ApplicationRecord
-  has_many :comprehension_options, inverse_of: :comprehension_question, dependent: :destroy
-  alias_attribute :options, :comprehension_options
-  accepts_nested_attributes_for :comprehension_options, reject_if: :all_blank, allow_destroy: true
+  has_many :multiple_questions
+  accepts_nested_attributes_for :multiple_questions, reject_if: :all_blank, allow_destroy: true
 
   has_one_attached :file
 
