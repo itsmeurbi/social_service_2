@@ -1,11 +1,13 @@
-class StudentsController < ApplicationController
+# frozen_string_literal: true
 
+class StudentsController < ApplicationController
   def show
-    student = Student.find(params[:id])
-    link = edit_student_url(params[:id])
-    ApplicationMailer.exam_mail(link, student).deliver
-    flash[:success] = "Se envió el examen con éxito"
-    redirect_to exams_path
+    @student = Student.find(params[:id])
+
+    # link = edit_student_url(params[:id])
+    # ApplicationMailer.exam_mail(link, student).deliver
+    # flash[:success] = "Se envió el examen con éxito"
+    # redirect_to exams_path
   end
 
   def edit
@@ -15,15 +17,25 @@ class StudentsController < ApplicationController
   end
 
   def new
-    questions_qty = params[:"questions-qty"].to_i
-    total = 0
-    questions_qty.times do |q|
-      correct = params[:"#{q}-correct_answ"]
-      correct = params[:"#{q}-#{correct}"] == "true"
-      total += params[:"#{q}-value"].to_i if correct
-    end
-    @e = Exam.find(params[:"exam"])
-    @e.result = total
-    @e.save
+    @student = Student.new
   end
+
+  def index
+    @students = Student.all
+  end
+
+  def create
+    student = Student.create(student_params)
+    if student
+      redirect_to student_path(student), notice: "Alumno registrado exitosamente"
+    else
+      render :new, flash: { error: "Algo salió mal" }
+    end
+  end
+
+  private
+
+    def student_params
+      params.require(:student).permit(:name, :email, :no_control)
+    end
 end

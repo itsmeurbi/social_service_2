@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_21_071914) do
+ActiveRecord::Schema.define(version: 2019_06_25_115726) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -88,6 +88,8 @@ ActiveRecord::Schema.define(version: 2019_06_21_071914) do
     t.integer "chosed_answ"
     t.bigint "multiple_question_id"
     t.bigint "exam_id"
+    t.bigint "comprehension_question_id"
+    t.index ["comprehension_question_id"], name: "index_exam_quests_on_comprehension_question_id"
     t.index ["exam_id"], name: "index_exam_quests_on_exam_id"
     t.index ["multiple_question_id"], name: "index_exam_quests_on_multiple_question_id"
   end
@@ -193,6 +195,7 @@ ActiveRecord::Schema.define(version: 2019_06_21_071914) do
   add_foreign_key "comprehension_options", "comprehension_questions", on_delete: :cascade
   add_foreign_key "comprehension_questions", "units"
   add_foreign_key "comprehension_questions", "users"
+  add_foreign_key "exam_quests", "comprehension_questions"
   add_foreign_key "exam_quests", "exams"
   add_foreign_key "exam_quests", "multiple_questions"
   add_foreign_key "exams", "levels"

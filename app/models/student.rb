@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: students
@@ -11,5 +13,5 @@
 #
 
 class Student < ApplicationRecord
-  has_one :exam
+  has_many :exams
 end

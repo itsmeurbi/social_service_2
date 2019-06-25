@@ -1,0 +1,9 @@
+<div class='row container-q border-bottom mb-2'>
+  <div class='col-9 question'>
+    Estudiante: <%= exam.student.no_control %> Estado:
+  </div>
+  <div class='col-3 opciones'>
+    <%= link_to 'Ver', exam_path(exam)%>
+    <%= link_to 'Eliminar', exam_path(exam), method: :delete%>
+  </div>
+</div>

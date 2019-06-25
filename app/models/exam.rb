@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: exams
@@ -20,6 +22,7 @@ class Exam < ApplicationRecord
   belongs_to :user
 
   has_many :exam_quests, dependent: :destroy
-  has_many :multiple_question, through: :exam_quests
+  has_many :multiple_questions, through: :exam_quests
+  has_many :comprehension_questions, through: :exam_quests
   accepts_nested_attributes_for :exam_quests
 end

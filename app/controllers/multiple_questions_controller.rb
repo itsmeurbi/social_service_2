@@ -27,7 +27,7 @@ class MultipleQuestionsController < ApplicationController
   def create
     @question = QuestionManager.create_multiple_question(current_user, question_params, params[:correct_answ])
     if @question.persisted?
-      c_q =  params[:multiple_question][:comprehension_question]
+      c_q = params[:multiple_question][:comprehension_question]
       if c_q
         redirect_to comprehension_question_path(c_q)
       else
@@ -46,14 +46,12 @@ class MultipleQuestionsController < ApplicationController
   end
 
   def destroy
-    begin
-      question.destroy
-      flash[:success] = "Se eliminó la pregunta con éxito"
-      redirect_to multiple_questions_path
-    rescue StandardError => e
-      flash[:warning] = e
-      redirect_back fallback_location: { action: "new", notice: question.errors.full_messages.join(" ") }
-    end
+    question.destroy
+    flash[:success] = "Se eliminó la pregunta con éxito"
+    redirect_to multiple_questions_path
+  rescue StandardError => e
+    flash[:warning] = e
+    redirect_back fallback_location: { action: "new", notice: question.errors.full_messages.join(" ") }
   end
 
   private

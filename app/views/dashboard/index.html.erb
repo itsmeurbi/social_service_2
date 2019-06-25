@@ -28,6 +28,11 @@
     <p class="b-square">Exámenes</p>
   <%end%>
 
+  <%= link_to students_path, class: 'square' do %>
+    <%= image_tag 'user.png', class: 'icon'%>
+    <p class="b-square">Alumnos registrados</p>
+  <%end%>
+
   <%= link_to certificates_path, class: 'square' do %>
     <%= image_tag 'certificate.png', class: 'icon'%>
     <p class="b-square">Constancias</p>

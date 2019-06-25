@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class CertificateTemplatesController < ApplicationController
   def new
     @template = CertificatePart.new
   end
 
-  def create 
+  def create
     @template = CertificatePart.create(certificate_parts_params)
     if @template.persisted?
       flash[:success] = "Plantilla creada con éxito"

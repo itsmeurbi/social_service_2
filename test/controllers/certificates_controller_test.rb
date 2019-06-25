@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 describe CertificatesController do
@@ -15,5 +17,4 @@ describe CertificatesController do
     get certificates_edit_url
     value(response).must_be :success?
   end
-
 end

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       get '/editorial_levels' => 'editorial_levels#show'
       get '/level_units' => 'level_units#show'
       get '/unit_questions' => 'unit_questions#show'
+      get '/exam_unit_questions' => 'exam_unit_questions#show'
     end
 
     unauthenticated do
