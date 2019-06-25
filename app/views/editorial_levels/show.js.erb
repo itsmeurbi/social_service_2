@@ -2,4 +2,8 @@
   $('.editorial-levels-dropdown-container').html('<%= j render partial: 'level_dropdown', locals: { levels: @levels } %>')
   $('.level-units-dropdown-container').html('<%= j render partial: 'unit_dropdown', locals: { units: @units, disabled: true } %>')
 <% end %>
+<% if @comprehension_questions %>
+  $('.questions-container').html('<%= j render partial: 'comprehension_questions/questions', locals: { questions: @questions } %>')
+<% else %>
   $('.questions-container').html('<%= j render partial: 'multiple_questions/questions', locals: { questions: @questions } %>')
+<% end %>

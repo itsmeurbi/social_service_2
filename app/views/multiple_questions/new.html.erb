@@ -1,5 +1,5 @@
 <%= simple_form_for @question, url: {action: "create"}, html: {class: "form new-form"} do |f| %>
   <%= render partial: 'form', locals: { f: f } %>
-
+  <%= f.hidden_field :comprehension_question, value: @comprehension_question %>
   <%= f.submit "Crear", class: 'btn btn-primary my-4'%>
 <% end %>

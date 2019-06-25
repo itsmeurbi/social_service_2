@@ -1,17 +1,11 @@
-<div class="container-level">
-  <div class="title-level">
-    <h2>Añadir Nivel</h2>
-  </div>
+<h2>Añadir Nivel</h2>
 
-  <%= simple_form_for @level, url: {action: "create"}, html: {class: "form add-level"} do |f| %>
+<%= simple_form_for @level, url: {action: "create"}, html: {class: "form add-level"} do |f| %>
+  <div>
     <%= f.input :editorial_id, collection: @editorials, prompt: "Selecciona Editorial" %>
     <%= f.input :number, collection: 1..10, prompt: "Selecciona Nivel", label: "Número"%>
+  </div>
 
-    <%= f.submit "Crear", class:'btn btn-outline-primary create-level'%>
-  <% end %>
-</div>
-<div class="btn-return-div">
-  <br>
-  <%= link_to 'Regresar', level_index_path, class: "btn btn-outline-primary" %>
-</div>
+  <%= f.submit "Crear", class:'btn btn-primary mt-5'%>
+<% end %>
 

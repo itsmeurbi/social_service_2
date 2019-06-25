@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col">
-  <h1 class="mb-4">Guardar una nueva editorial</h1>
-    <%= simple_form_for @editorial, url: {action: "create"}, html: {class: "form"} do |f| %>
+  <h1 class="my-4">Guardar una nueva editorial</h1>
+    <%= simple_form_for @editorial, url: {action: "create"}, html: {class: "form d-flex flex-column align-items-center"} do |f| %>
       <%= f.input :id_editorial, class: 'form-control', label: 'Identificador' %>
       <%= f.input :name, class: 'form-control', label: 'Nombre' %>
       <br>

@@ -11,6 +11,27 @@ form.simple_form {
     }
   }
 
+  &#new_period {
+    div {
+      display: flex;
+      justify-content: space-around;
+      div {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+  }
+
+  &#new_level {
+    div {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
   &.edit_period {
     .input {
       flex-direction: row;
@@ -25,4 +46,11 @@ form.simple_form {
       }
     }
   }
+}
+
+.correct {
+  border: green;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5%;
 }

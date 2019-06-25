@@ -20,4 +20,13 @@ class ComprehensionQuestion < ApplicationRecord
   has_one_attached :file
 
   belongs_to :unit
+  has_one :editorial, through: :unit
+
+  def print_q
+    if file.attached?
+      "Pregunta #{id} | Imagen | Unidad #{unit.id}"
+    else
+      "Pregunta #{id} | Texto | Unidad #{unit.id}"
+    end
+  end
 end

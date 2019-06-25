@@ -20,14 +20,19 @@ class MultipleQuestionsController < ApplicationController
     @question = MultipleQuestion.new
     @questions = MultipleQuestion.all_non_comprehension
     @editorials = Editorial.all
-    @actual_editorial = Period.actual_period[0]&.editorial || Editorial.last
+    @actual_editorial = Period.actual_period.editorial || Editorial.last
     @path = new_multiple_question_path
   end
 
   def create
     @question = QuestionManager.create_multiple_question(current_user, question_params, params[:correct_answ])
     if @question.persisted?
-      redirect_to multiple_questions_path
+      c_q =  params[:multiple_question][:comprehension_question]
+      if c_q
+        redirect_to comprehension_question_path(c_q)
+      else
+        redirect_to multiple_questions_path
+      end
     end
   end
 

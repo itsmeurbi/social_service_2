@@ -1,6 +1,6 @@
 <% questions.each do |question| %>
-  <div class='row container-q border-bottom'>
-    <div class='col-9 question'><%= question.content %></div>
+  <div class='row mb-2 border-bottom'>
+    <div class='col-9 question'><%= question.print_q %></div>
     <div class='col-3 opciones'>
       <%= link_to 'Ver', comprehension_question_path(question)%>
       <%= link_to 'Editar', edit_comprehension_question_path(question)%>
