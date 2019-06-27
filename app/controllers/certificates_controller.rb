@@ -9,7 +9,7 @@ class CertificatesController < ApplicationController
   def new
     @templates = CertificatePart.all
     @certificate = Certificate.new
-    @exams = Exam.select("exams.id, students.name").joins(:student).as_json
+    @exams = Exam.select("exams.id, students.name").joins(:student).where("exams.result >= 50").as_json
   end
 
   def create

@@ -1,1 +1,11 @@
+.new-template-div {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 
+  .input {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2vw; 
+  }
+}
