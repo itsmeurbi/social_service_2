@@ -4,12 +4,10 @@
 <% else %>
   <h2 class='mb-2'>Recuerda configurar una editorial y un periodo</h2>
 <% end %>
-
 <h3 class='mb-2'>Otras editoriales</h2>
 <div class='d-flex justify-content-around'>
   <% @editorials.each do |editorial| %>
     <%= render 'editorial_levels', editorial: editorial %>
   <% end %>
 </div>
-
 <%= link_to 'Agregar niveles', new_level_path, class:'btn btn-primary my-5 w-50', style: 'margin: 0 auto;'%>

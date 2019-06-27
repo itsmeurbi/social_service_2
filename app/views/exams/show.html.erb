@@ -28,7 +28,7 @@
           <% if question.file.attached? %>
             <%= image_tag url_for(question.file), style: "width: 400px; " %>
           <% else %>
-            <%== @question.lecture %>
+            <%== question.lecture %>
           <% end %>
           <ul>
             <% question.multiple_questions.each do |q| %>
@@ -49,5 +49,5 @@
       <% end %>
     </ul>
   <% end %>
-  <%= link_to 'Enviar a estudiante', student_path(@exam.student.id), class: "btn btn-primary" %>
+  <%= link_to 'Enviar a estudiante', send_exam_path(id: @exam), class: "btn btn-primary" %>
 </div>

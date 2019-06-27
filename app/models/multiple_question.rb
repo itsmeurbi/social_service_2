@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: multiple_questions
@@ -19,19 +20,12 @@ class MultipleQuestion < ApplicationRecord
   accepts_nested_attributes_for :multiple_question_options, reject_if: :all_blank, allow_destroy: true
 
   belongs_to :unit, optional: true
-  belongs_to :comprehension_questions, optional: true
+  belongs_to :comprehension_question, optional: true
   has_one :editorial, through: :unit
   has_one :level, through: :unit
+  has_many :exam_quests
+  has_many :exams, through: :exam_quests
 
   scope :all_non_comprehension, -> { where(comprehension_question_id: nil) }
-
-  # has_many :exam_quests
-  # has_many :exams, through: :exam_quests
-
-  # def editorial_questions(levels)
-  #   questions = []
-  #   levels.each do |level|
-  #     questions << unit.multiple_questions
-  #   end
-  # end
+  scope :per_unit, -> { group_by(&:unit_id) }
 end

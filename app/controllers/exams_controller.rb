@@ -10,7 +10,7 @@ class ExamsController < ApplicationController
 
   def new
     @student_id = params[:student_id]
-    @exam = Student.find(@student_id ).exams.build
+    @exam = Student.find(@student_id).exams.build
     @actual_editorial = Period.actual_period.editorial || Editorial.last
     @actual_period = Period.actual_period
   end
@@ -45,18 +45,36 @@ class ExamsController < ApplicationController
 
     def add_questions
       @exam.level.units.each do |u|
+        @mr = []
+        @cr = []
         mq = params[:"multiple_questions_#{u.id}"]
         cq = params[:"comprehension_questions_#{u.id}"]
-        mq_random_element = rand(u.multiple_questions.count)
-        cq_random_element = rand(u.comprehension_questions.count)
         mq[:qty].to_i.times do |n|
+          mq_random_element = generate_multiple_random(u)
           q = u.multiple_questions.offset(mq_random_element).first
           ExamQuest.create(exam: @exam, multiple_question: q)
         end
         cq[:qty].to_i.times do |n|
-          q = u.comprehension_questions.offset(mq_random_element).first
+          cq_random_element = generate_comprehension_random(u)
+          q = u.comprehension_questions.offset(cq_random_element).first
           ExamQuest.create(exam: @exam, comprehension_question: q)
         end
       end
+    end
+
+    def generate_multiple_random(u)
+      begin
+        r = rand(u.multiple_questions.count)
+      end while(@mr.include?(r))
+      @mr << r
+      r
+    end
+
+    def generate_comprehension_random(u)
+      begin
+        r = rand(u.multiple_questions.count)
+      end while(@cr.include?(r))
+      @cr << r
+      r
     end
 end

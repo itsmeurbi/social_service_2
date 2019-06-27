@@ -14,4 +14,6 @@
 
 class Student < ApplicationRecord
   has_many :exams
+
+  validates :no_control, :name, :email, presence: true
 end

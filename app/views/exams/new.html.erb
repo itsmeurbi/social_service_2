@@ -3,7 +3,7 @@
   <h5 class="mt-3"> Editorial actual: <%= @actual_editorial.name %> </h5>
   <h5 class="mt-3 mb-2"><b>Selecciona nivel</b></h5>
   <div class='d-flex align-items-center flex-column exam-config'>
-    <%= f.input :level_id, as: :select ,  collection: @actual_editorial.levels.first.units, label: false, prompt: "Nivel" %>
+    <%= f.input :level_id, as: :select ,  collection: @actual_editorial.levels, label: false, prompt: "Nivel" %>
     <%= f.hidden_field :student_id, value: @student_id %>
     <div class="units mt-5"></div>
     <%= f.submit "Generar examen", class: 'btn btn-primary my-5' %>

@@ -28,7 +28,7 @@ class MultipleQuestionsController < ApplicationController
     @question = QuestionManager.create_multiple_question(current_user, question_params, params[:correct_answ])
     if @question.persisted?
       c_q = params[:multiple_question][:comprehension_question]
-      if c_q
+      if c_q.present?
         redirect_to comprehension_question_path(c_q)
       else
         redirect_to multiple_questions_path

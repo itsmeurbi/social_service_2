@@ -1,0 +1,52 @@
+<h1 class='mt-3'>Examen nivel <%= @exam.level.number %></h1>
+<h2>Alumno <p><%= @exam.student.name %> - <b><%= @exam.student.no_control %></b></p> </h2>
+
+<%= simple_form_for @exam, method: :post, url: exam_quest_index_path do |f| %>
+  <%= f.hidden_field :exam_id, value: @exam.id %>
+  <div class="multiple-questions">
+    <h3>Preguntas de opción múltiple: </h3>
+    <% @exam.multiple_questions.each do |mq| %>
+      <hr>
+      <p><%= mq.content %></p>
+
+      <div class="cont-op">
+        <% mq.options.each do |option| %>
+           <ul class= "option">
+              <%= radio_button_tag "mq-#{mq.id}", option.id, data: {hola: 'sdfsd' } %>
+              <%= option.content %>
+            </ul>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <hr>
+  <div class="comprehension-questions d-flex flex-column align-items-center">
+    <% if @exam.comprehension_questions.present? %>
+      <h3>Preguntas de comprensión lectora</h3>
+      <% @exam.comprehension_questions.each do |question| %>
+        <hr>
+        <% if question.file.attached? %>
+          <%= image_tag url_for(question.file), style: "width: 400px; " %>
+        <% else %>
+          <%== question.lecture %>
+        <% end %>
+        <ul>
+          <% question.multiple_questions.each do |q| %>
+            <li>
+              <%= q.content %>
+              <div class= "question-options">
+                <% MultipleQuestionOption.where(multiple_question_id: q.id).each do |option| %>
+                  <ul class= "option">
+                    <%= radio_button_tag "cq-#{option.multiple_question.id}", option.id %>
+                    <p><%= option.content %></p>
+                  </ul>
+                <% end %>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+  <%= f.submit "Terminar examen", class: 'btn btn-primary my-5' %>
+<% end %>
