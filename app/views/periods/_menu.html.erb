@@ -1,15 +1,12 @@
 <div class='custom-container editorial'>
   <%= link_to editorial_index_path, class:'square' do%>
     <%= image_tag 'book2.png', class: 'icon'%>
-    <p class="b-square">Editoriales registradas</p>
-  <%end%>
-  <%= link_to new_editorial_path, class:'square' do%>
-    <%= image_tag 'nuevo.png', class: 'icon'%>
-    <p class="b-square">Nueva Editorial</p>
+    <p class="b-square">Editoriales</p>
   <%end%>
 
+
   <% if @actual_period.present? %>
-    <%= link_to edit_period_path(@actual_period[0]), class:'square' do%>
+    <%= link_to edit_period_path(@actual_period), class:'square' do%>
       <%= image_tag 'time.png', class: 'icon'%>
       <p class="b-square">Editar Periodo</p>
     <%end%>
@@ -19,7 +16,7 @@
       <p class="b-square">Determinar Periodo</p>
     <%end%>
   <% end %>
-  
+
 </div>
 <div class="button ">
   <%= link_to 'Regresar', authenticated_root_path, class: 'btn btn-outline-primary b'%>

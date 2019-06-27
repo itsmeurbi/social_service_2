@@ -1,1 +1,11 @@
-RESULTADO: <%= @e.result %>
+<h2 class='mt-3'> Registrar estudiante </h2>
+
+<%= simple_form_for @student, method: :post do |f| %>
+  <div class="student-data">
+    <h3 class='my-3'> Datos del alumno </h3>
+    <%= f.input :no_control, label: 'Número de control' %>
+    <%= f.input :name, label: 'Nombre'  %>
+    <%= f.input :email, label: 'E-mail'  %>
+    <%= f.submit "Guardar alumno", class: 'btn btn-primary my-5' %>
+  </div>
+<% end %>

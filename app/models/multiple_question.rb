@@ -4,13 +4,14 @@
 #
 # Table name: multiple_questions
 #
-#  id         :bigint(8)        not null, primary key
-#  content    :string(255)
-#  value      :integer
-#  user_id    :bigint(8)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  unit_id    :bigint(8)
+#  id                        :bigint(8)        not null, primary key
+#  content                   :string(255)
+#  value                     :integer
+#  user_id                   :bigint(8)
+#  created_at                :datetime         not null
+#  updated_at                :datetime         not null
+#  unit_id                   :bigint(8)
+#  comprehension_question_id :bigint(8)
 #
 
 class MultipleQuestion < ApplicationRecord
@@ -18,15 +19,13 @@ class MultipleQuestion < ApplicationRecord
   alias_attribute :options, :multiple_question_options
   accepts_nested_attributes_for :multiple_question_options, reject_if: :all_blank, allow_destroy: true
 
-  belongs_to :unit
-
+  belongs_to :unit, optional: true
+  belongs_to :comprehension_question, optional: true
+  has_one :editorial, through: :unit
+  has_one :level, through: :unit
   has_many :exam_quests
   has_many :exams, through: :exam_quests
-  
-  # def editorial_questions(levels)
-  #   questions = []
-  #   levels.each do |level|
-  #     questions << unit.multiple_questions
-  #   end
-  # end
+
+  scope :all_non_comprehension, -> { where(comprehension_question_id: nil) }
+  scope :per_unit, -> { group_by(&:unit_id) }
 end

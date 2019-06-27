@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 describe StudentController do
@@ -10,5 +12,4 @@ describe StudentController do
     get student_new_url
     value(response).must_be :success?
   end
-
 end

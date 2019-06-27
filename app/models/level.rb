@@ -15,6 +15,7 @@ class Level < ApplicationRecord
   belongs_to :editorial
   has_many :units, dependent: :destroy
   has_many :multiple_questions, through: :units
+  has_many :comprehension_questions, through: :units
 
   scope :available_levels_by_editorial, lambda { |editorial_id|
     where(editorial_id: editorial_id)

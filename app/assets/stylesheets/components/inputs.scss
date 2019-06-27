@@ -1,0 +1,12 @@
+input {
+  border-radius: 20px;
+  padding: 10px 15px;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(255, 248, 168, 0.5);
+  }
+}
+input:-internal-autofill-selected {
+  background-color: white !important;
+}

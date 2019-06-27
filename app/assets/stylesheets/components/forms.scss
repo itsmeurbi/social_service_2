@@ -1,0 +1,56 @@
+form.simple_form {
+  .input {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+
+    &.multiple_question_unit,
+    &.comprehension_question_unit {
+      margin: 0;
+    }
+  }
+
+  &#new_period {
+    div {
+      display: flex;
+      justify-content: space-around;
+      div {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+  }
+
+  &#new_level {
+    div {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &.edit_period {
+    .input {
+      flex-direction: row;
+      justify-content: center;
+      margin-bottom: 10px;
+
+      label {
+        margin-right: 15px;
+      }
+      select {
+        margin: 0 5px;
+      }
+    }
+  }
+}
+
+.correct {
+  border: green;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5%;
+}

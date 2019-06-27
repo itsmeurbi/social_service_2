@@ -1,15 +1,26 @@
-.link-navbar{
+nav {
+  background-color: $yellow;
+  color: $chocolate;
+  margin: 0;
+  img {
+    height: 40px;
+    margin-right: 10px;
+    width: 40px;
+  }
+  a {
+    align-items: center;
+    color: $chocolate;
     display: flex;
     flex-direction: row;
-    align-content: center;
-    align-items: center;
-    justify-content: flex-start;
-    color: black;
-    font-size: 1.3em;
-}
-p#navbar{
     font-size: 20px;
-    color: $bluetec;
+    justify-content: flex-start;
     margin: 0;
+    &:hover,
+    &:active,
+    &:focus {
+      color: $redtec;
+      text-decoration: none;
+      outline: none;
+    }
+  }
 }
-

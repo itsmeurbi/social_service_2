@@ -1,1 +1,1 @@
-<%= collection_select(:unit, :unit_id, units, :id, :name, prompt: true) %>
+<%= collection_select(:unit, :unit_id, units, :id, :name, {include_blank: 'Todas las unidades'}, {disabled: disabled}) %>

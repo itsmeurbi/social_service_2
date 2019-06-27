@@ -7,6 +7,6 @@ class ApplicationMailer < ActionMailer::Base
   def exam_mail(link, student)
     @name = student.name
     @link = link
-    mail to: student.email, subject: 'Examen'
+    mail to: student.email, subject: "Examen"
   end
 end

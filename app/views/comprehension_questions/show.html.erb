@@ -1,22 +1,26 @@
 <div class= 'title'>
-  <h1>Pregunta #</h1>
-  <p id="show">Nivel X Unidad X</p>
+  <h1 class='mt-3'>Pregunta <%= @question.id %></h1>
+  <h2 id="show">Nivel <%= @question.unit.level.number %> Unidad <%= @question.unit.number %></h2>
 </div>
-<div class="content-show">
-  <%= image_tag (url_for(@question.file) if (@question.file.attached?)), style: "width: 40vw; " %>
-  <p>Lectura: <%= @question.lecture %></p>
-  <p>Pregunta: <%= @question.content %></p>
-
-  <div class="cont-op">
-    <% @question.options.each do |option| %>
-      <p class="option<%= ' correct' if option.correct %>">Opción: <%= option.content %></p>
+<div class="row align-items-start">
+  <div class="content-show col-7">
+    <h3 class='mb-4'>Lectura</h3>
+    <% if @question.file.attached? %>
+      <%= image_tag url_for(@question.file), style: "width: 100%; " %>
+    <% else %>
+      <p><%== @question.lecture %></p>
     <% end %>
+    <%= link_to 'Editar', edit_comprehension_question_path, class: 'btn btn-primary mt-5'%>
   </div>
-  <br>
-  <div class="two-buttos-div">
-    <%= link_to 'Regresar', comprehension_questions_path, class: 'btn btn-outline-primary'%>
-    <%= link_to 'Editar', edit_comprehension_question_path, class: 'btn btn-outline-primary'%>
+
+  <div class="col-5 text-center">
+    <h3 class='mb-4'>Preguntas</h3>
+    <% @question.multiple_questions.each do |question| %>
+      <div class="row justify-content-center m-0">
+        <%= link_to question.content, multiple_question_path(question) %>
+      </div>
+    <% end %>
+    <%= link_to 'Agregar pregunta', new_multiple_question_path(comprehension_question: @question), class: 'btn btn-primary mt-5' %>
   </div>
-  <br>
 </div>
 

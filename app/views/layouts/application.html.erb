@@ -24,12 +24,12 @@
   </head>
 
   <body>
-    <% unless controller_name == "students" %>
-      <%= render 'layouts/navbar' %>
-      <% end %>
+    <%= render 'layouts/navbar' %>
     <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
-    <%= yield %>
+    <div class="container-fluid text-center">
+      <%= yield %>
+    </div>
   </body>
 </html>

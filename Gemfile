@@ -21,8 +21,8 @@ gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 gem "jquery-rails"
 gem "simple_form"
-gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
+gem "wicked_pdf"
+gem "wkhtmltopdf-binary"
 
 # Background Jobs Adapter
 gem "sidekiq"

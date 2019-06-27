@@ -1,5 +1,5 @@
 <% questions.each do |question| %>
-  <div class='row container-q border-bottom'>
+  <div class='row mb-2 border-bottom'>
     <div class='col-9 question'><%= question.content %></div>
     <div class='col-3 opciones'>
       <%= link_to 'Ver', multiple_question_path(question)%>

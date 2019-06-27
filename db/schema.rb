@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_13_072606) do
+ActiveRecord::Schema.define(version: 2019_06_27_185630) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -88,6 +88,8 @@ ActiveRecord::Schema.define(version: 2019_06_13_072606) do
     t.integer "chosed_answ"
     t.bigint "multiple_question_id"
     t.bigint "exam_id"
+    t.bigint "comprehension_question_id"
+    t.index ["comprehension_question_id"], name: "index_exam_quests_on_comprehension_question_id"
     t.index ["exam_id"], name: "index_exam_quests_on_exam_id"
     t.index ["multiple_question_id"], name: "index_exam_quests_on_multiple_question_id"
   end
@@ -112,6 +114,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_072606) do
     t.bigint "editorial_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["editorial_id"], name: "index_levels_on_editorial_id"
   end
 
@@ -132,6 +135,8 @@ ActiveRecord::Schema.define(version: 2019_06_13_072606) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "unit_id"
+    t.bigint "comprehension_question_id"
+    t.index ["comprehension_question_id"], name: "index_multiple_questions_on_comprehension_question_id"
     t.index ["unit_id"], name: "index_multiple_questions_on_unit_id"
     t.index ["user_id"], name: "index_multiple_questions_on_user_id"
   end
@@ -191,6 +196,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_072606) do
   add_foreign_key "comprehension_options", "comprehension_questions", on_delete: :cascade
   add_foreign_key "comprehension_questions", "units"
   add_foreign_key "comprehension_questions", "users"
+  add_foreign_key "exam_quests", "comprehension_questions"
   add_foreign_key "exam_quests", "exams"
   add_foreign_key "exam_quests", "multiple_questions"
   add_foreign_key "exams", "levels"
@@ -199,6 +205,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_072606) do
   add_foreign_key "exams", "users"
   add_foreign_key "levels", "editorials"
   add_foreign_key "multiple_question_options", "multiple_questions", on_delete: :cascade
+  add_foreign_key "multiple_questions", "comprehension_questions", on_delete: :cascade
   add_foreign_key "multiple_questions", "units"
   add_foreign_key "multiple_questions", "users"
   add_foreign_key "periods", "editorials"

@@ -5,6 +5,7 @@ class MultipleQuestionsController < ApplicationController
     @unit = determine_unit
     @question = current_user.multiple_questions.build
     3.times { @question.multiple_question_options.new }
+    @comprehension_question = params[:comprehension_question]
   end
 
   def edit
@@ -17,15 +18,21 @@ class MultipleQuestionsController < ApplicationController
 
   def index
     @question = MultipleQuestion.new
-    @questions = MultipleQuestion.all
+    @questions = MultipleQuestion.all_non_comprehension
     @editorials = Editorial.all
-    @actual_editorial = Period.actual_period[0]&.editorial || Editorial.last
+    @actual_editorial = Period.actual_period.editorial || Editorial.last
+    @path = new_multiple_question_path
   end
 
   def create
     @question = QuestionManager.create_multiple_question(current_user, question_params, params[:correct_answ])
     if @question.persisted?
-      redirect_to multiple_questions_path
+      c_q = params[:multiple_question][:comprehension_question]
+      if c_q.present?
+        redirect_to comprehension_question_path(c_q)
+      else
+        redirect_to multiple_questions_path
+      end
     end
   end
 
@@ -39,20 +46,18 @@ class MultipleQuestionsController < ApplicationController
   end
 
   def destroy
-    begin 
-      question.destroy
-      flash[:success] = "Se eliminó la pregunta con éxito"
-      redirect_to multiple_questions_path
-    rescue StandardError => e
-      flash[:warning] = e
-      redirect_back fallback_location: { action: "new", notice: question.errors.full_messages.join(" ") }
-    end
+    question.destroy
+    flash[:success] = "Se eliminó la pregunta con éxito"
+    redirect_to multiple_questions_path
+  rescue StandardError => e
+    flash[:warning] = e
+    redirect_back fallback_location: { action: "new", notice: question.errors.full_messages.join(" ") }
   end
 
   private
 
     def question_params
-      params.require(:multiple_question).permit(:content, :value, :unit_id, multiple_question_options_attributes: [:id, :content, :correct, :_destroy])
+      params.require(:multiple_question).permit(:content, :value, :unit_id, :comprehension_question_id, multiple_question_options_attributes: [:id, :content, :correct, :_destroy])
     end
 
     def question

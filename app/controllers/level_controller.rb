@@ -11,8 +11,10 @@ class LevelController < ApplicationController
   end
 
   def index
-    @editorials = Editorial.all
-    @actual_editorial = Period.actual_period[0]&.editorial_id
+    @actual_editorial = Editorial.find(Period.actual_period&.editorial_id)
+    @editorials = Editorial.all.select do |e|
+      e.id != @actual_editorial.id
+    end if @actual_editorial
   end
 
   def create

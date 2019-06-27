@@ -1,1 +1,6 @@
-<h1> Resultados </h1>
+<h2 class="mt-3">Estudiantes</h2>
+<% @students.each do |student| %>
+  <div>
+    <%= link_to student.name, student_path(student) %>
+  </div>
+<% end %>

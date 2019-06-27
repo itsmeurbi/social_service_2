@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 describe ExamsController do
@@ -5,5 +7,4 @@ describe ExamsController do
     get exams_index_url
     value(response).must_be :success?
   end
-
 end

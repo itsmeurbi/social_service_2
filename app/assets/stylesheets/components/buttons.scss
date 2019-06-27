@@ -1,4 +1,29 @@
-.button-font{
-    font-size: 2vw;
-}
+a {
+  color: #00cabc;
 
+  &:hover,
+  &:active,
+  &:focus {
+    color: #009287;
+  }
+}
+a.btn.btn-primary,
+.btn.btn-primary {
+  background-color: #e0ce6a;
+  border: 0;
+  color: #4b4737;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: #b0ab99;
+    box-shadow: none;
+    color: #4b4737;
+  }
+
+  &:not(:disabled):not(.disabled):active {
+    background-color: #4b4737;
+    box-shadow: 0 0 0 0.2rem rgba(255, 248, 168, 0.5);
+    color: #b0ab99;
+  }
+}

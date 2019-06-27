@@ -1,0 +1,13 @@
+<h4 class="mt-3">Estudiante <%= @student.name %></h4>
+
+<div class='custom-container'>
+  <%= link_to '#', class: 'square' do %>
+    <%= image_tag 'quiz2.png', class: 'icon'%>
+    <p class="b-square">Historial de exámenes</p>
+  <% end %>
+
+  <%= link_to new_exam_path(student_id: @student.id), class: 'square' do %>
+    <%= image_tag 'quiz.png', class: 'icon'%>
+    <p class="b-square">Generar nuevo examen</p>
+  <% end %>
+</div>

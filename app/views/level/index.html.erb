@@ -1,23 +1,13 @@
-<% @editorials.each do |editorial| %>
-  <div>
-    <div class="title-level">
-      <h2>Editorial en uso:</h2>
-      <h2><%= editorial.name %></h2>
-    </div>
-    <div class='custom-container'>
-      <% editorial.levels.each do |level| %>
-          <%= link_to level_path(level), class:'square' do %>
-            <p class="b-square"> <%="Nivel: #{level.number}"%></p> 
-          <% end %>
-     <% end %>
-     </div>
-  </div>
+<% if @actual_editorial %>
+  <h2 class='mb-2'>Editorial en uso</h2>
+  <%= render 'editorial_levels', editorial: @actual_editorial %>
+<% else %>
+  <h2 class='mb-2'>Recuerda configurar una editorial y un periodo</h2>
 <% end %>
-<div class='my-5'>
-  <%= link_to 'Agregar nivel', new_level_path, class:'btn btn-outline-primary'%>
-  <br>
-  <%= link_to 'Regresar', authenticated_root_path, class: "btn btn-outline-primary" %>
-  <br>
+<h3 class='mb-2'>Otras editoriales</h2>
+<div class='d-flex justify-content-around'>
+  <% @editorials.each do |editorial| %>
+    <%= render 'editorial_levels', editorial: editorial %>
+  <% end %>
 </div>
-
-
+<%= link_to 'Agregar niveles', new_level_path, class:'btn btn-primary my-5 w-50', style: 'margin: 0 auto;'%>

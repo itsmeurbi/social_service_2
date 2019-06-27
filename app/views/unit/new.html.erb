@@ -1,10 +1,7 @@
 <%= simple_form_for @unit, url: {action: "create"}, html: {class: "form"} do |f| %>
   <%= render 'form', f: f %>
 
-  <%= f.submit "Create", class:'btn btn-outline-primary b' %>
+  <%= f.submit "Crear", class:'btn btn-primary' %>
 <% end %>
-<div class="btn-return-div">
-  <br>
-  <%= link_to 'Regresar', level_path(@level), class: "btn btn-outline-primary" %>
-</div>
+
 

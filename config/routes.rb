@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       root 'dashboard#index', as: :authenticated_root
       resources :multiple_questions
       resources :comprehension_questions
-      resources :period
+      resources :periods
       resources :editorial
       resources :level
       resources :unit
@@ -17,9 +17,12 @@ Rails.application.routes.draw do
       resources :students
       resources :certificates
       resources :certificate_templates
+      resources :exam_quest
+      get '/send_exam' => 'send_exam#show'
       get '/editorial_levels' => 'editorial_levels#show'
       get '/level_units' => 'level_units#show'
       get '/unit_questions' => 'unit_questions#show'
+      get '/exam_unit_questions' => 'exam_unit_questions#show'
     end
 
     unauthenticated do

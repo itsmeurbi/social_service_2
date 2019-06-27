@@ -1,13 +1,14 @@
-<h1 class="title-ed-reg">Editoriales registradas</h1>
+<h1 class=" mt-4">Editoriales registradas</h1>
+
 <% @editorials.each do |editorial| %>
-  <div class='row container-q border-bottom'>
-   <div class='col-9 question'><%=editorial.name %></div>
+  <div class='row container-q border-bottom w-auto'>
+    <div class='col-9 question'><p class='m-0 text-left'><%= editorial.name %></p></div>
     <div class='col-3 opciones'>
       <%= link_to 'Ver'%>
       <%= link_to 'Eliminar'%>
     </div>
-    </div>
+  </div>
 <% end %>
-<div class="btn-return-div">
-  <%= link_to 'Regresar', period_index_path, class: "btn btn-outline-primary" %>
-</div>
+
+
+<%= link_to 'Nueva Editorial', new_editorial_path, class:'btn btn-primary mt-5'%>

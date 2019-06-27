@@ -1,8 +1,3 @@
-.b-square {
-  color: $redtec;
-  font-size: 22px;
-}
-
 .custom-container {
   align-items: center;
   display: flex;
@@ -17,6 +12,7 @@
 
   a.square {
     align-items: center;
+    background-color: $softyellow;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -27,6 +23,15 @@
     padding: 10px;
     text-align: center;
     width: 60vw;
+
+    &:hover,
+    &:active,
+    &:focus {
+      p {
+        color: $redtec;
+      }
+      text-decoration: none;
+    }
 
     @media (min-width: 700px) {
       height: 22vw;
@@ -62,20 +67,8 @@
   justify-content: space-between;
   width: 25vw;
 
-  @media (min-width: 700px){
+  @media (min-width: 700px) {
     display: flex;
     width: 10vw;
-  }
-}
-
-a.square {
-  background-color: $softyellow;
-}
-
-a.square:hover {
-  text-decoration: none;
-
-  p {
-    color: $bluetec;
   }
 }

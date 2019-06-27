@@ -1,0 +1,13 @@
+<div>
+  <h4 class='mt-2'><b><%= editorial.name %></b></h2>
+  <div class='custom-container'>
+    <% editorial.levels.each do |level| %>
+      <%= link_to level_path(level), class:'square' do %>
+        <p class="b-square"> <%="Nivel: #{level.number}"%></p>
+      <% end %>
+    <% end %>
+    <% if editorial.levels.size.zero? %>
+      <p class="red">No tiene niveles registrados</p>
+    <% end %>
+  </div>
+</div>

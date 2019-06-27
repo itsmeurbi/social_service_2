@@ -1,13 +1,13 @@
 <div class= "login-container">
 
-  <div class="form-login">
-    <h1>Sign up</h1>
+  <div class="register-form">
+    <h1>Registrarme</h1>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="field">
-        <%= f.label :name %><br />
+        <%= f.label :name, 'Nombre' %><br />
         <%= f.text_field :name, autofocus: true, autocomplete: "off" %>
       </div>
 
@@ -30,7 +30,7 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "Sign up", class:"btn btn-light" %>
+        <%= f.submit "Registrarme", class:"btn btn-primary" %>
       </div>
     <% end %>
 

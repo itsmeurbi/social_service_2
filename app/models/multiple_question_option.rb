@@ -14,5 +14,9 @@
 #
 
 class MultipleQuestionOption < ApplicationRecord
-  belongs_to :multiple_question
+  belongs_to :multiple_question, optional: true
+
+  def status
+    correct ? 1 : 0
+  end
 end
