@@ -6,7 +6,7 @@
   <div class="content-show col-7">
     <h3 class='mb-4'>Lectura</h3>
     <% if @question.file.attached? %>
-      <%= image_tag url_for(@question.file), style: "width: 100%; " %>
+      <%= image_tag url_for(@question.file), style: "width: 50%; " %>
     <% else %>
       <p><%== @question.lecture %></p>
     <% end %>
@@ -20,7 +20,12 @@
         <%= link_to question.content, multiple_question_path(question) %>
       </div>
     <% end %>
-    <%= link_to 'Agregar pregunta', new_multiple_question_path(comprehension_question: @question), class: 'btn btn-primary mt-5' %>
+    <div class="two-btns-column">
+      <%= link_to 'Agregar pregunta', new_multiple_question_path(comprehension_question: @question), class: 'btn btn-primary mt-5' %>
+
+      <%= link_to 'Regresar', comprehension_questions_path, class: 'btn btn-primary mt-5'%>
+    </div>
   </div>
 </div>
+
 

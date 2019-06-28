@@ -10,4 +10,7 @@
     <%= render 'editorial_levels', editorial: editorial %>
   <% end %>
 </div>
-<%= link_to 'Agregar niveles', new_level_path, class:'btn btn-primary my-5 w-50', style: 'margin: 0 auto;'%>
+<div class="two-btns-column">
+  <%= link_to 'Agregar niveles', new_level_path, class:'btn btn-primary mt-5', style: 'margin: 0 auto;'%>
+  <%= link_to 'Regresar', authenticated_root_path, class: 'btn btn-primary mt-5'%>
+</div>

@@ -7,7 +7,7 @@
     <% @certificates.each do |certificate| %>
       <div class='row container-q border-bottom'>
         <div class='col-9 question'>
-        <% student_name = Student.select("students.no_control, students.name").joins(:exam).where("exams.id = ?", certificate.exam_id).as_json %>
+        <% student_name = Student.select("students.no_control, students.name").joins(:exams).where("exams.id = ?", certificate.exam_id).as_json %>
           Constancia: <%= student_name[0]["no_control"]%> - <%= student_name[0]["name"]%> 
         </div>
         <div class='col-3 opciones'>
@@ -18,7 +18,7 @@
     <% end %>
   <% end %>
   <div class="center-btn-div">
-    <%= link_to 'Crear nueva constancia', new_certificate_path, class: "btn btn-outline-primary" %>
+    <%= link_to 'Crear nueva constancia', new_certificate_path, class: "btn btn-primary mt-5" %>
   </div>
   <div>
     <h5> Plantillas para constancias </h5>
@@ -38,10 +38,10 @@
       <%end%>
     <%end%>
     <div class="center-btn-div">
-      <%= link_to 'Crear nueva plantilla', new_certificate_template_path, class: "btn btn-outline-primary" %>
+      <%= link_to 'Crear nueva plantilla', new_certificate_template_path, class: "btn btn-primary mt-5" %>
     </div>
   </div>
   <div class="center-btn-div">
-    <%= link_to 'Regresar', authenticated_root_path, class: "btn btn-outline-primary" %>
+    <%= link_to 'Regresar', authenticated_root_path, class: "btn btn-primary mt-5" %>
   </div>
 </div>
