@@ -15,7 +15,7 @@
 #
 
 class ComprehensionQuestion < ApplicationRecord
-  has_many :multiple_questions
+  has_many :multiple_questions, dependent: :destroy
   accepts_nested_attributes_for :multiple_questions, reject_if: :all_blank, allow_destroy: true
 
   has_one_attached :file

@@ -72,7 +72,7 @@ class ExamsController < ApplicationController
 
     def generate_comprehension_random(u)
       begin
-        r = rand(u.multiple_questions.count)
+        r = rand(u.comprehension_questions.count)
       end while(@cr.include?(r))
       @cr << r
       r
