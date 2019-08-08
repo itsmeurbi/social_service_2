@@ -19,4 +19,6 @@ class MultipleQuestionOption < ApplicationRecord
   def status
     correct ? 1 : 0
   end
+
+  scope :question_options, -> (question) { where(multiple_question_id: question.id)}
 end

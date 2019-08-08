@@ -6,6 +6,7 @@ class MultipleQuestionsController < ApplicationController
     @question = current_user.multiple_questions.build
     3.times { @question.multiple_question_options.new }
     @comprehension_question = params[:comprehension_question]
+    @questions = MultipleQuestion.all_non_comprehension
   end
 
   def edit
