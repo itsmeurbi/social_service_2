@@ -3,8 +3,8 @@
   <h2> Vista previa de los datos de la constancia </h2>
   <%= render 'certificate' %>
   <div class="pdf-send-btn-div">
-    <%= link_to 'Regresar', certificates_path, class: 'btn btn-outline-primary'%>
-    <%# <%= link_to 'Editar', edit_certificate_path, class: 'btn btn-outline-primary'%>
-    <%= link_to 'Enviar certificado PDF', certificate_path(@certificate, format: :pdf), class: 'btn btn-outline-primary', target: :blank %>
+    <%= link_to 'Regresar', certificates_path, class: 'btn btn-primary mt-5'%>
+    <%# <%= link_to 'Editar', edit_certificate_path, class: 'btn btn-primary mt-5'%>
+    <%= link_to 'Enviar certificado PDF', certificate_path(@certificate, format: :pdf), class: 'btn btn-primary mt-5', target: :blank %>
   </div>
 </div>

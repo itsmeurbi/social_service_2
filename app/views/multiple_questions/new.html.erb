@@ -1,5 +1,26 @@
-<%= simple_form_for @question, url: {action: "create"}, html: {class: "form new-form"} do |f| %>
-  <%= render partial: 'form', locals: { f: f } %>
-  <%= f.hidden_field :comprehension_question, value: @comprehension_question %>
-  <%= f.submit "Crear", class: 'btn btn-primary my-4'%>
-<% end %>
+<h2 class="title"> Registrar pregunta de opción múltiple </h2>
+<div class="add-questions">
+  <%= simple_form_for @question, url: {action: "create"}, html: {class: "form new-form"} do |f| %>
+    <%= render partial: 'form', locals: { f: f } %>
+    <%= f.hidden_field :comprehension_question, value: @comprehension_question %>
+    <div class="question-btns">
+      <%= f.submit "Crear", class: 'btn btn-primary'%>
+      <%= link_to 'Regresar', multiple_questions_path, class: 'btn btn-primary mt-4'%>
+    </div>
+  <% end %>
+  <div class="show-registered">
+    <h5> Preguntas registradas </h5>
+    <div class="questions">
+      <% @questions.each do |q| %>
+        <div class="question border">
+          <%= q.content %>
+          <ul class="options">
+            <% options(q).each do |opt| %> 
+              <li> <%= opt.content %> </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

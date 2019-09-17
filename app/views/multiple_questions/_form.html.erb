@@ -1,5 +1,3 @@
-<h2>Registrar pregunta de opción múltiple</h2>
-
 <div class="d-flex flex-column align-items-center">
   <%= f.input :content, as: :text, autofocus: true,label: "#{I18n.t('form.write_your_question')}: ", class:'form-group' %>
   <%= f.input :value, input_html: {value: '1'}, label: "#{I18n.t('form.question_value')}: ",class:'input-quest' %>
@@ -7,8 +5,7 @@
   <%= f.input :comprehension_question_id, as: :hidden, input_html: { value: @comprehension_question } %>
 </div>
 
-
-<h3 class='mb-4'><%= I18n.t('form.question_options')%></h3>
+<h3 class='mb-2'><%= I18n.t('form.question_options')%></h3>
 <div id="options">
   <%= f.fields_for :multiple_question_options do |option| %>
     <%= render 'shared/option_fields', f: option %>

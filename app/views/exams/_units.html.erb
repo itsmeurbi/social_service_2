@@ -1,7 +1,7 @@
 <% @units.each do |unit| %>
   <div class='d-flex flex-column align-items-center'>
     <h4>Unidad <%= unit.number %>: <%= unit.name %></h4>
-    <%= select(:"multiple_questions_#{unit.id}", :qty, unit.multiple_questions_qty_array) %>
-    <%= select(:"comprehension_questions_#{unit.id}", :qty, unit.comprehension_questions_qty_array) %>
+    <%= select(:"multiple_questions_#{unit.id}", :qty, unit.multiple_questions_qty_array, prompt: "Preguntas de opcion múltiple") %>
+    <%= select(:"comprehension_questions_#{unit.id}", :qty, unit.comprehension_questions_qty_array, prompt: "Preguntas de comprensión lectora" )%>
   </div>
 <% end %>

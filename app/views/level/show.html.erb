@@ -1,7 +1,7 @@
 <div class="show-level-div">
   <div class="title-level">
-    <h2>Editorial <b><%= @level.editorial.name %></b></h2>
-    <h2></h2>
+    <h2>Editorial: <b><%= @level.editorial.name %></b></h2>
+    <h2>Level: <b><%= @level.number %></b></h2>
   </div>
   <div class="unit-container">
     <% @level.units.each do |unit|%>
@@ -13,3 +13,4 @@
   </div>
   <%= link_to 'Agregar unidad', new_unit_path(level: @level), class:'btn btn-primary mt-5' %>
 </div>
+<%= link_to 'Regresar', level_index_path, class: 'btn btn-primary mt-5'%>
