@@ -21,6 +21,7 @@ class ExamQuestController < ApplicationController
 
   def show
     @exam = Exam.find(params[:id])
+    @level = Level.find(@exam.level_id).number
   end
 
   private
@@ -60,6 +61,7 @@ class ExamQuestController < ApplicationController
     @exam.exam_quests.each do |q|
       value += MultipleQuestion.find(q.multiple_question_id).value if q.status == 1
     end
-    value
+    res = value*100/@exam.exam_quests.length 
+    res
    end
 end

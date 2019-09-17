@@ -1,0 +1,15 @@
+#new_period {
+  margin-top: 40px;
+
+  .input.date {
+    align-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;   
+    width: 250px;
+
+    label {
+      width: 250px;
+    }
+  }
+}

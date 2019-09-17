@@ -1,12 +1,12 @@
-<%= simple_form_for @period, class: "form" do |f| %>
+<%= simple_form_for @period, input_html: { class: "form" } do |f| %>
   <div>
     <%= f.input :starts_at, as: :date, start_year: Date.today.year - 5,
                                 end_year: Date.today.year + 5,
-                                order: [:day, :month, :year], label: 'Fecha de inicio'%>
+                                order: [:day, :month, :year], label: 'Fecha de inicio', class: "date-div" %>
     <%= f.input :ends_at, as: :date, start_year: Date.today.year - 5,
                                 end_year: Date.today.year + 5,
-                                order: [:day, :month, :year], label: 'Fecha de fin'%>
+                                order: [:day, :month, :year], label: 'Fecha de fin', input_html: { class: "date-div" }%>
     <%= f.input :editorial_id, collection: @editorials, prompt: "Selecciona editorial" %>
   </div>
-  <%= f.submit "Guardar", class: "btn btn-primary mt-5"%>
+  <%= f.submit "Guardar", class: "btn btn-primary mt-5" %>
 <% end %>

@@ -4,6 +4,7 @@
   height: 100%;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 50px;
 
   @media (min-width: 700px) {
     flex-direction: row;
@@ -71,4 +72,10 @@
     display: flex;
     width: 10vw;
   }
+}
+
+.two-btns-column {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
