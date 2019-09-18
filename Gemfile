@@ -12,6 +12,8 @@ gem "bootstrap"
 gem "cocoon"
 gem "devise"
 gem "devise-i18n"
+gem 'discard', '~> 1.0'
+gem 'font-awesome-sass', '~> 5.9.0'
 gem "haml-rails"
 gem "interactor-rails"
 gem "puma", "~> 3.11"
@@ -26,8 +28,6 @@ gem "wkhtmltopdf-binary"
 
 # Background Jobs Adapter
 gem "sidekiq"
-
-
 
 # Test Suite Gem
 gem "minitest-rails", group: [:development, :test]

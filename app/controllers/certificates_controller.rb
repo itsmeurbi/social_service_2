@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class CertificatesController < ApplicationController
+  
   def index
-    @templates = CertificatePart.all
     @certificates = Certificate.all
   end
 

@@ -1,0 +1,22 @@
+.users-div {
+  padding-top: 30px;
+
+  .table-responsive-lg {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    
+    .table {
+      width: 85vw;
+
+      .options {
+        display: flex;
+        justify-content: space-evenly;
+
+        .fas {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}

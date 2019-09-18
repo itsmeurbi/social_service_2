@@ -2,7 +2,8 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: "users/registrations" }
+
   devise_scope :user do
     authenticated :user do
       root 'dashboard#index', as: :authenticated_root
@@ -23,6 +24,8 @@ Rails.application.routes.draw do
       get '/level_units' => 'level_units#show'
       get '/unit_questions' => 'unit_questions#show'
       get '/exam_unit_questions' => 'exam_unit_questions#show'
+      get '/settings' => 'dashboard#settings'
+      get '/users' => 'devise#users'
     end
 
     unauthenticated do

@@ -1,0 +1,22 @@
+<div class="settings-div mt-4">
+  <h1> Configuración </h1>
+  <div class='custom-container'>
+    <%= link_to periods_path, class: 'square' do %>
+      <div class="icons">
+        <%= image_tag 'time.png', class: 'icon '%>
+        <%= image_tag 'book2.png', class: 'icon'%>
+      </div>
+      <p class="b-square">Configurar periodo y editorial</p>
+    <%end%>
+
+    <%= link_to certificate_templates_path, class: 'square' do %>
+      <i class="fas fa-file-signature"></i>
+      <p class="b-square">Plantillas de constancias</p>
+    <%end%>
+
+    <%= link_to users_path, class: 'square' do %>
+      <i class="fas fa-users-cog"></i>
+      <p class="b-square">Administradores</p>
+    <%end%>
+  </div>
+</div>
