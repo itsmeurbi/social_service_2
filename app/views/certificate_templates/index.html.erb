@@ -1,0 +1,26 @@
+<div class="templates-div">
+  <h1> Plantillas generadas </h1>
+  <% if @templates.empty? %> 
+    <p> NO SE HAN GENERADO PLANTILLAS <p>
+  <% else %>
+    <div class="mt-4">
+      <% @templates.each do |template| %>
+        <div class='row container-q border-bottom'>
+          <div class='col-9 question'>
+            Plantilla: <%= template.name%>
+          </div>
+          <div class='col-3 options'>
+            <%= link_to 'Ver', certificate_template_path(template)%>
+            <%= link_to 'Eliminar', certificate_template_path(template), method: :delete, data: { confirm: "Deseas eliminar la plantlla #{template.name}?" } %>
+          </div>
+        </div>
+      <%end%>
+    </div>
+  <%end%>
+  <div class="center-btn-div">
+    <%= link_to 'Crear nueva plantilla', new_certificate_template_path, class: "btn btn-primary mt-5" %>
+  </div>
+  <div class="center-btn-div">
+    <%= link_to 'Regresar', authenticated_root_path, class: "btn btn-primary mt-5" %>
+  </div>
+</div>

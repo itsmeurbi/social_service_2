@@ -1,13 +1,13 @@
-<h1> Nueva plantilla para constancia </h1>
 <div class="new-template-div">
-<%= simple_form_for @template, url: {action: "create"} do |f|%>
-  <%= f.input :name, label: "Nombre de la plantilla: " %>
-  <%= f.input :header, as: :text, input_html: {rows: 5, cols: 30}, label: "Encabezado: " %>
-  <%= f.input :body, as: :text, input_html: {rows: 10, cols: 30}, label: "Cuerpo: " %>
-  <%= f.input :footer, as: :text, input_html: {rows: 5, cols: 30}, label: "Cierre: " %>
-  <div class="two-buttos-div">
-    <%= link_to 'Regresar', certificates_path, class: 'btn btn-primary mt-5'%>
-    <%= f.submit "Guardar", class: "btn btn-primary mt-5"%>
-  </div>
-<% end %>
+  <h1> Nueva plantilla para constancia </h1>
+  <%= simple_form_for @template, url: {action: "create"} do |f|%>
+    <%= f.input :name, label: "Nombre de la plantilla: " %>
+    <%= f.input :header, as: :text, input_html: {rows: 2, cols: 40}, label: "Encabezado: " %>
+    <%= f.input :body, as: :text, input_html: {rows: 5, cols: 40}, label: "Cuerpo: " %>
+    <%= f.input :footer, as: :text, input_html: {rows: 2, cols: 40}, label: "Cierre: " %>
+    <div class="two-buttos-div">
+      <%= link_to 'Regresar', certificate_templates_path, class: 'btn btn-primary mt-5'%>
+      <%= f.submit "Guardar", class: "btn btn-primary mt-5"%>
+    </div>
+  <% end %>
 </div>
