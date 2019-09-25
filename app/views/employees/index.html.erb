@@ -1,0 +1,30 @@
+<div class="employees my-4">
+  <h1> Empleados registrados </h1>
+  <div class='row container-q border-bottom my-3'>
+    <div class='col-4 question'>
+      <h5> Nombre </h5>
+    </div>
+    <div class='col-4 question'>
+      <h5> Posición </h5>
+    </div>
+    <div class='col-3 opciones'>
+      <h5> Opciones </h5>
+    </div>
+  </div>
+  <% employees.each do |employee| %>
+    <div class='row container-q border-bottom mb-3'>
+      <div class='col-4 question'>
+        <%= employee.name %> 
+      </div>
+      <div class='col-4 question'>
+        <%= employee.position %> 
+      </div>
+      <div class='col-3 opciones'>
+        <%= link_to 'Editar', edit_employee_path(employee) %>
+        <%= link_to 'Eliminar', employee_path(employee), method: :delete, data: { confirm: "Deseas eliminar a #{employee.name}?" } %>
+      </div>
+    </div>
+  <% end %>
+  <%= link_to 'Agregar nuevo empleado', new_employee_path, class: 'btn btn-primary mt-5' %>
+</div>
+<%= link_to 'Regresar', settings_path %>

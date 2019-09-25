@@ -1,0 +1,17 @@
+es:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'La validación falló: %{errors}'
+        restrict_dependent_destroy:
+          has_one: No se puede eliminar el registro porque existe un %{record} dependiente
+          has_many: No se puede eliminar el registro porque existen %{record} dependientes
+      models:
+        certificate: 
+          attributes:
+            certificate_parts_id: 
+              blank: "Selecciona una plantilla"
+            exam_id: 
+              blank: "Selecciona un examen"
+            employee_ids:
+              blank: "Selecciona el personal que firma la constancia"

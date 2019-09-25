@@ -30,6 +30,22 @@
 .pdf-certificate-div {
   text-align: center;
 
+  .firms {
+    display: box;
+    box-orient: horizontal;
+
+    .employee-data {
+
+      .name {
+        font-size: 22px;
+      }
+      
+      hr, p {
+        margin: 0;
+      }
+    }
+  }
+
   p {
     font-size: 30px;
   }
@@ -57,7 +73,7 @@
 .pdf-send-btn-div {
   display: flex;
   justify-content: space-around;
-  margin: 3vw;
+  margin: 0 3vw;
   width: 50vw;
 }
 
@@ -65,8 +81,4 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-
-  h2 {
-    // width: 50vw;
-  }
 }

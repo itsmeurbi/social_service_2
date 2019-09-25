@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: users
@@ -17,6 +16,7 @@
 #  confirmation_sent_at   :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  discarded_at           :datetime
 #
 
 class User < ApplicationRecord

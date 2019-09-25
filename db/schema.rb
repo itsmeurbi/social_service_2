@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_18_230843) do
+ActiveRecord::Schema.define(version: 2019_09_25_053744) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,12 @@ ActiveRecord::Schema.define(version: 2019_09_18_230843) do
     t.index ["exam_id"], name: "index_certificates_on_exam_id"
   end
 
+  create_table "certificates_employees", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "employee_id", null: false
+    t.bigint "certificate_id", null: false
+    t.index ["employee_id", "certificate_id"], name: "index_certificates_employees_on_employee_id_and_certificate_id"
+  end
+
   create_table "comprehension_options", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
     t.integer "type"
@@ -77,6 +83,15 @@ ActiveRecord::Schema.define(version: 2019_09_18_230843) do
   create_table "editorials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "id_editorial"
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "area"
+    t.string "position"
+    t.string "signing"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

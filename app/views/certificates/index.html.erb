@@ -1,5 +1,5 @@
-<h1> Constancias </h1>
-<div class="index-certificates-div">
+<div class="index-certificates-div mt-4">
+  <h1> Constancias </h1>
   <h5> Constancias generadas </h5>
   <% if @certificates.empty? %> 
     <p> NO SE HAN GENERADO CONSTANCIAS <p>
@@ -7,7 +7,7 @@
     <% @certificates.each do |certificate| %>
       <div class='row container-q border-bottom'>
         <div class='col-9 question'>
-        <% student_name = Student.select("students.no_control, students.name").joins(:exams).where("exams.id = ?", certificate.exam_id).as_json %>
+          <% student_name = Student.select("students.no_control, students.name").joins(:exams).where("exams.id = ?", certificate.exam_id).as_json %>
           Constancia: <%= student_name[0]["no_control"]%> - <%= student_name[0]["name"]%> 
         </div>
         <div class='col-3 opciones'>
@@ -21,3 +21,4 @@
     <%= link_to 'Crear nueva constancia', new_certificate_path, class: "btn btn-primary mt-5" %>
   </div>
 </div>
+<%= link_to 'Regresar', authenticated_root_path %>

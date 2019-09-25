@@ -7,15 +7,15 @@ class CertificatesController < ApplicationController
   end
 
   def new
-    @templates = CertificatePart.all
     @certificate = Certificate.new
-    @exams = Exam.select("exams.id, students.name").joins(:student).where("exams.result >= 50").as_json
   end
 
   def create
-    @certificate = Certificate.create(certificate_params)
-    if @certificate.persisted?
+    @certificate = Certificate.new(certificate_params)
+    if @certificate.save
       redirect_to certificate_path(@certificate.id)
+    else 
+      render 'new', notice: @certificate.errors.full_messages.join(',')
     end
   end
 
@@ -27,6 +27,7 @@ class CertificatesController < ApplicationController
     @template = CertificatePart.find(@certificate.certificate_parts_id)
     @exam = Exam.find(@certificate.exam_id)
     @student = Student.find(@exam.student_id)
+    @employees = @certificate.employees
 
     respond_to do |format|
       format.html
@@ -54,6 +55,6 @@ class CertificatesController < ApplicationController
   private
 
     def certificate_params
-      params.require(:certificate).permit(:date, :exam_id, :certificate_parts_id)
+      params.require(:certificate).permit(:date, :exam_id, :certificate_parts_id, employee_ids: [])
     end
 end

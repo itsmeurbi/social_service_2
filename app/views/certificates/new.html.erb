@@ -1,16 +1,14 @@
-<h1> Nueva constancia </h1>
-<div class="new-certificate-div">
-  <%= simple_form_for @certificate, url: {action: "create"} do |f| %>
-    <%= f.input :certificate_parts_id, collection: @templates, prompt: "Selecciona una plantilla", label: "Plantillas: "%>
-    <%= f.input :exam_id, collection: @exams.collect {|c| [c["name"], c["id"]]}, label: "Examen: ", prompt: "Examenes aprobados"%>
-
-    <%= f.input :date, label: "Fecha:" %>
+<div class="new-certificate-div my-4">
+  <h1> Nueva constancia </h1>
+  <%= simple_form_for @certificate, url: {action: 'create'} do |f| %>
+    <%= f.input :certificate_parts_id, collection: templates, prompt: 'Selecciona una plantilla', label: 'Plantillas: ', required: true %>
+    <%= f.input :exam_id, collection: exams.collect {|c| [c['name'], c['id']]}, label: 'Examen: ', prompt: 'Examenes aprobados', required: true %>
+    <%= f.input :date, label: 'Fecha:', required: true %>
+    <%= f.label 'Firmas' %>
+    <%= f.association :employees, as: :check_boxes, label: false, class: 'sign-box'  %>
     <div class="new-buttons">
-      <%= f.submit "Guardar", class: "btn btn-primary mt-5" %>
-      <%= link_to 'Regresar', certificates_path, class: "btn btn-primary mt-5" %>
+      <%= f.submit 'Guardar', class: 'btn btn-primary mt-5' %>
     </div>
   <% end %>
 </div>
-
-
-
+<%= link_to 'Regresar', certificates_path %>

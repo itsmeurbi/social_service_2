@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       resources :certificates
       resources :certificate_templates
       resources :exam_quest
+      resources :employees
       get '/send_exam' => 'send_exam#show'
       get '/editorial_levels' => 'editorial_levels#show'
       get '/level_units' => 'level_units#show'
