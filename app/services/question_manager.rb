@@ -13,11 +13,11 @@ class QuestionManager
 
   def self.assign_correct_answ(question, question_params, correct_answ)
     set_all_options_to_false(question)
-    if question_params[:multiple_question_options_attributes]
-      correct_answ_content = question_params[:multiple_question_options_attributes][correct_answ][:content]
-    else
-      correct_answ_content = question_params[:comprehension_options_attributes][correct_answ][:content]
-    end
+    correct_answ_content = if question_params[:multiple_question_options_attributes]
+                             question_params[:multiple_question_options_attributes][correct_answ][:content]
+                           else
+                             question_params[:comprehension_options_attributes][correct_answ][:content]
+                           end
     correct_answ = question.options.find_by_content(correct_answ_content)
     correct_answ.update(correct: true)
   end

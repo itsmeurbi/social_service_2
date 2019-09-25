@@ -4,7 +4,7 @@
 #
 # Table name: questions
 #
-#  id         :bigint(8)        not null, primary key
+#  id         :bigint           not null, primary key
 #  type       :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

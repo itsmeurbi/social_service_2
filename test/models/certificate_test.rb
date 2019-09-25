@@ -4,12 +4,12 @@
 #
 # Table name: certificates
 #
-#  id                   :bigint(8)        not null, primary key
+#  id                   :bigint           not null, primary key
 #  date                 :date
-#  exam_id              :bigint(8)
+#  exam_id              :bigint
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
-#  certificate_parts_id :bigint(8)
+#  certificate_parts_id :bigint
 #
 
 require "test_helper"

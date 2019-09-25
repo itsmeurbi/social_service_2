@@ -27,15 +27,15 @@ class StudentsController < ApplicationController
   def create
     student = Student.create(student_params)
     if student
-      redirect_to student_path(student), notice: "Alumno registrado exitosamente"
+      redirect_to student_path(student), notice: 'Alumno registrado exitosamente'
     else
-      render :new, flash: { error: "Algo salió mal" }
+      render :new, flash: { error: 'Algo salió mal' }
     end
   end
 
   private
 
-    def student_params
-      params.require(:student).permit(:name, :email, :no_control)
-    end
+  def student_params
+    params.require(:student).permit(:name, :email, :no_control)
+  end
 end

@@ -9,18 +9,15 @@ class CertificatesController < ApplicationController
   def new
     @templates = CertificatePart.all
     @certificate = Certificate.new
-    @exams = Exam.select("exams.id, students.name").joins(:student).where("exams.result >= 50").as_json
+    @exams = Exam.select('exams.id, students.name').joins(:student).where('exams.result >= 50').as_json
   end
 
   def create
     @certificate = Certificate.create(certificate_params)
-    if @certificate.persisted?
-      redirect_to certificate_path(@certificate.id)
-    end
+    redirect_to certificate_path(@certificate.id) if @certificate.persisted?
   end
 
-  def edit
-  end
+  def edit; end
 
   def show
     @certificate = Certificate.find(params[:id])
@@ -32,14 +29,14 @@ class CertificatesController < ApplicationController
       format.html
       format.pdf do
         render pdf: "English certificate: #{@student.name}",
-        page_size: "A4",
-        template: "certificates/_certificate.html.erb",
-        layout: "pdf.html.erb",
-        encoding: "UTF-8",
-        orientation: "Landscape",
-        lowquality: true,
-        zoom: 1,
-        dpi: 75
+               page_size: 'A4',
+               template: 'certificates/_certificate.html.erb',
+               layout: 'pdf.html.erb',
+               encoding: 'UTF-8',
+               orientation: 'Landscape',
+               lowquality: true,
+               zoom: 1,
+               dpi: 75
       end
     end
   end
@@ -47,13 +44,13 @@ class CertificatesController < ApplicationController
   def destroy
     @certificate = Certificate.find(params[:id])
     @certificate.destroy
-    flash[:success] = "Certificado eliminado con éxito"
+    flash[:success] = 'Certificado eliminado con éxito'
     redirect_to certificates_path
   end
 
   private
 
-    def certificate_params
-      params.require(:certificate).permit(:date, :exam_id, :certificate_parts_id)
-    end
+  def certificate_params
+    params.require(:certificate).permit(:date, :exam_id, :certificate_parts_id)
+  end
 end

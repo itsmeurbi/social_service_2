@@ -4,7 +4,7 @@
 #
 # Table name: students
 #
-#  id         :bigint(8)        not null, primary key
+#  id         :bigint           not null, primary key
 #  name       :string(255)
 #  no_control :string(255)
 #  email      :string(255)

@@ -2,7 +2,7 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { invitations: 'users/invitations' }
   devise_scope :user do
     authenticated :user do
       root 'dashboard#index', as: :authenticated_root
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     end
 
     unauthenticated do
-      root 'devise/sessions#new', as: :unauthenticated_root
+      root 'devise/sessions#new', as: :root
     end
   end
 
