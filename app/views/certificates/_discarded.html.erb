@@ -1,0 +1,13 @@
+<div class="cert-table mt-4">
+  <% discarded.each do |certificate| %>
+  <div class="row container-q border-bottom">
+    <div class="col-8 question">
+      <% student_name = Student.select("students.no_control, students.name").joins(:exams).where("exams.id = ?", certificate.exam_id).as_json %> 
+      <%= student_name[0]["no_control"]%> / Estado: <%= certificate.status ? "Impresa" : "No impresa" %>
+    </div>
+    <div class="col-4 options">
+      <%= link_to 'Ver', certificate_path(certificate)%> 
+    </div>
+  </div>
+  <% end %>
+</div>

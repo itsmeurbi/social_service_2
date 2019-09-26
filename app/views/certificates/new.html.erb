@@ -1,16 +1,5 @@
-<h1> Nueva constancia </h1>
-<div class="new-certificate-div">
-  <%= simple_form_for @certificate, url: {action: "create"} do |f| %>
-    <%= f.input :certificate_parts_id, collection: @templates, prompt: "Selecciona una plantilla", label: "Plantillas: "%>
-    <%= f.input :exam_id, collection: @exams.collect {|c| [c["name"], c["id"]]}, label: "Examen: ", prompt: "Examenes aprobados"%>
-
-    <%= f.input :date, label: "Fecha:" %>
-    <div class="new-buttons">
-      <%= f.submit "Guardar", class: "btn btn-primary mt-5" %>
-      <%= link_to 'Regresar', certificates_path, class: "btn btn-primary mt-5" %>
-    </div>
-  <% end %>
+<div class="new-certificate-div my-4">
+  <h1> Nueva constancia </h1>
+  <%= render 'form' %>
 </div>
-
-
-
+<%= link_to 'Regresar', certificates_path %>

@@ -6,17 +6,23 @@
         <%= image_tag 'time.png', class: 'icon '%>
         <%= image_tag 'book2.png', class: 'icon'%>
       </div>
-      <p class="b-square">Configurar periodo y editorial</p>
+      <p class="b-square"> Configurar periodo y editorial </p>
     <%end%>
 
     <%= link_to certificate_templates_path, class: 'square' do %>
       <i class="fas fa-file-signature"></i>
-      <p class="b-square">Plantillas de constancias</p>
+      <p class="b-square"> Plantillas de constancias </p>
     <%end%>
 
     <%= link_to users_path, class: 'square' do %>
       <i class="fas fa-users-cog"></i>
-      <p class="b-square">Administradores</p>
+      <p class="b-square"> Administradores </p>
     <%end%>
+
+    <%= link_to employees_path, class: 'square' do %>
+      <i class="fas fa-users-cog"></i>
+      <p class="b-square"> Empleados </p>
+    <%end%>
+
   </div>
 </div>

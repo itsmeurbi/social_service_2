@@ -1,2 +1,15 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+$(document).on('turbolinks:load', function () {
+  $('#discarded').hide()
+
+  $('#print-btn').on('click', function() {
+    setTimeout(() => window.location.reload(), 3000)
+  })
+})
+
+function showDiscarded() {
+  $('#discarded').show()
+}
+
+function hideDiscarded() {
+  $('#discarded').hide()
+}

@@ -1,10 +1,11 @@
-<div class="show-certificate-div">
-  <h1> CONSTANCIA </h1>
-  <h2> Vista previa de los datos de la constancia </h2>
+<div class="show-certificate-div mt-4">
+  <h1> Constancia de nivel de inglés </h1>
+  <h2> Vista previa </h2>
   <%= render 'certificate' %>
   <div class="pdf-send-btn-div">
-    <%= link_to 'Regresar', certificates_path, class: 'btn btn-primary mt-5'%>
-    <%# <%= link_to 'Editar', edit_certificate_path, class: 'btn btn-primary mt-5'%>
-    <%= link_to 'Enviar certificado PDF', certificate_path(@certificate, format: :pdf), class: 'btn btn-primary mt-5', target: :blank %>
+    <%= link_to 'Regresar', certificates_path, class: 'btn btn-primary my-3'%>
+    <%= link_to 'Volver a imprimir', print_path(id: @certificate.id, format: :pdf), target: :_blank, class: 'btn btn-primary my-3' if @certificate.status %>
+    <%= link_to 'Imprimir', print_path(id: @certificate.id, format: :pdf), target: :_blank, class: 'btn btn-primary my-3' if !@certificate.status && @certificate.discarded_at%>
+    <%= link_to 'Editar', edit_certificate_path, class: 'btn btn-primary my-3'%>
   </div>
 </div>

@@ -1,8 +1,16 @@
-<div class="pdf-certificate-div">
+<div class="pdf-certificate-div mt-4">
   <p> <%= @template.header %> </p>
-  <h5> <%= @student.name %> </h5>
-  <p> <%= @template.body %> </p>
+  <p> <%= put_values(@template.body, @student[0]["name"], @exam.level_id) %> </p>
   <p> <%= @template.footer %> </p>
   <p> Villa de Álvarez, Col. </p>
-  <p> A <%= @certificate.date.day %> de <%= l(@certificate.date, format: '%B') %> del <%= @certificate.date.year %> </p>
+  <div class="firms">
+    <% @employees.each do |e| %>
+      <div class="employee-data">
+        <p> <%= e.signing %> </p>
+        <hr/>
+        <p class="name"> <%= e.name %> - <%= e.position %></p>
+      </div>
+    <% end %>
+  </div>
+  <p class="font-small"> A <%= @certificate.date.day %> de <%= l(@certificate.date, format: '%B') %> del <%= @certificate.date.year %> </p>
 </div>

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       resources :certificates
       resources :certificate_templates
       resources :exam_quest
+      resources :employees
       get '/send_exam' => 'send_exam#show'
       get '/editorial_levels' => 'editorial_levels#show'
       get '/level_units' => 'level_units#show'
@@ -26,6 +27,8 @@ Rails.application.routes.draw do
       get '/exam_unit_questions' => 'exam_unit_questions#show'
       get '/settings' => 'dashboard#settings'
       get '/users' => 'devise#users'
+      get '/print' => 'certificates#print'
+      get '/discard_printed' => 'certificates#discard_printed'
     end
 
     unauthenticated do
