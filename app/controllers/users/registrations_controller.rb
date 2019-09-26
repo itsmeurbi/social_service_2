@@ -3,29 +3,28 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   skip_before_action :require_no_authentication, only: [:new, :create, :cancel]
   before_action :set_user, except: [:new, :create]
-  
-  def new 
+
+  def new
     @user = User.new
   end
 
-  def create 
+  def create
     @user = User.new(permitted_params)
     if @user.save
-      redirect_to users_path, notice: "Administrador creado con éxito"
+      redirect_to root_path, notice: "Administrador creado con éxito"
     else
-      binding.pry
       render :new
     end
   end
 
-  def edit 
-  
-  end
-  
-  def update 
+  def edit
+
   end
 
-  def destroy 
+  def update
+  end
+
+  def destroy
     @user.discard
     redirect_to users_path, notice: "Usuario eliminado"
   end
@@ -36,7 +35,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.require(:user).permit(:email, :password, :name)
   end
 
-  def set_user 
+  def set_user
     @user = User.find(params[:format])
   end
 end

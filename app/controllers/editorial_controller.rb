@@ -12,14 +12,15 @@ class EditorialController < ApplicationController
   def create
     editorial = Editorial.create(editorial_params)
     if editorial.persisted?
-      redirect_to editorial_index_path, notice: "Se actualizó correctamente"
+      redirect_to editorial_index_path, notice: 'Se actualizó correctamente'
     else
-      redirect_back fallback_location: { action: "new", alert: editorial.errors.full_messages.join(" ") }
+      redirect_back fallback_location: { action: 'new', alert: editorial.errors.full_messages.join(' ') }
     end
   end
 
   private
-    def editorial_params
-      params.require(:editorial).permit(:editorial_id, :name)
-    end
+
+  def editorial_params
+    params.require(:editorial).permit(:editorial_id, :name)
+  end
 end

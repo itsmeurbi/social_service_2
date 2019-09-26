@@ -4,10 +4,10 @@
 #
 # Table name: periods
 #
-#  id           :bigint(8)        not null, primary key
+#  id           :bigint           not null, primary key
 #  starts_at    :date
 #  ends_at      :date
-#  editorial_id :bigint(8)
+#  editorial_id :bigint
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #

@@ -1,0 +1,19 @@
+<h2>Invitar a un nuevo usuario</h2>
+
+<%= form_for(resource, as: resource_name, url: user_invitation_path, html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <% resource.class.invite_key_fields.each do |field| -%>
+    <div class="field">
+      <%= f.label field %><br />
+      <%= f.text_field field %>
+    </div>
+  <% end -%>
+
+  <label for="user[user_type]">Tipo de usuario</label>
+  <%= f.select(:user_type, [['Maestro', 'teacher'], ['Coordinador', 'admin'], ['Asistente', 'asistant']], {}, {class: 'my-5 mx-auto'}) %>
+
+  <div class="actions">
+    <%= f.submit 'Guardar' %>
+  </div>
+<% end %>

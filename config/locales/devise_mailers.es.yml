@@ -1,0 +1,9 @@
+es:
+  devise:
+    invitations:
+        edit:
+          header: Crear contraseña
+          submit_button: Ingresar
+        user:
+          send_instructions: Las instrucciones para unirse a la plataforma han sido enviadas con éxito
+          updated: Usuario exitosamente actualizado

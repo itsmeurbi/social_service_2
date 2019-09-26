@@ -2,7 +2,7 @@
 
 class CertificateTemplatesController < ApplicationController
 
-  def index 
+  def index
     @templates = CertificatePart.all
   end
 
@@ -31,9 +31,10 @@ class CertificateTemplatesController < ApplicationController
     @template.destroy
     redirect_to certificate_templates_path, notice: "Se eliminó correctamente la plantilla"
   end
+
   private
 
-    def certificate_parts_params
-      params.require(:certificate_part).permit(:header, :body, :footer, :name)
-    end
+  def certificate_parts_params
+    params.require(:certificate_part).permit(:header, :body, :footer, :name)
+  end
 end

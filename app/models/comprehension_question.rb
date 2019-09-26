@@ -4,14 +4,14 @@
 #
 # Table name: comprehension_questions
 #
-#  id         :bigint(8)        not null, primary key
+#  id         :bigint           not null, primary key
 #  content    :string(255)
 #  value      :integer
 #  lecture    :text(4294967295)
-#  user_id    :bigint(8)
+#  user_id    :bigint
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  unit_id    :bigint(8)
+#  unit_id    :bigint
 #
 
 class ComprehensionQuestion < ApplicationRecord
@@ -21,6 +21,7 @@ class ComprehensionQuestion < ApplicationRecord
   has_one_attached :file
 
   belongs_to :unit
+  belongs_to :user
   has_one :editorial, through: :unit
 
   def print_q

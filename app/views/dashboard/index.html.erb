@@ -1,4 +1,3 @@
-
 <div class='custom-container'>
   <%= link_to level_index_path, class: 'square' do %>
     <%= image_tag 'levels.png', class: 'icon'%>
@@ -15,18 +14,20 @@
     <p class="b-square">Preguntas comprensión lectora</p>
   <%end%>
 
-  <%= link_to exams_path, class: 'square' do %>
-    <%= image_tag 'quiz2.png', class: 'icon'%>
-    <p class="b-square">Exámenes</p>
-  <%end%>
+  <% if !current_user.assistant? %>
+    <%= link_to exams_path, class: 'square' do %>
+      <%= image_tag 'quiz2.png', class: 'icon'%>
+      <p class="b-square">Exámenes</p>
+    <%end%>
 
-  <%= link_to students_path, class: 'square' do %>
-    <%= image_tag 'user.png', class: 'icon'%>
-    <p class="b-square">Alumnos registrados</p>
-  <%end%>
+    <%= link_to students_path, class: 'square' do %>
+      <%= image_tag 'user.png', class: 'icon'%>
+      <p class="b-square">Alumnos registrados</p>
+    <%end%>
 
-  <%= link_to certificates_path, class: 'square' do %>
-    <%= image_tag 'certificate.png', class: 'icon'%>
-    <p class="b-square">Constancias</p>
-  <%end%>
+    <%= link_to certificates_path, class: 'square' do %>
+      <%= image_tag 'certificate.png', class: 'icon'%>
+      <p class="b-square">Constancias</p>
+    <%end%>
+  <% end %>
 </div>

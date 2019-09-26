@@ -2,7 +2,12 @@
 <div class="add-questions">
   <%= simple_form_for @question, url: {action: "create"}, html: {class: "form new-form"} do |f| %>
     <%= render partial: 'form', locals: { f: f } %>
-    <%= f.hidden_field :comprehension_question, value: @comprehension_question %>
+    <% if @comprehension_question %>
+      <%= f.hidden_field :comprehension_question_id, value: @comprehension_question %>
+    <% end %>
+    <%= f.hidden_field :unit_id, value: @unit %>
+
+    <%= f.hidden_field :user_id, value: current_user.id %>
     <div class="question-btns">
       <%= f.submit "Crear", class: 'btn btn-primary'%>
       <%= link_to 'Regresar', multiple_questions_path, class: 'btn btn-primary mt-4'%>
@@ -15,7 +20,7 @@
         <div class="question border">
           <%= q.content %>
           <ul class="options">
-            <% options(q).each do |opt| %> 
+            <% options(q).each do |opt| %>
               <li> <%= opt.content %> </li>
             <% end %>
           </ul>

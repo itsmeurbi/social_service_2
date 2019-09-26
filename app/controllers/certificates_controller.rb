@@ -2,7 +2,7 @@
 
 class CertificatesController < ApplicationController
   before_action :set_certificate, only: [:edit, :update, :show, :destroy]
-  
+
   def index
     @certificates = Certificate.all
   end
@@ -15,15 +15,14 @@ class CertificatesController < ApplicationController
     @certificate = Certificate.new(certificate_params)
     if @certificate.save
       redirect_to certificate_path(@certificate.id)
-    else 
+    else
       render 'new', notice: @certificate.errors.full_messages.join(',')
     end
   end
 
-  def edit
-  end
+  def edit; end
 
-  def update 
+  def update
     if @certificate.update(certificate_params)
       redirect_to certificates_path
     else
@@ -77,13 +76,20 @@ class CertificatesController < ApplicationController
     redirect_to certificates_path, notice: "Se archivaron las constancias impresas"
   end
 
+  def destroy
+    @certificate = Certificate.find(params[:id])
+    @certificate.destroy
+    flash[:success] = 'Certificado eliminado con éxito'
+    redirect_to certificates_path
+  end
+
   private
 
     def certificate_params
       params.require(:certificate).permit(:date, :exam_id, :certificate_parts_id, :status, employee_ids: [])
     end
 
-    def set_certificate 
+    def set_certificate
       @certificate = Certificate.find(params[:id])
     end
 end
