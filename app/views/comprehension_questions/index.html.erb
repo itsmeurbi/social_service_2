@@ -1,12 +1,15 @@
-<div class='container-fluid'>
-  <div class='title'>
-    <h2 class='mt-3'>Preguntas de comprensión lectora</h2>
-    <%= render 'shared/filters' %>
+<% if @actual_editorial.present? %>
+  <div class='container-fluid'>
+    <div class='title'>
+      <h2 class='mt-3'>Preguntas de comprensión lectora</h2>
+      <%= render 'shared/filters' %>
+    </div>
+    <div class='questions-container mt-5'>
+      <%= render partial: 'questions', locals: { questions: @questions } %>
+    </div>
+    <input id='compreh_quest' type="hidden" value=true>
   </div>
-  <div class='questions-container mt-5'>
-    <%= render partial: 'questions', locals: { questions: @questions } %>
-  </div>
-  <input id='compreh_quest' type="hidden" value=true>
-</div>
-
-<%= link_to 'Regresar', authenticated_root_path, class: 'btn btn-primary mt-5'%>
+  <%= link_to 'Regresar', authenticated_root_path, class: 'btn btn-primary mt-5'%>
+<% else %>
+  <%= render 'shared/no_editorial' %>
+<% end %>

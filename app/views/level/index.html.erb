@@ -1,16 +1,16 @@
-<% if @actual_editorial %>
+<% if @actual_editorial.present? %>
   <h2 class='mb-2'>Editorial en uso</h2>
   <%= render 'editorial_levels', editorial: @actual_editorial %>
+  <h3 class='mb-2'>Otras editoriales</h2>
+  <div class='d-flex justify-content-around'>
+    <% @editorials.each do |editorial| %>
+      <%= render 'editorial_levels', editorial: editorial %>
+    <% end %>
+  </div>
+  <div class="two-btns-column">
+    <%= link_to 'Agregar niveles', new_level_path, class:'btn btn-primary mt-5', style: 'margin: 0 auto;'%>
+    <%= link_to 'Regresar', authenticated_root_path, class: 'btn btn-primary mt-5'%>
+  </div>
 <% else %>
-  <h2 class='mb-2'>Recuerda configurar una editorial y un periodo</h2>
+  <%= render 'shared/no_editorial' %>
 <% end %>
-<h3 class='mb-2'>Otras editoriales</h2>
-<div class='d-flex justify-content-around'>
-  <% @editorials.each do |editorial| %>
-    <%= render 'editorial_levels', editorial: editorial %>
-  <% end %>
-</div>
-<div class="two-btns-column">
-  <%= link_to 'Agregar niveles', new_level_path, class:'btn btn-primary mt-5', style: 'margin: 0 auto;'%>
-  <%= link_to 'Regresar', authenticated_root_path, class: 'btn btn-primary mt-5'%>
-</div>

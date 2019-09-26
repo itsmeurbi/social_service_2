@@ -11,7 +11,8 @@ class ExamsController < ApplicationController
   def new
     @student_id = params[:student_id]
     @exam = Student.find(@student_id).exams.build
-    @actual_editorial = Period.actual_period.editorial || Editorial.last
+    @period = Period.actual_period
+    @actual_editorial = @period.present? ? @period.editorial : Editorial.last
     @actual_period = Period.actual_period
   end
 

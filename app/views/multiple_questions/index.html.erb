@@ -1,8 +1,12 @@
-<h2 class='mb-1 mt-3'>Preguntas opción múltiple</h2>
-<%= render 'shared/filters' %>
+<% if @actual_editorial.present? %>
+  <h2 class='mb-1 mt-3'>Preguntas opción múltiple</h2>
+  <%= render 'shared/filters' %>
 
-<div class='questions-container mt-5'>
-  <%= render partial: 'questions', locals: { questions: @questions } %>
-</div>
+  <div class='questions-container mt-5'>
+    <%= render partial: 'questions', locals: { questions: @questions } %>
+  </div>
 
-<%= link_to 'Regresar', authenticated_root_path, class: 'btn btn-primary mt-5'%>
+  <%= link_to 'Regresar', authenticated_root_path, class: 'btn btn-primary mt-5'%>
+<% else %>
+  <%= render 'shared/no_editorial' %>
+<% end %>

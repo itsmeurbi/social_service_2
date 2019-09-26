@@ -11,7 +11,7 @@
   <% end -%>
 
   <label for="user[user_type]">Tipo de usuario</label>
-  <%= f.select(:user_type, [['Maestro', 'teacher'], ['Coordinador', 'admin'], ['Asistente', 'asistant']], {}, {class: 'my-5 mx-auto'}) %>
+  <%= f.select(:user_type, [['Maestro', 'teacher'], ['Coordinador', 'admin'], ['Asistente', 'assistant']], {}, {class: 'my-5 mx-auto'}) %>
 
   <div class="actions">
     <%= f.submit 'Guardar' %>

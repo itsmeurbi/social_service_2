@@ -21,7 +21,8 @@ class MultipleQuestionsController < ApplicationController
     @question = MultipleQuestion.new
     @questions = MultipleQuestion.all_non_comprehension
     @editorials = Editorial.all
-    @actual_editorial = Period.actual_period.editorial || Editorial.last
+    @period = Period.actual_period
+    @actual_editorial = @period.present? ? @period.editorial : Editorial.last
     @path = new_multiple_question_path
   end
 

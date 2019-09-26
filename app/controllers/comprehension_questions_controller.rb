@@ -16,7 +16,8 @@ class ComprehensionQuestionsController < ApplicationController
     @question = ComprehensionQuestion.new
     @questions = ComprehensionQuestion.all
     @editorials = Editorial.all
-    @actual_editorial = Period.actual_period.editorial || Editorial.last
+    @period = Period.actual_period
+    @actual_editorial = @period.present? ? @period.editorial : Editorial.last
     @path = new_comprehension_question_path
   end
 

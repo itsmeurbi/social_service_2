@@ -11,7 +11,8 @@ class LevelController < ApplicationController
   end
 
   def index
-    @actual_editorial = Editorial.find(Period.actual_period&.editorial_id)
+    @period = Period.actual_period
+    @actual_editorial = @period.present? ? @period.editorial : Editorial.last
     if @actual_editorial
       @editorials = Editorial.all.reject do |e|
         e.id == @actual_editorial.id
