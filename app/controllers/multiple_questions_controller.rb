@@ -3,7 +3,7 @@
 class MultipleQuestionsController < ApplicationController
   def new
     @unit = determine_unit
-    @question = current_user.multiple_questions.build
+    @question = MultipleQuestion.new
     3.times { @question.multiple_question_options.new }
     @comprehension_question = params[:comprehension_question]
     @questions = MultipleQuestion.all_non_comprehension
@@ -26,7 +26,7 @@ class MultipleQuestionsController < ApplicationController
   end
 
   def create
-    @question = QuestionManager.create_multiple_question(current_user, question_params, params[:correct_answ])
+    @question = QuestionManager.create_multiple_question(question_params, params[:correct_answ])
     if @question.persisted?
       c_q = params[:multiple_question][:comprehension_question]
       if c_q.present?
@@ -58,11 +58,11 @@ class MultipleQuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:multiple_question).permit(:content, :value, :unit_id, :comprehension_question_id, multiple_question_options_attributes: %i[id content correct _destroy])
+    params.require(:multiple_question).permit(:content, :value, :unit_id, :user_id, :comprehension_question, :comprehension_question_id, multiple_question_options_attributes: %i[id content correct _destroy])
   end
 
   def question
-    @question ||= current_user.multiple_questions.find(params[:id])
+    @question ||= MultipleQuestion.find(params[:id])
   end
 
   def determine_unit
@@ -70,6 +70,8 @@ class MultipleQuestionsController < ApplicationController
       params[:unit][:unit_id]
     elsif params[:multiple_question]
       params[:multiple_question][:unit]
+    elsif params[:comprehension_question]
+      ComprehensionQuestion.find(params[:comprehension_question]).unit.id
     end
   end
 end

@@ -3,7 +3,7 @@
 class ComprehensionQuestionsController < ApplicationController
   def new
     @unit = determine_unit
-    @question = current_user.comprehension_questions.build
+    @question = ComprehensionQuestion.new
     question = @question.multiple_questions.new
     3.times { question.multiple_question_options.new }
   end
@@ -21,7 +21,7 @@ class ComprehensionQuestionsController < ApplicationController
   end
 
   def create
-    question = QuestionManager.create_comprehension_question(current_user, lecture_params)
+    question = QuestionManager.create_comprehension_question(lecture_params)
     redirect_to comprehension_question_path(question), notice: 'Se guardó correctamente' if question.persisted?
   end
 
@@ -50,15 +50,15 @@ class ComprehensionQuestionsController < ApplicationController
   private
 
   def lecture_params
-    params.require(:comprehension_question).permit(:content, :value, :file, :unit_id, :lecture, comprehension_options_attributes: %i[id content correct _destroy])
+    params.require(:comprehension_question).permit(:content, :user_id, :value, :file, :unit_id, :lecture, comprehension_options_attributes: %i[id content correct _destroy])
   end
 
   def question_params
-    params.require(:comprehension_question).permit(:content, :value, :file, :unit_id, :lecture, comprehension_options_attributes: %i[id content correct _destroy])
+    params.require(:comprehension_question).permit(:content, :user_id, :value, :file, :unit_id, :lecture, comprehension_options_attributes: %i[id content correct _destroy])
   end
 
   def question
-    @question ||= current_user.comprehension_questions.find(params[:id])
+    @question ||= ComprehensionQuestion.find(params[:id])
   end
 
   def determine_unit

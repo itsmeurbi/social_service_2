@@ -21,6 +21,7 @@ class ComprehensionQuestion < ApplicationRecord
   has_one_attached :file
 
   belongs_to :unit
+  belongs_to :user
   has_one :editorial, through: :unit
 
   def print_q
