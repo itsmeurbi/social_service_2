@@ -3,7 +3,6 @@ class Users::InvitationsController < Devise::InvitationsController
 
   private
     def configure_permitted_parameters
-      binding.pry
       devise_parameter_sanitizer.permit(:invite, keys: [:user_type])
     end
 end

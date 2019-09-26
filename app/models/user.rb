@@ -33,8 +33,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :invitable, :confirmable
 
   enum user_type: {
-    admin: 0,
-    teacher: 1
+    admin: 'admin',
+    teacher: 'teacher',
+    assistant: 'assistant'
   }
 
   def user_type_name
