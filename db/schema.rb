@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_25_053744) do
+ActiveRecord::Schema.define(version: 2019_09_26_033538) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -48,7 +48,10 @@ ActiveRecord::Schema.define(version: 2019_09_25_053744) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "certificate_parts_id"
+    t.boolean "status"
+    t.datetime "discarded_at"
     t.index ["certificate_parts_id"], name: "index_certificates_on_certificate_parts_id"
+    t.index ["discarded_at"], name: "index_certificates_on_discarded_at"
     t.index ["exam_id"], name: "index_certificates_on_exam_id"
   end
 

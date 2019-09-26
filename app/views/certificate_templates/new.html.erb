@@ -3,6 +3,7 @@
   <%= simple_form_for @template, url: {action: "create"} do |f|%>
     <%= f.input :name, label: "Nombre de la plantilla: " %>
     <%= f.input :header, as: :text, input_html: {rows: 2, cols: 40}, label: "Encabezado: " %>
+    <%= f.label 'Ingresa las claves "#NOMBRE" y "#NIVEL" para elegir en donde se podrán los datos del alumno' %> 
     <%= f.input :body, as: :text, input_html: {rows: 5, cols: 40}, label: "Cuerpo: " %>
     <%= f.input :footer, as: :text, input_html: {rows: 2, cols: 40}, label: "Cierre: " %>
     <div class="two-buttos-div">

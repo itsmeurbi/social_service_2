@@ -4,7 +4,8 @@
   <%= render 'certificate' %>
   <div class="pdf-send-btn-div">
     <%= link_to 'Regresar', certificates_path, class: 'btn btn-primary my-3'%>
-    <%# <%= link_to 'Editar', edit_certificate_path, class: 'btn btn-primary mt-5'%>
-    <%= link_to 'Enviar certificado PDF', certificate_path(@certificate, format: :pdf), class: 'btn btn-primary my-3', target: :blank %>
+    <%= link_to 'Volver a imprimir', print_path(id: @certificate.id, format: :pdf), target: :_blank, class: 'btn btn-primary my-3' if @certificate.status %>
+    <%= link_to 'Imprimir', print_path(id: @certificate.id, format: :pdf), target: :_blank, class: 'btn btn-primary my-3' if !@certificate.status && @certificate.discarded_at%>
+    <%= link_to 'Editar', edit_certificate_path, class: 'btn btn-primary my-3'%>
   </div>
 </div>

@@ -1,24 +1,62 @@
-<div class="index-certificates-div mt-4">
+<div class="index-certificates-div my-4">
   <h1> Constancias </h1>
-  <h5> Constancias generadas </h5>
-  <% if @certificates.empty? %> 
-    <p> NO SE HAN GENERADO CONSTANCIAS <p>
-  <% else %>
-    <% @certificates.each do |certificate| %>
-      <div class='row container-q border-bottom'>
-        <div class='col-9 question'>
-          <% student_name = Student.select("students.no_control, students.name").joins(:exams).where("exams.id = ?", certificate.exam_id).as_json %>
-          Constancia: <%= student_name[0]["no_control"]%> - <%= student_name[0]["name"]%> 
+  <div class="certificates">
+    <div class="col-6">
+      <h5> Constancias generadas </h5>
+      <% if certificates.empty? %>
+        <p> No hay constancias nuevas </p>
+      <% else %>
+        <div class="cert-table">
+          <% certificates.each do |certificate| %>
+            <div class='row container-q border-bottom'>
+              <div class='col-8 question'>
+                <% student_name = Student.select("students.no_control, students.name").joins(:exams).where("exams.id = ?", certificate.exam_id).as_json %>
+                <%= student_name[0]["no_control"]%> / Estado: <%= certificate.status ? "Impresa" : "No impresa" %>
+              </div>
+              <div class='col-4 options'>
+                <%= link_to 'Ver', certificate_path(certificate)%>
+                <%= link_to 'Archivar', certificate_path(certificate), method: :delete %>
+                <%= link_to 'Imprimir', print_path(id: certificate.id, format: :pdf) if !certificate.status %>
+              </div>
+            </div>
+          <% end %>
         </div>
-        <div class='col-3 opciones'>
-          <%= link_to 'Ver', certificate_path(certificate)%>
-          <%= link_to 'Eliminar', certificate_path(certificate), method: :delete %>
-        </div>
+      <% end %>
+      <div class="links">
+        <%= link_to 'Archivar constancias impresas', discard_printed_path, class: 'btn btn-primary mt-3' %>
+        <button class="btn btn-primary mt-3" onclick="showDiscarded()"> Ver constancias archivadas </button>
       </div>
-    <% end %>
-  <% end %>
-  <div class="center-btn-div">
-    <%= link_to 'Crear nueva constancia', new_certificate_path, class: "btn btn-primary mt-5" %>
+      <div id="discarded">
+        <%= render 'discarded' %>
+        <button class="btn btn-primary" onclick="hideDiscarded()"> Cerrar </button>
+      </div>
+    </div>
+    <div class="col-6">
+      <h5> Constancias pendientes </h5>
+      <% if to_print.empty? %>
+        <p> No hay constancias por imprimir </p>
+      <% else %>
+        <div class="to-print-table">
+          <% to_print.each do |certificate| %>
+            <div class='row container-q border-bottom'>
+              <div class='col-8 question'>
+                <% student_name = Student.select("students.no_control, students.name").joins(:exams).where("exams.id = ?", certificate.exam_id).as_json %>
+                <%= student_name[0]["no_control"]%> / Estado: No impresa
+              </div>
+              <div class='col-4 options'>
+                <%= link_to 'Ver', certificate_path(certificate)%>
+                <%= link_to 'Archivar', certificate_path(certificate), method: :delete %>
+                <%= link_to 'Imprimir', print_path(id: certificate.id, format: :pdf), target: :_blank, id: 'print-btn' %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <%= link_to 'Imprimir faltantes', "#", class: 'btn btn-primary mt-4' %>
+      <% end %>
+    </div>
   </div>
+  <div class="center-btn-div">
+    <%= link_to 'Crear nueva constancia', new_certificate_path, class: 'btn btn-primary mt-5 mb-3' %>
+  </div>
+  <%= link_to 'Regresar', authenticated_root_path %>
 </div>
-<%= link_to 'Regresar', authenticated_root_path %>

@@ -9,6 +9,7 @@
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  certificate_parts_id :bigint(8)
+#  status               :string(1)
 #
 
 require "test_helper"

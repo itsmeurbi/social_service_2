@@ -27,6 +27,8 @@ Rails.application.routes.draw do
       get '/exam_unit_questions' => 'exam_unit_questions#show'
       get '/settings' => 'dashboard#settings'
       get '/users' => 'devise#users'
+      get '/print' => 'certificates#print'
+      get '/discard_printed' => 'certificates#discard_printed'
     end
 
     unauthenticated do
