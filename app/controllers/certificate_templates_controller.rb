@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class CertificateTemplatesController < ApplicationController
   def new
     @template = CertificatePart.new
   end
 
-  def create 
+  def create
     @template = CertificatePart.create(certificate_parts_params)
     if @template.persisted?
       flash[:success] = "Plantilla creada con éxito"
@@ -25,8 +27,8 @@ class CertificateTemplatesController < ApplicationController
     flash[:success] = "Se eliminó correctamente la plantilla"
     redirect_to certificates_path
   end
-  private
 
+  private
     def certificate_parts_params
       params.require(:certificate_part).permit(:header, :body, :footer, :name)
     end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CertificatesController < ApplicationController
   def index
     @templates = CertificatePart.all
@@ -16,27 +18,25 @@ class CertificatesController < ApplicationController
       redirect_to certificate_path(@certificate.id)
     end
   end
-  
-  def edit
 
+  def edit
   end
 
-  def show 
+  def show
     @certificate = Certificate.find(params[:id])
     @template = CertificatePart.find(@certificate.certificate_parts_id)
     @exam = Exam.find(@certificate.exam_id)
     @student = Student.find(@exam.student_id)
   end
 
-  def destroy 
+  def destroy
     @certificate = Certificate.find(params[:id])
     @certificate.destroy
     flash[:success] = "Certificado eliminado con éxito"
     redirect_to certificates_path
   end
 
-  private 
-
+  private
     def certificate_params
       params.require(:certificate).permit(:date, :exam_id, :certificate_parts_id)
     end

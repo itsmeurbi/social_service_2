@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Exam < ApplicationRecord
   belongs_to :level
   belongs_to :student
