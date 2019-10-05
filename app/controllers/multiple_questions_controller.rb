@@ -43,7 +43,6 @@ class MultipleQuestionsController < ApplicationController
   end
 
   private
-
     def question_params
       params.require(:multiple_question).permit(:content, :value, :unit_id, multiple_question_options_attributes: [:id, :content, :correct, :_destroy])
     end

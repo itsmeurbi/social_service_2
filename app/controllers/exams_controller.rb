@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ExamsController < ApplicationController
   def index
     @exam = Exam.new
@@ -39,7 +41,7 @@ class ExamsController < ApplicationController
     @exam = Exam.find(params[:id])
     @level = Level.find(@exam.level_id).number
     @student = Student.find(@exam.student_id)
-    @questions = MultipleQuestion.joins(:exam_quests).where("exam_quests.exam_id = ? ", @exam.id )
+    @questions = MultipleQuestion.joins(:exam_quests).where("exam_quests.exam_id = ? ", @exam.id)
   end
 
   def destroy
@@ -50,11 +52,9 @@ class ExamsController < ApplicationController
   end
 
   def send_to_student
-
   end
 
   private
-
     def exam_params
       params.require(:exam).permit(:date, :grade, :level_id, :user_id, :period_id, :student_id, exam_quests_attributes: [ :multiple_question_id, :exam_id])
     end
@@ -62,5 +62,4 @@ class ExamsController < ApplicationController
     def student_params
       params.require(:exam).require(:student).permit(:no_control, :name, :email)
     end
-
 end

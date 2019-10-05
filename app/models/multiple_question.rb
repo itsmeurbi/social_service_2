@@ -22,7 +22,7 @@ class MultipleQuestion < ApplicationRecord
 
   has_many :exam_quests
   has_many :exams, through: :exam_quests
-  
+
   # def editorial_questions(levels)
   #   questions = []
   #   levels.each do |level|
